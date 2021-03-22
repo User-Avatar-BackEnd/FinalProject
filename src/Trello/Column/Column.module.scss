@@ -1,4 +1,4 @@
-.block{
+.block {
     display: flex;
     justify-content: space-around;
     flex-direction: column;
@@ -9,21 +9,23 @@
     box-shadow: 10px 5px 5px #0e0a0a8e;
 }
 
-.cards{
+.cards {
     display: flex;
     justify-content: space-around;
     flex-direction: column-reverse;
     align-items: center;
 }
 
-.title{
+.title {
     font-size: 22px;
     font-weight: bold;
     font-family: Courier, monospace;
+    width: 85%;
+    word-wrap: break-word;
     padding: 12px;
 }
 
-.addButton{
+.addButton {
     font-size: 30px;
     font-weight: bold;
     border: none;
@@ -36,13 +38,17 @@
     width: 90%;
 }
 
-.columnHead{
+.columnHead {
+    position: relative;
     margin: 5px;
     display: flex;
     justify-content: space-between;
 }
 
-.more{
+.more {
+    position: absolute;
+    top: 5px;
+    right: 0;
     transform: rotate(90deg);
     font-family:'Times New Roman', Times, serif;
     font-weight: bold;
