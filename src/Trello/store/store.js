@@ -93,3 +93,22 @@ const reducer = (state, action) => {
 const store = createStore(reducer, playloadedState,  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 export default store;
+//
+// import { createStore, applyMiddleware, combineReducers, compose } from "redux";
+// import thunkMiddleware from "redux-thunk";
+// import boards from '../ducks/getBoards'
+//
+// const rootReducer = combineReducers({
+//  reducer
+// })
+//
+// const composeEnhancers =
+//     typeof window === 'object' &&
+//     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+//         window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+//
+//         }) : compose
+//
+// const store = createStore(rootReducer, {}, composeEnhancers(applyMiddleware(thunkMiddleware)))
+//
+// export default store
