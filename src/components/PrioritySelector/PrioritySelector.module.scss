@@ -1,0 +1,13 @@
+.PrioritySelector {
+  select {
+    -webkit-appearance: none;
+    padding: 7px 40px 7px 12px;
+    width: 100%;
+    border: none;
+    border-right: 1px solid;
+    background: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 150ms ease;
+  }
+}

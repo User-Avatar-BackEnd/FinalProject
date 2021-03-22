@@ -1,15 +1,26 @@
-const API ={
+const API = {
     id: 0,
     isOwner: true,
     title: "Board Title",
-    members:["{user}"],
-    columns:[
+    async members() {
+        return [
+            {
+                id: "1",
+                name: 'Jhon'
+            },
+            {
+                id: "2",
+                name: 'Jhonie'
+            }
+        ]
+    },
+    columns: [
         {
             id: 0,
             order: 0,
-            title:"To Do",
+            title: "To Do",
             //color: "#f1e429",
-            tasks:[
+            tasks: [
                 {
                     id: 0,
                     title: "New Task",
@@ -35,16 +46,35 @@ const API ={
         {
             id: 1,
             order: 1,
-            title:"In Progress",
-            tasks:[]
+            title: "In Progress",
+            tasks: []
         },
         {
             id: 2,
             order: 2,
-            title:"Done",
-            tasks:[]
+            title: "Done",
+            tasks: []
         }
     ]
+}
+
+export const priorityType = {
+    minimal: {
+        priority: 0,
+        name: 'Minimal'
+    },
+    normal: {
+        priority: 1,
+        name: 'Normal'
+    },
+    high: {
+        priority: 2,
+        name: 'High'
+    },
+    critical: {
+        priority: 3,
+        name: 'Critical'
+    }
 }
 
 export default API;

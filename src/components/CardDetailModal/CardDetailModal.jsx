@@ -2,8 +2,10 @@ import React, {useEffect, useRef, useState} from "react";
 import style from './CardDetailModal.module.scss'
 import {Comments} from "../Comments/Comments";
 import {AddComments} from "../AddComments/AddComments";
+import {PrioritySelector} from "../PrioritySelector/PrioritySelector";
+import {CardMembersSelector} from "../CardMembersSelector/CardMembersSelector";
 
-export const CardDetailComponent = ({onClose, task}) => {
+export const CardDetailComponent = ({onClose, commentFocused}) => {
     const [isWritable, setIsWritable] = useState(false)
     const textInput = useRef(null)
 
@@ -23,6 +25,11 @@ export const CardDetailComponent = ({onClose, task}) => {
         setIsWritable(false)
     }
 
+    // const updateTask = (id) => {
+    //     API.getTasks(id)
+    //         .then((tasks) => ({todos, currentUserId: id}))
+    // }
+
     return (
         <div className={style.window}>
             <div className={style.CardDetailModal}>
@@ -31,6 +38,9 @@ export const CardDetailComponent = ({onClose, task}) => {
                     <textarea>First Task</textarea>
                     <a href="" title='close' className={style.close} onClick={onClose}/>
                 </div>
+                {/*onPrioritySelected={updateTask}*/}
+                <PrioritySelector/>
+                <CardMembersSelector/>
                 <div className={style.description}>
                     <img src="./images/description.png" alt="" className={style.icon}/>
                     <h3>Description</h3>
@@ -52,7 +62,7 @@ export const CardDetailComponent = ({onClose, task}) => {
                         <img src="./images/comments.png" alt="" className={style.icon}/>
                         <h3>Comments</h3>
                     </div>
-                    <AddComments/>
+                    <AddComments focus={commentFocused}/>
                     <Comments/>
                 </div>
 
