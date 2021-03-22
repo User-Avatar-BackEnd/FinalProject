@@ -1,0 +1,57 @@
+.block {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    min-width: 450px;
+    margin-right: 40px;
+    background-color: #ebebee;
+    border-radius: 10px;
+    box-shadow: 10px 5px 5px #0e0a0a8e;
+}
+
+.cards {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+.title {
+    font-size: 22px;
+    font-weight: bold;
+    font-family: Courier, monospace;
+    width: 85%;
+    word-wrap: break-word;
+    padding: 12px;
+}
+
+.addButton {
+    font-size: 30px;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    background-color: #d4d4d4;
+    color: #969696;
+    margin: 5%;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 90%;
+}
+
+.columnHead {
+    position: relative;
+    margin: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.more {
+    position: absolute;
+    top: 5px;
+    right: 0;
+    transform: rotate(90deg);
+    font-family:'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 2.5rem;
+    cursor: pointer;
+}

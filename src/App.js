@@ -1,7 +1,7 @@
 import {Provider} from 'react-redux';
-import store from './Trello/store/store';
+import store from './store/store';
 
-import Trello from './Trello/Trello'
+import Trello from './components/Board/Board'
 
 const App = () =>{
   return(
