@@ -19,17 +19,20 @@ export const addColumn = (title) =>{
     }
 }
 
-export const changeColumnOrder = (index,order) =>({
+export const changeColumnOrder = (index, order) =>({
     type: 'change_order_column',
     index: index,
     order: order
 })
 
-export const addTask = (title,index) =>{
+export const addTask = (title, index) =>{
     const task ={
         title: title,
         id: performance.now(),
-        priority: 0
+        priority: 0,
+        comments: 0,
+        responsible: false,
+        columnId: index
     }
     return {
         type: 'add_task',

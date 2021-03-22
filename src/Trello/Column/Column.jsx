@@ -36,7 +36,7 @@ import Add from '../Add/Add'
       draggable = "true" onDragOver ={(e) => e.preventDefault()}
       onDrop ={drop} onDragStart ={drag}>
         <div className ={style.columnHead}>
-          <span className ={style.title}>{title}</span> <span className ={style.more}>...</span>
+          <div className ={style.title}>{title}</div> <div className ={style.more}>...</div>
         </div>
         <Add column ={true} add ={Adding}/>
         <div className ={style.cards} >

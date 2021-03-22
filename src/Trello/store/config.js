@@ -17,16 +17,18 @@ const API ={
                     priority: 0, // 0 minimal, 1 normal, 2 high, 3 critical
                     responsible: "USER ID",
                     isHidden: false,
-                    comments: 1
+                    comments: 1,
+                    columnId: 0
                 },
                 {
                     id: 1,
                     title: "Another New Task",
                     description: "Some another text",
                     priority: 3,
-                    responsible: "USER ID",
+                    responsible: false,
                     isHidden: false,
-                    comments: 0
+                    comments: 0,
+                    columnId: 0
                 }
             ]
         },
