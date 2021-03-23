@@ -2,12 +2,15 @@
   display: block;
   width: 100px;
   height: 100px;
-  border: 2px solid #c6c6c6;
+  background-color: #ebebee;
   border-radius: 5px;
   margin-right: 40px;
+  box-shadow: 10px 5px 5px #0e0a0a8e;
+  overflow: hidden;
+  padding: 2px;
 
   h2 {
-    font-size: 18px;
+    font-size: 14px;
     text-align: center;
   }
 

@@ -2,10 +2,12 @@
   display: block;
   width: 100px;
   height: 100px;
-  border: 2px solid #c6c6c6;
+  box-shadow: 10px 5px 5px #0e0a0a8e;
+  background-color: #ebebee;
   border-radius: 5px;
+  padding: 2px;
 
-  button {
+  .add {
     border: 3px dashed #c6c6c6;
     color: #333333;
     background: none;
