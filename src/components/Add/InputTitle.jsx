@@ -19,13 +19,17 @@ const InputTitle = ({accept, cancel, column}) =>{
           }
     }
 
+    const notSubmit = () =>{
+        cancel();
+    }
+
     return <div>
             <div className={style.form}>
 
             <textarea
                 ref = {textInput}
                 onKeyDown ={submit}
-                onBlur ={() =>cancel()}
+                onBlur ={notSubmit}
                 onChange = {getValue}
                 className={classNames(style.area,{
                     [style.column]: column

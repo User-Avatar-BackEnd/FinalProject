@@ -46,6 +46,12 @@ export const deleteColumn = (index) =>({
     payload: index
 })
 
+export const changeTitleColumn = (title,index) =>({
+    type: 'change_title_column',
+    payload: title,
+    index: index
+})
+
 export const deleteTask = (column,index) =>({
     type: 'delete_task',
     column: column,
@@ -57,10 +63,20 @@ export const draggedTask =(task) =>({
     payload: task
 })
 
-export const dropTask = (task,index) =>({
-    type: 'drop_task',
-    payload: task,
-    index: index
+export const dropTask = (task,index) =>{
+    task.columnId = index
+    return{
+        type: 'drop_task',
+        payload: task,
+        index: index
+    }
+}
+
+export const changeTask = (column,index,task) =>({
+    type: 'change_task',
+    column: column,
+    index: index,
+    payload: task
 })
 
 const reducer = (state, action) => {
@@ -75,6 +91,10 @@ const reducer = (state, action) => {
         case 'add_column': 
             state.columns=[...state.columns, action.payload]
             return {...state}
+        case 'change_title_column':
+            state.columns[action.index].title = action.payload
+            state.columns=[...state.columns]
+            return {...state}
         case 'change_order_column':
             state.columns[action.index].order = action.order
             state.columns=[...state.columns]
@@ -84,10 +104,16 @@ const reducer = (state, action) => {
             state.columns=[...state.columns]
             return {...state}
         case 'delete_task':
-            delete state.columns[action.column].tasks[action.payload];
+            state.columns[action.column].tasks.splice(action.payload,1);
+            state.columns=[...state.columns]
+            return{...state}
+        case 'change_task':
+            state.columns[action.column].tasks[action.index] = action.payload;
+            state.columns=[...state.columns]
             return{...state}
         case 'delete_column':
-            delete state.columns[action.payload];
+            state.columns.splice(action.payload,1);
+            state.columns=[...state.columns]
             return{...state}
         default: return state
     }
