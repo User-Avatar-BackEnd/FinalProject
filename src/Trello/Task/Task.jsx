@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import priority from './PriorityMap';
 import {dragedTask} from '../store/store'
 import React, {useState} from "react";
-import {CardDetailComponent} from "../../components/CardDetailModal/CardDetailModal";
+import {CardDetailComponent} from "../../components/Task/Modal/CardDetailModal/CardDetailModal";
 
 const Task = ({task, index, columnIndex, dragedTask}) => {
     const [isShowed, setShowed] = useState(false)

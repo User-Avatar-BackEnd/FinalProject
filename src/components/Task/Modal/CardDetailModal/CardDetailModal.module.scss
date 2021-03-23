@@ -25,6 +25,22 @@
   overflow: hidden;
 
   position: relative;
+
+  button {
+    border: none;
+    border-radius: 2px;
+    width: 80px;
+    padding: 7px;
+    cursor: pointer;
+    background-color: #5aac44;
+    color: #f4f5f7;
+    font-weight: 600;
+
+    &:hover {
+      background-color: #6dc257;
+    }
+  }
+
 }
 
 h3 {
@@ -109,9 +125,11 @@ textarea, input:not([type="file"]) {
 
   margin: -10px 0 0 40px;
 }
+
 .hidden {
   display: none;
 }
+
 .textareaChange {
   textarea {
     width: 400px;
@@ -129,24 +147,11 @@ textarea, input:not([type="file"]) {
 }
 
 
-
 .editControls {
   display: flex;
 
   button {
     margin: 10px 10px 0 0;
-    border: none;
-    border-radius: 2px;
-    width: 80px;
-    padding: 7px;
-    cursor: pointer;
-    background-color: #5aac44;
-    color: #f4f5f7;
-    font-weight: 600;
-
-    &:hover {
-      background-color: #6dc257;
-    }
   }
 
   .close {
@@ -157,3 +162,9 @@ textarea, input:not([type="file"]) {
   }
 }
 
+.saveAll {
+  text-align: center;
+  button {
+    margin-right: 10px;
+  }
+}

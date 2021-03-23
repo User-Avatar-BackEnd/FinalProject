@@ -1,6 +1,6 @@
 import React from "react";
 import style from './PrioritySelector.module.scss'
-import {priorityType} from "../../store/config";
+import {priorityType} from "../../../../store/config";
 
 export const PrioritySelector = ({}) => {
 
@@ -9,8 +9,10 @@ export const PrioritySelector = ({}) => {
     //     console.log(event.target.value)
     // }
 
+
     return (
         <div className={style.PrioritySelector}>
+            <h3>Priority:</h3>
             <select name="priority">
                 {
                     Object.values(priorityType).map(({priority, name}) =>

@@ -5,7 +5,7 @@ export const Comments = () => {
     return (
         <div className={style.Comments}>
             <div className={style.user}>
-                <img src="" alt="" className={style.icon}/>
+                <img src="/img/avatar.svg" alt="" className={style.icon}/>
                 <span>User1000</span>
             </div>
             <div className={style.commentContainer}>

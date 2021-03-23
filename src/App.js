@@ -5,7 +5,7 @@ import React from "react";
 
 import Trello from './components/Board/Board'
 import {BrowserRouter, Route, Switch} from "react-router-dom";
-import {CardDetailComponent} from "./components/CardDetailModal/CardDetailModal";
+import {CardDetailComponent} from "./components/Task/Modal/CardDetailModal/CardDetailModal";
 
 const App = () => {
     return (

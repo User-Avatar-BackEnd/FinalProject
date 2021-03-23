@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import style from './CardDetailModal.module.scss'
-import {Comments} from "../Comments/Comments";
-import {AddComments} from "../AddComments/AddComments";
+import {Comments} from "../../../Comments/Comments";
+import {AddComments} from "../../../AddComments/AddComments";
 import {PrioritySelector} from "../PrioritySelector/PrioritySelector";
 import {CardMembersSelector} from "../CardMembersSelector/CardMembersSelector";
 
@@ -40,7 +40,6 @@ export const CardDetailComponent = ({onClose, commentFocused}) => {
                 </div>
                 {/*onPrioritySelected={updateTask}*/}
                 <PrioritySelector/>
-                <CardMembersSelector/>
                 <div className={style.description}>
                     <img src="./images/description.png" alt="" className={style.icon}/>
                     <h3>Description</h3>
@@ -56,7 +55,7 @@ export const CardDetailComponent = ({onClose, commentFocused}) => {
                         </div>
                     </div>
                 }
-
+                <CardMembersSelector/>
                 <div className={style.detailComments}>
                     <div className={style.description}>
                         <img src="./images/comments.png" alt="" className={style.icon}/>
@@ -65,7 +64,10 @@ export const CardDetailComponent = ({onClose, commentFocused}) => {
                     <AddComments focus={commentFocused}/>
                     <Comments/>
                 </div>
-
+                <div className={style.saveAll}>
+                    <button>save</button>
+                    <button>delete</button>
+                </div>
             </div>
         </div>
     )

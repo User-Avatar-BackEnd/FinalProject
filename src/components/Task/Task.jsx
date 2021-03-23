@@ -2,7 +2,7 @@ import style from './Task.module.scss';
 import {connect} from 'react-redux';
 import priority from './PriorityMap';
 import {draggedTask} from '../../store/store';
-import {CardDetailComponent} from "../CardDetailModal/CardDetailModal";
+import {CardDetailComponent} from "./Modal/CardDetailModal/CardDetailModal";
 import {useState} from "react";
 
 const Task = ({task, index, columnIndex, draggedTask}) => {
