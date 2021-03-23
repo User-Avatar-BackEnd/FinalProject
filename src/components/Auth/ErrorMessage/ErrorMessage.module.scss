@@ -1,0 +1,12 @@
+.ErrorMessage {
+  color: red;
+
+  &.form {
+    min-height: 50px;
+  }
+
+  &.input {
+    min-height: 40px;
+    font-size: 14px;
+  }
+}
