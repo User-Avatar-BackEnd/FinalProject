@@ -1,0 +1,149 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login component should render Sign in form 1`] = `
+<div
+  className="Login"
+>
+  <h2>
+    Sign in
+  </h2>
+  <Formik
+    initialValues={
+      Object {
+        "email": "",
+        "password": "",
+      }
+    }
+    onSubmit={[Function]}
+    validationSchema={
+      ObjectSchema {
+        "_blacklist": ReferenceSet {
+          "list": Set {},
+          "refs": Map {},
+        },
+        "_blacklistError": undefined,
+        "_excludedEdges": Array [],
+        "_nodes": Array [
+          "password",
+          "email",
+        ],
+        "_sortErrors": [Function],
+        "_typeError": [Function],
+        "_whitelist": ReferenceSet {
+          "list": Set {},
+          "refs": Map {},
+        },
+        "_whitelistError": undefined,
+        "conditions": Array [],
+        "deps": Array [],
+        "exclusiveTests": Object {},
+        "fields": Object {
+          "email": StringSchema {
+            "_blacklist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_blacklistError": undefined,
+            "_mutate": undefined,
+            "_typeError": [Function],
+            "_whitelist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_whitelistError": undefined,
+            "conditions": Array [],
+            "deps": Array [],
+            "exclusiveTests": Object {
+              "email": false,
+              "required": true,
+            },
+            "spec": Object {
+              "abortEarly": true,
+              "nullable": false,
+              "presence": "required",
+              "recursive": true,
+              "strict": false,
+              "strip": false,
+            },
+            "tests": Array [
+              [Function],
+              [Function],
+            ],
+            "transforms": Array [
+              [Function],
+            ],
+            "type": "string",
+          },
+          "password": StringSchema {
+            "_blacklist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_blacklistError": undefined,
+            "_mutate": undefined,
+            "_typeError": [Function],
+            "_whitelist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_whitelistError": undefined,
+            "conditions": Array [],
+            "deps": Array [],
+            "exclusiveTests": Object {
+              "max": true,
+              "min": true,
+              "required": true,
+            },
+            "spec": Object {
+              "abortEarly": true,
+              "nullable": false,
+              "presence": "required",
+              "recursive": true,
+              "strict": false,
+              "strip": false,
+            },
+            "tests": Array [
+              [Function],
+              [Function],
+              [Function],
+            ],
+            "transforms": Array [
+              [Function],
+            ],
+            "type": "string",
+          },
+        },
+        "spec": Object {
+          "abortEarly": true,
+          "nullable": false,
+          "presence": "optional",
+          "recursive": true,
+          "strict": false,
+          "strip": false,
+        },
+        "tests": Array [],
+        "transforms": Array [
+          [Function],
+        ],
+        "type": "object",
+      }
+    }
+  >
+    <Component />
+  </Formik>
+  <div
+    className="registerButton"
+  >
+    <Link
+      className="registerLink"
+      to="/registration"
+    >
+      Don't have an account yet? Register
+    </Link>
+  </div>
+  <ErrorMessage
+    text=""
+    type="form"
+  />
+</div>
+`;
