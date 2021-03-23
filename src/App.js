@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import Auth from './components/Auth/Auth';
+import BoardsPanel from './components/BoardsPanel/BoardsPanel';
+import Board from './components/Board/Board';
+import {Provider} from 'react-redux';
+import store from './store/store';
+
+import styles from './App.module.scss';
 
 function App() {
+  const routes = (
+    <Switch>
+      <Route path='/registration'>
+        <Auth type={'registration'} />
+      </Route>
+      <Route path='/board'>
+        <Board />
+      </Route>
+      <Route path='/'>
+        <BoardsPanel />
+      </Route>
+      <Route path='/login'>
+        <Auth type={'login'} />
+      </Route>
+    </Switch>
+  )
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store ={store}>
+      <div className={styles.App}>
+        {routes}
+      </div>
+    </Provider>
   );
 }
 

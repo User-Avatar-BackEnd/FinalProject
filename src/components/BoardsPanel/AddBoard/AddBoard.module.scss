@@ -1,0 +1,26 @@
+.AddBoard {
+  display: block;
+  width: 100px;
+  height: 100px;
+  box-shadow: 10px 5px 5px #0e0a0a8e;
+  background-color: #ebebee;
+  border-radius: 5px;
+  padding: 2px;
+
+  .add {
+    border: 3px dashed #c6c6c6;
+    color: #333333;
+    background: none;
+    border-radius: 50%;
+    font-size:  26px;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+
+    display: inline-block;
+    margin: 25px;
+    width: 50px;
+    height: 50px;
+  }
+
+}

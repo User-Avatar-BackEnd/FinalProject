@@ -1,0 +1,95 @@
+.window {
+  background-color: rgba(0, 0, 0, .50);
+  display: flex;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  align-items: flex-start;
+  z-index: 10;
+}
+
+.BoardModal {
+  margin: 100px auto;
+  padding: 15px;
+  position: relative;
+
+  width: 300px;
+  min-height: 200px;
+
+  background-color: #f4f5f7;
+  border-radius: 10px;
+  overflow: hidden;
+
+  h3 {
+    margin-top: 4px;
+    margin-left: 20px;
+  }
+}
+
+
+.close {
+  position: absolute;
+  right: 12px;
+  top: 20px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.3;
+
+
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+
+  &:before, &:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 20px;
+    width: 2px;
+    background-color: #333;
+  }
+
+  &:before {
+    transform: rotate(45deg);
+  }
+
+  &:after {
+    transform: rotate(-45deg);
+  }
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+
+  .save {
+    border: none;
+    border-radius: 2px;
+    width: 80px;
+    padding: 7px;
+    cursor: pointer;
+    background-color: #5aac44;
+    color: #f4f5f7;
+    font-weight: 600;
+    margin-left: 10px;
+    outline: none;
+
+    &:hover {
+      background-color: #6dc257;
+    }
+  }
+
+  input {
+    outline: none;
+    border: 2px dashed #e7e7e7;
+  }
+
+}
