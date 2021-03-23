@@ -5,7 +5,7 @@ import {AddComments} from "../../../AddComments/AddComments";
 import {PrioritySelector} from "../PrioritySelector/PrioritySelector";
 import {CardMembersSelector} from "../CardMembersSelector/CardMembersSelector";
 
-export const CardDetailComponent = ({onClose, commentFocused}) => {
+export const CardDetailComponent = ({onClose, commentFocused, task}) => {
     const [isWritable, setIsWritable] = useState(false)
     const textInput = useRef(null)
 
@@ -39,7 +39,7 @@ export const CardDetailComponent = ({onClose, commentFocused}) => {
                     <a href="" title='close' className={style.close} onClick={onClose}/>
                 </div>
                 {/*onPrioritySelected={updateTask}*/}
-                <PrioritySelector/>
+                <PrioritySelector task={task}/>
                 <div className={style.description}>
                     <img src="./images/description.png" alt="" className={style.icon}/>
                     <h3>Description</h3>

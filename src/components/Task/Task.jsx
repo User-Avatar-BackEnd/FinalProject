@@ -41,7 +41,7 @@ const Task = ({task, index, columnIndex, draggedTask}) => {
             <span className={style.priority}>{priority[task.priority]}</span>
             <div className={style.items}>
                 <span className={style.show} onClick={showDetailModal}>...</span>
-                {isShow ? <CardDetailComponent onClose={onCloseDetailModal} commentFocused={isComment}/> : null}
+                {isShow ? <CardDetailComponent task={task} onClose={onCloseDetailModal} commentFocused={isComment}/> : null}
                 <span className={style.comments} onClick={onClickComment}> {task.comments} <img src="./img/comment.svg" alt="comment"/></span>
                 <span className={style.responsible}>{responsible}</span>
             </div>
