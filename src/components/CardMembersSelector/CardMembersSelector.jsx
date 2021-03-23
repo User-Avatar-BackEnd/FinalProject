@@ -1,6 +1,7 @@
 import {useAsync} from 'react-async'
 import API from "../../store/config";
-import React, {useEffect} from "react";
+import React from "react";
+import style from './CardMembersSelector.module.scss'
 
 export const CardMembersSelector = () => {
 
@@ -8,7 +9,7 @@ export const CardMembersSelector = () => {
     const {data, error, isPending} = useAsync({promiseFn: API.members, id: 1})
 
     return (
-        <div>
+        <div className={style.CardMemberSelector}>
             {isPending && <p>Loading</p>}
             {data &&
             <select name="members">
