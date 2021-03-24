@@ -27,7 +27,7 @@ const API = {
                     description: "Some text",
                     priority: 0, // 0 minimal, 1 normal, 2 high, 3 critical
                     responsible: 2,
-                    isHidden: false,
+                    isHidden: true,
                     comments: 1,
                     columnId: 0
                 },
