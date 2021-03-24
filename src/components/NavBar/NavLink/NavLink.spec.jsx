@@ -1,14 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import UserProfileNav from './UserProfileNav';
+import NavLink from './NavLink';
 
-describe('UserProfileNav component', () => {
+describe('Nav link component', () => {
 
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<UserProfileNav />);
+    wrapper = shallow(<NavLink />);
   });
 
   afterEach(() => {
