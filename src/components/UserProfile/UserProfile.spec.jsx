@@ -1,14 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Auth from './Auth';
+import UserProfile from './UserProfile';
 
 describe('UserRank component', () => {
 
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<Auth />);
+    wrapper = shallow(<UserProfile />);
   });
 
   afterEach(() => {

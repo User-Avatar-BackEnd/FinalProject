@@ -1,19 +1,23 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Auth from './components/Auth/Auth';
+import UserProfile from './components/UserProfile/UserProfile';
 
 import styles from './App.module.scss';
 
 function App() {
   const routes = (
     <Switch>
-      <Route path='/login'>
+      <Route path={'/login'}>
         <Auth type={'login'} />
       </Route>
-      <Route path='/registration'>
+      <Route path={'/registration'}>
         <Auth type={'registration'} />
       </Route>
-      <Redirect to={'/login'} />
+      <Route path={'/profile'}>
+        <UserProfile />
+      </Route>
+      <Redirect to={'/'} />
     </Switch>
   )
 

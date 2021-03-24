@@ -1,0 +1,18 @@
+$borderColor: #000;
+$shadowColor: #fff;
+
+.UserIcon {
+  border-radius: 50%;
+  padding: 5px;
+
+  &.main {
+    width: 250px;
+    height: 250px;
+    border: 2px solid $borderColor;
+    box-shadow: inset 0 0 0 3px $shadowColor;
+  }
+
+  &.Cossack {
+    background: url('../../images/rankIcons/cossack-icon.jpg') 50% 50%/cover;
+  }
+}

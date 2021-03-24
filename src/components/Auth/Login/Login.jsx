@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import AuthInput from '../AuthInput/AuthInput';
-import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import ErrorMessage from '../../ErrorMessage/ErrorMessage';
 import API from '../../../config/API';
 import errorsDescription from '../../../config/APIErrorsDescription';
 

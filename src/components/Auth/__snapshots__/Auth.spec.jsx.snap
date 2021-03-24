@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Auth component should match snapshot 1`] = `
+exports[`UserRank component should match snapshot 1`] = `
 <div
-  className="Auth"
+  className="UserRank"
 >
   <Registration
     onLogin={[Function]}
