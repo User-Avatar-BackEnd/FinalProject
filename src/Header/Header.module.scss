@@ -9,6 +9,12 @@ header {
   color: #fff;
 }
 
+.logo {
+  position: absolute;
+  top: 0;
+  left: 10px;
+}
+
 .avatar, .position, .progressBar, .userName {
   margin-right: 20px;
 }
@@ -31,8 +37,8 @@ header {
 .progressBarFilled {
   background: green;
   height: 100%;
-  width: 50%;
   border-radius: 10px;
+  width: 0;
 }
 
 .avatar img {

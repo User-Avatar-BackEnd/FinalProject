@@ -1,5 +1,11 @@
 const PROFILE = {
-    userName: 'Vasya1234',
-    position: 10,
-    rating: 894,
+    email: 'Vasya1234@gmail.com',
+    login: 'Vasya1234',
+    invitesAmount: 2,
+    rank: 'Cossack',
+    previousLevelScore:	100,
+    currentScoreAmount:	234,
+    nextLevelScore:	300,
 }
+
+export default PROFILE
