@@ -6,6 +6,7 @@ import UserProfile from './components/UserProfile/UserProfile';
 import { getUser } from './store/ducks/user/user';
 
 import styles from './App.module.scss';
+import Header from './components/Header/Header';
 
 const routes = (
   <Switch>
@@ -40,6 +41,7 @@ function App() {
 
   return (
     <div className={styles.App}>
+      <Header />
       {routes}
     </div>
   );

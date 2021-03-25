@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 import UserProfileNav from './UserProfileNav/UserProfileNav';
 import UserRank from './UserRank/UserRank';
 import UserInfo from './UserInfo/UserInfo';
