@@ -53,7 +53,11 @@ const UserInfo = ({ data }) => {
             </div>
             <h2>User info</h2>
             <Formik
-              initialValues={{ username: login, email: email }}
+              initialValues={{ username: login ?? '', email: email ?? '' }}
+              enableReinitialize
+              onSubmit={(values, { setSubmitting }) => {
+
+              }}
             >
               {() => (
                 <Form>
@@ -76,14 +80,21 @@ const UserInfo = ({ data }) => {
             </div>
             <h2>Edit info</h2>
             <Formik
-              initialValues={{ username: login, newPassword: '', repeatPassword: '', currentPassword: '' }}
+              initialValues={{ newUsername: login ?? '', newPassword: '', repeatPassword: '', currentPassword: '' }}
+              enableReinitialize
               validationSchema={ProfileSchema}
+              onSubmit={(values, { setSubmitting }) => {
+                setTimeout(() => {
+                  alert(JSON.stringify(values, null, 2));
+                  setSubmitting(false);
+                }, 400);
+              }}
             >
               {({ isSubmitting, errors, touched }) => (
                 <Form>
                   <div className={styles.inputBlock}>
-                    <label htmlFor='username'>Username</label>
-                    <Field type='text' id='username' name='username' />
+                    <label htmlFor='newUsername'>Username</label>
+                    <Field type='text' id='newUsername' name='newUsername' />
                     <ErrorMessage
                       text={errors.username && touched.username
                         ? errors.username

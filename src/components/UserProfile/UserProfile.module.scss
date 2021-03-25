@@ -2,7 +2,7 @@
   display: flex;
 
   & .container {
-    width: 100%;
+    flex-basis: 85%;
     display: flex;
     justify-content: space-evenly;
     padding-top: 30px;

@@ -1,8 +1,6 @@
-import { combineReducers } from 'redux'
-import photos from './ducks/photos/photos'
-import album from './ducks/album/album'
+import { combineReducers } from 'redux';
+import user from './ducks/user/user';
 
 export default combineReducers({
-  photos,
-  album
+  user
 })
