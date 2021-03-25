@@ -1,14 +1,17 @@
 import {useState, useRef, useEffect} from 'react';
 import style from './Column.module.scss';
-import Task from '../Task/Task';
-import {connect} from 'react-redux';
-import {addTask, deleteTask, dropTask, changeColumnOrder, deleteColumn, changeTitleColumn} from '../../../store/store';
+import Card from '../Task/Card';
+import {connect, useDispatch} from 'react-redux';
+import {addTask, setdeleteCard, dropCard, changeColumnOrder, deleteColumn, changeTitleColumn} from '../../../ducks/duckTrello';
 import Add from '../Add/Add';
 
- const Column = ({index, columns, addTask, deleteTask, order, dropedTask, dropTask, deleteColumn, changeTitleColumn}) => {
+ const Column = ({index, boardId, columns, dropedTask, setdeleteCard}) => {
+    const dispatch = useDispatch();
 
     const title = columns[index].title;
-    const tasks = columns[index].tasks;
+    const cards = columns[index].cards;
+    const id = columns[index].id;
+    const order = index;
 
     let [text, setText] = useState(title);
     let [visible, setVisible] = useState(true);
@@ -19,7 +22,9 @@ import Add from '../Add/Add';
     const textInput = useRef(null);
    
     const adding = (title) =>{
-      addTask(title, index);
+      if(title.trim().length){
+        dispatch(addTask(boardId, id, title, index));
+      }
     }
 
     const startEdit = () =>{
@@ -39,13 +44,13 @@ import Add from '../Add/Add';
 
     const edit = (e) =>{
       if (e.keyCode === 13) {
-        changeTitleColumn(text, index);
+        dispatch(changeTitleColumn(boardId,index,id,text));
         setVisible(visible = true);
       }
     }
 
     const del = () =>{
-      deleteColumn(index);
+      dispatch(deleteColumn(boardId,index,id));
     }
 
     const over = () =>{
@@ -59,18 +64,21 @@ import Add from '../Add/Add';
     const drop = (e) =>{
       if(e.dataTransfer.getData('flag') === 'column'){
         const dropedIndex = +e.dataTransfer.getData('indexDraged');
-        order(index,dropedIndex);
-        order(dropedIndex,index);
+        const dropedOrder = +e.dataTransfer.getData('orderDraged');
+        dispatch(changeColumnOrder(boardId, id, index,  dropedOrder));
+        dispatch(changeColumnOrder(boardId, columns[dropedIndex].id, dropedIndex,  order));
       } else {
         const columnIndex = e.dataTransfer.getData('columnIndex');
         const taskIndex = e.dataTransfer.getData('taskIndex');
-        deleteTask(columnIndex, taskIndex);
-        dropTask(dropedTask, index);
+
+        setdeleteCard(columnIndex, taskIndex);
+        dispatch(dropCard(boardId, dropedTask.id, id, index, dropedTask)); 
       }
     }
 
     const drag = (e) =>{
       e.dataTransfer.setData('indexDraged', index );
+      e.dataTransfer.setData('orderDraged', order );
       e.dataTransfer.setData('flag', 'column');
     }
 
@@ -97,12 +105,14 @@ import Add from '../Add/Add';
 
         <Add column ={true} add ={adding}/>
         <div className ={style.cards} >
-          {tasks ? tasks.map((item,i)=>{
-            return <Task
+          {cards ? cards.sort((a, b) => a.priority - b.priority).map((item,i)=>{
+            return <Card
               key ={item.id}
+              boardId ={boardId}
               index ={i}
+              columnId ={id}
               columnIndex ={index}
-              task ={item} />
+              card ={item} />
           }): true}
         </div>
 
@@ -112,17 +122,12 @@ import Add from '../Add/Add';
 }
 
 const mapStateToProps = (state) => ({
-  columns: state.columns,
-  dropedTask: state.dropedTask
+  columns: state.trello.columns,
+  dropedTask: state.trello.dropedTask
 });
 
 const mapDispatchToProps = (dispatch) =>({
-  addTask: (task, index) => dispatch(addTask(task, index)),
-  order : (index, order) => dispatch(changeColumnOrder(index, order)),
-  deleteTask: (column, index) => dispatch(deleteTask(column, index)),
-  dropTask: (task,index) => dispatch(dropTask(task,index)),
-  deleteColumn: (index) => dispatch(deleteColumn(index)),
-  changeTitleColumn: (title, index) => dispatch(changeTitleColumn(title, index))
+  setdeleteCard: (column,index) => dispatch(setdeleteCard(column,index))
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(Column);

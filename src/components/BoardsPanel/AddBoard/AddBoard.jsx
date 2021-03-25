@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import style from './AddBoard.module.scss'
-import {BoardModal} from "./BoardModal/BoardModal";
+import style from './AddBoard.module.scss';
+import {BoardModal} from "../BoardModal/BoardModal";
 
 export const AddBoard = () => {
     const [isShow, setIsShow] = useState(false)
@@ -16,7 +16,7 @@ export const AddBoard = () => {
     return (
         <div className={style.AddBoard}>
             <button className={style.add} onClick={addBoard}>+</button>
-            {isShow ? <BoardModal close={close}/> : null}
+            {isShow ? <BoardModal flag ={''} close={close}/> : null}
         </div>
     )
 }

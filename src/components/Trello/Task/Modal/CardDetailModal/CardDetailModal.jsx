@@ -1,31 +1,33 @@
 import React, {useEffect, useRef, useState} from "react";
-import {connect} from 'react-redux';
-import {deleteTask, changeTask} from '../../../../../store/store';
+import {useDispatch} from 'react-redux';
+import {deleteCard, changeCard} from '../../../../../ducks/duckTrello';
 import style from './CardDetailModal.module.scss'
 import {Comments} from "../../../Comments/Comments";
 import {AddComments} from "../../../AddComments/AddComments";
 import {PrioritySelector} from "../PrioritySelector/PrioritySelector";
 import {CardMembersSelector} from "../CardMembersSelector/CardMembersSelector";
 
-const CardDetailComponent = ({onClose, commentFocused, task, index, columnIndex, deleteTask, changeTask}) => {
+const CardDetailComponent = ({boardId, onClose, commentFocused, card, index, columnIndex, columnId}) => {
+    const dispatch = useDispatch();
+
     let [isWritable, setIsWritable] = useState(false)
-    let [changedTask, setTask] = useState({
-            id: task.id,
-            title: task.title,
-            description: task.description,
-            priority: task.priority,
-            responsible: task.responsible,
-            isHidden: task.isHidden,
-            comments: task.comments,
-            columnId: index
+    let [changedCard, setCard] = useState({
+            id: card.id,
+            title: card.title,
+            description: card.description,
+            priority: card.priority,
+            responsibleId: card.responsibleId,
+            isHidden: card.isHidden,
+            commentsCount: card.commentsCount,
+            columnId: columnId
     })
 
-    let [title, setTitle] = useState( task.title);
+    let [title, setTitle] = useState(card.title);
     const changeTitle = (e) =>{
         setTitle(e.target.value);
     }
 
-    let [priority, setPriority] = useState( task.priority);
+    let [priority, setPriority] = useState(card.priority);
     const changePriority = (priority) =>{
         setPriority(priority)
     }
@@ -35,7 +37,7 @@ const CardDetailComponent = ({onClose, commentFocused, task, index, columnIndex,
         setPre(e.target.value);
     }
 
-    let [description, setDescription] = useState(task.description);
+    let [description, setDescription] = useState(card.description);
     const changeDescription = () =>{
         setIsWritable(false);
         setDescription(description =predescription);
@@ -45,12 +47,12 @@ const CardDetailComponent = ({onClose, commentFocused, task, index, columnIndex,
         setIsWritable(false);
     }
 
-    let [responsible, setResponsible] = useState(task.responsible);
+    let [responsible, setResponsible] = useState(card.responsible);
     const changeResponsible = (responsible) =>{
         setResponsible(responsible)
     }
 
-    let [hidden, setHidden] = useState(task.isHidden);
+    let [hidden, setHidden] = useState(card.isHidden);
     const changeHidden = (e) =>{
         setHidden(e.target.checked)
     }
@@ -74,7 +76,7 @@ const CardDetailComponent = ({onClose, commentFocused, task, index, columnIndex,
       }
 
     const del = () =>{
-        deleteTask(columnIndex, index);
+        dispatch(deleteCard(boardId, card.id, columnIndex, index));
     }
 
     const close = () =>{
@@ -82,24 +84,19 @@ const CardDetailComponent = ({onClose, commentFocused, task, index, columnIndex,
     }
 
     const submit = () =>{
-        setTask(changedTask={
-            id: task.id,
+        setCard(changedCard={
+            id: card.id,
             title: title,
             description: description,
-            priority: priority,
-            responsible: responsible,
+            priority: +priority,
+            responsibleId: null,
             isHidden: hidden,
-            comments: task.comments,
-            columnId: index
+            commentsCount: card.commentsCount,
+            columnId: columnId
         })
-        changeTask(columnIndex, index, changedTask)
+        dispatch(changeCard(boardId, changedCard.id, columnIndex, index, changedCard));
         onClose();
     }
-
-    // const updateTask = (id) => {
-    //     API.getTasks(id)
-    //         .then((tasks) => ({todos, currentUserId: id}))
-    // }
 
     return (
         <div draggable = "true" className={style.window} onDragStart ={drag}>
@@ -110,7 +107,7 @@ const CardDetailComponent = ({onClose, commentFocused, task, index, columnIndex,
                     <span className={style.close} onClick={close}/>
                 </div>
                 <div><input checked ={hidden}  onChange ={changeHidden} type="checkbox"/><span>Hide</span></div>
-                <PrioritySelector changePriority ={changePriority} task={task}/>
+                <PrioritySelector changePriority ={changePriority} task={card}/>
                 <div className={style.description}>
                     <img src="../../images/description.png" alt="" className={style.icon}/>
                     <h3>Description</h3>
@@ -143,10 +140,5 @@ const CardDetailComponent = ({onClose, commentFocused, task, index, columnIndex,
         </div>
     )
 }
- 
-const mapDispatchToProps = (dispatch) =>({
-    deleteTask: (column, index) => dispatch(deleteTask(column, index)),
-    changeTask: (column, index, task) => dispatch(changeTask(column, index, task))
-})
   
-export default connect(null,mapDispatchToProps)(CardDetailComponent);
+export default CardDetailComponent;

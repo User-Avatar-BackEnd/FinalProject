@@ -12,7 +12,7 @@ export const AddComments = ({focus}) => {
     }
 
     useEffect(() => {
-        console.log("focus", focus)
+        //console.log("focus", focus)
         focus && textarea.current.focus()
     })
 
