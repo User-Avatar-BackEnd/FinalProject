@@ -6,7 +6,7 @@ const profilePictureUrl = {
     'Crewman': "img/ranks/crewman.jpg",
     'Cossack': "img/ranks/cossack.jpg",
     'Centurion': "img/ranks/centurion.jpg",
-    'Cossack captain': "img/ranks/cossack_captain.jpg",
+    'Esau': "img/ranks/cossack_captain.jpg",
     'Ataman': "img/ranks/ataman.jpg",
     'Hetman': "img/ranks/Hetman.jpg",
 }
