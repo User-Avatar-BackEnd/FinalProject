@@ -1,0 +1,36 @@
+.UserInformation {
+  margin: 0 auto;
+  width: 500px;
+
+  .flip {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border-radius: 20px;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+    background-color: #f6f6f6;
+  }
+
+  .inputBlock {
+    display: flex;
+    flex-direction: column;
+    margin: 40px auto;
+    width: 50%;
+
+    label {
+      font-size: 24px;
+      text-align: left;
+    }
+
+    input {
+      background-color: #fff;
+      border: 1px solid #000;
+      border-radius: 5px;
+      padding: 10px;
+      font-size: 18px;
+    }
+  }
+}

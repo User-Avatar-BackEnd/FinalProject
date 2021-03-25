@@ -3,8 +3,8 @@ import style from './UserList.module.scss'
 import {User} from "./User/User";
 
 const usersTest = [
-    {place: 1, rank: 1, username: 'Vasya', points: 100},
-    {place: 2, rank: 2, username: 'Vasya1', points: 90}
+    {id: 1, place: 1, rank: 1, username: 'Vasya', points: 100},
+    {id: 2, place: 2, rank: 2, username: 'Vasya1', points: 90}
 ]
 
 

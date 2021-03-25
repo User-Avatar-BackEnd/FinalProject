@@ -1,0 +1,35 @@
+.UserBalance {
+  display: flex;
+  justify-content: center;
+
+  .inputBlock {
+    margin-top: 40px;
+
+    label {
+      font-size: 18px;
+      font-weight: 400;
+      margin-right: 10px;
+    }
+    input {
+      background-color: #fff;
+      border: 1px solid #000;
+      border-radius: 5px;
+
+      font-size: 18px;
+      width: 50px;
+    }
+    button {
+      padding: 5px 15px;
+      border-radius: 10px;
+      background-color: #ffa500;
+      border: none;
+      color: white;
+      margin: 10px 15px 0 15px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #e58e00;
+      }
+    }
+  }
+}
