@@ -1,3 +1,4 @@
+import {apiComment} from "../API/apiComment";
 import API from '../../config/API'
 
 const initialState = {
@@ -150,7 +151,7 @@ export const reducerTrello = (state =initialState, action) => {
         case 'drag_task':
             state.dropedTask = action.payload
             return{...state}
-        case 'add_column': 
+        case 'add_column':
             state.columns=[...state.columns, action.payload]
             return {...state}
         case 'change_title_column':
@@ -161,7 +162,7 @@ export const reducerTrello = (state =initialState, action) => {
             state.columns[action.index].order = action.order
             state.columns=[...state.columns]
             return {...state}
-        case 'add_task': 
+        case 'add_task':
             state.columns[action.index].cards.push(action.payload)
             state.columns=[...state.columns]
             return {...state}

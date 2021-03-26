@@ -1,11 +1,15 @@
 import {createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import thunkMiddleware from "redux-thunk";
+import {reducerBoardsPanel} from'../ducks/duckBoardsPanel';
+import {reducerTrello} from'../ducks/duckTrello';
+import reducerTaskComments from "../ducks/duckComments";
 import {reducerBoardsPanel} from './ducks/duckBoardsPanel';
 import {reducerTrello} from './ducks/duckTrello';
 
 const reducer = combineReducers({
     panel: reducerBoardsPanel,
-    trello: reducerTrello
+    trello: reducerTrello,
+    taskComments: reducerTaskComments
 })
 
 const composeEnhancers =

@@ -1,12 +1,17 @@
-import {connect} from 'react-redux';
+import {connect, useDispatch, useSelector} from 'react-redux';
 import {useState} from "react";
 import style from './Card.module.scss';
 import priority from './PriorityMap';
 import {draggedCard} from '../../../store/ducks/duckTrello';
 import CardDetailComponent from "./Modal/CardDetailModal/CardDetailModal";
+import {CommentsModal} from "../Comments/CommentsModal/CommentsModal";
+import selector from "../../../selectors/commentsSelector";
+import {clearComments, getComments} from "../../../ducks/duckComments";
 
 const Card = ({card, boardId, index, columnIndex, columnId, draggedCard}) =>{
     const [isShow, setIsShow] = useState(false)
+    const [showComments, setShowComments] = useState(false)
+    const {comments, isLoading} = useSelector(selector)
 
     const drag = (e) =>{
         e.stopPropagation();
@@ -21,7 +26,17 @@ const Card = ({card, boardId, index, columnIndex, columnId, draggedCard}) =>{
     }
 
     const onCloseDetailModal = () => {
+
         setIsShow(false)
+
+    }
+    const closeComments = () => {
+        setShowComments(false)
+        dispatch(clearComments())
+    }
+
+    const showCommentsModal = () => {
+        setShowComments(true)
     }
 
     const responsible = card.responsibleId ? 
@@ -35,8 +50,9 @@ const Card = ({card, boardId, index, columnIndex, columnId, draggedCard}) =>{
             <span className={style.priority} onClick={showDetailModal}>{priority[card.priority]}</span>
             <div className ={style.items}>
             {isShow ? <CardDetailComponent columnId ={columnId} boardId ={boardId} card={card} index ={index} columnIndex ={columnIndex} onClose={onCloseDetailModal} /> : null}
+                {showComments ? <CommentsModal onClose={closeComments} boardId={boardId} card={card}/> : null}
                 <span className={style.show} onClick={showDetailModal}>...</span>
-                <span className={style.comments} onClick={showDetailModal}> {card.commentsCount} <img src="../../images/comment.svg" alt="comment"/></span>
+                <span className={style.comments} onClick={showCommentsModal}> {card.commentsCount} <img src="../../images/comment.svg" alt="comment"/></span>
                 <span className={style.responsible} onClick={showDetailModal}>{responsible}</span>
             </div>
         </div> 
