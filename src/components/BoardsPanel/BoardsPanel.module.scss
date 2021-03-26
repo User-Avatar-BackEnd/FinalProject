@@ -1,0 +1,28 @@
+.BoardsPanel {
+  font-family: DejaVu Sans Mono, monospace;
+  overflow-x: hidden;
+
+  h1 {
+    font-size: 40px;
+    margin-top: 40px;
+    margin-left: 60px;
+  }
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+
+}
+
+.wrapper {
+  width: 100vw;
+  gap: 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: start;
+  padding-left: 60px;
+  padding-bottom: 50px;
+  overflow-x: hidden;
+}
