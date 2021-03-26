@@ -21,15 +21,20 @@ const settings = {
   }
 }
 
-const UserProgressBar = ({ template, completed, previousLevelScore, currentScoreAmount, nextLevelScore }) => {
+const UserProgressBar = ({ template, previousLevelScore, currentScoreAmount, nextLevelScore }) => {
   const progressPercent =
     Math.round((currentScoreAmount - previousLevelScore) / ((nextLevelScore - previousLevelScore) / 100))
+
+  const displayPoints =
+    currentScoreAmount !== nextLevelScore
+      ? `${currentScoreAmount - previousLevelScore} / ${nextLevelScore - previousLevelScore}`
+      : currentScoreAmount
 
   return (
     <div className={classNames(styles.UserProgressBar, styles[template])}>
       <ProgressBar completed={progressPercent} {...settings[template]} />
       <div className={classNames(styles.progressLabel, styles[template])}>
-        <span>{currentScoreAmount - previousLevelScore} / {nextLevelScore - previousLevelScore}</span>
+        <span>{displayPoints}</span>
       </div>
     </div>
   );

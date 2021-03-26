@@ -9,17 +9,20 @@ import { faEdit, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import ErrorMessage from '../../ErrorMessage/ErrorMessage';
 import API from '../../../config/API';
 import errorsDescription from '../../../config/APIErrorsDescription';
-import { changeUsername, clearUser } from '../../../store/ducks/user/user';
+import { changeUsername } from '../../../store/ducks/user/user';
 
 import styles from './UserInfo.module.scss';
 
-const ProfileSchema = Yup.object().shape({
+const ProfileInfoSchema = Yup.object().shape({
   username: Yup.string()
     .strict(false)
     .trim()
     .min(5, 'Must be 5 characters or more')
     .max(14, 'Must be 14 characters or less')
     .matches(/^[a-zA-Z0-9_.-]+$/, 'Can only contain letters, numbers and underscores'),
+});
+
+const ProfilePasswordSchema = Yup.object().shape({
   newPassword: Yup.string()
     .strict(false)
     .trim()
@@ -97,11 +100,12 @@ const UserInfo = ({ data }) => {
             <Formik
               initialValues={{ username: login ?? '', email: email ?? '' }}
               enableReinitialize
-              validationSchema={ProfileSchema}
+              validationSchema={ProfileInfoSchema}
               onSubmit={(values, { setSubmitting }) => {
                 const data = {
                   login: values.username,
                 }
+                console.log('adsad')
 
                 if (values.username !== login) {
                   API({
@@ -111,7 +115,6 @@ const UserInfo = ({ data }) => {
                     headers: {
                       Authorization: `Bearer ${token}`
                     }
-
                   })
                     .then(() => {
                       dispatch(changeUsername(data.login))
@@ -122,11 +125,11 @@ const UserInfo = ({ data }) => {
                         errorsDescription.profile[error.response.data] ?? errorsDescription.default
                       )
                     })
-                } else {
-                  toggleEditUsername()
-                }
-              }}
-            >
+                  } else {
+                    toggleEditUsername()
+                  }
+                }}
+              >
               {({ errors, touched}) => (
                 <Form onChange={clearFrontError}>
                   <div className={styles.inputBlock}>
@@ -160,9 +163,9 @@ const UserInfo = ({ data }) => {
                 </Form>
               )}
             </Formik>
-            <span className={styles.changePasswordLink} onClick={toggleRotate}>Change password</span>
             <ErrorMessage text={frontServerError} type={'form'} />
-            <span className={styles.logoutLink} onClick={logout}>Logout</span>
+            <span className={styles.changePasswordLink} onClick={toggleRotate}>Change password</span>
+            <p className={styles.logoutLink} onClick={logout}>Logout</p>
           </div>
 
           <div className={styles.back}>
@@ -173,7 +176,7 @@ const UserInfo = ({ data }) => {
             <Formik
               initialValues={{ newPassword: '', repeatPassword: '', currentPassword: '' }}
               enableReinitialize
-              validationSchema={ProfileSchema}
+              validationSchema={ProfilePasswordSchema}
               onSubmit={(values, { setSubmitting }) => {
                 const data = {
                   oldPassword: values.currentPassword,
@@ -190,6 +193,7 @@ const UserInfo = ({ data }) => {
                 })
                   .then((response) => {
                     console.log(response)
+                    toggleRotate()
                   })
                   .catch(error => {
                     setBackServerError(

@@ -16,7 +16,9 @@ const Header = () => {
 
   return (
     <header className={styles.Header}>
-      <img src="../../images/mainLogo.png" alt="Logo" className={styles.logo} />
+      <Link to={'/'}>
+        <img src="../../images/mainLogo.png" alt="Logo" className={styles.logo} />
+      </Link>
       {user.role && <div className={styles.profile}>
         <Link to={'/profile'}>
           <div className={styles.username}>{user.login}</div>
