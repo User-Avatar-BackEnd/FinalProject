@@ -2,7 +2,7 @@ import {useState, useRef, useEffect} from 'react';
 import style from './Column.module.scss';
 import Card from '../Task/Card';
 import {connect, useDispatch} from 'react-redux';
-import {addTask, setdeleteCard, dropCard, changeColumnOrder, deleteColumn, changeTitleColumn} from '../../../ducks/duckTrello';
+import {addTask, setdeleteCard, dropCard, changeColumnOrder, deleteColumn, changeTitleColumn} from '../../../store/ducks/duckTrello';
 import Add from '../Add/Add';
 import DelModal from './DeleteModal/DeleteModal';
 

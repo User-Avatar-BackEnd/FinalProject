@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from "react";
 import {useDispatch} from 'react-redux';
-import {deleteCard, changeCard} from '../../../../../ducks/duckTrello';
+import {deleteCard, changeCard} from '../../../../../store/ducks/duckTrello';
 import style from './CardDetailModal.module.scss'
 import {Comments} from "../../../Comments/Comments";
 import {AddComments} from "../../../AddComments/AddComments";

@@ -1,0 +1,33 @@
+.UserProgressBar {
+  position: relative;
+  text-align: center;
+
+  &.profile {
+    width: 300px;
+    margin: 0 auto;
+  }
+
+  &.header {
+    width: 100px;
+    padding-top: 17px;
+    cursor: pointer;
+  }
+
+  & .progressLabel {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    font-weight: bold;
+
+    &.profile {
+      font-size: 18px;
+      top: 0;
+    }
+
+    &.header {
+      font-size: 12px;
+      color: #000;
+      top: 17px;
+    }
+  }
+}

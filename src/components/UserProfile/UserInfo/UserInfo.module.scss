@@ -1,0 +1,154 @@
+.UserInfo {
+  position: relative;
+
+  & .closeIcon {
+    font-size: 26px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  & .flip {
+    background-color: transparent;
+    width: 500px;
+    height: 700px;
+    perspective: 1000px;
+
+    & .inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      border-radius: 20px;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+      box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+
+      &.rotated {
+        transform: rotateY(180deg);
+      }
+
+      & .front, & .back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        -webkit-backface-visibility: hidden; /* Safari */
+        backface-visibility: hidden;
+
+        & svg {
+          cursor: pointer;
+        }
+
+        & form {
+          display: flex;
+          flex-direction: column;
+          width: 50%;
+          margin: 50px auto 0;
+
+          & .inputBlock {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+
+            & label {
+              font-size: 24px;
+            }
+
+            & input {
+              background-color: #fff;
+              border: 1px solid #000;
+              border-radius: 5px;
+              padding: 10px;
+              font-size: 18px;
+            }
+          }
+
+          & button[type=submit] {
+            margin: 0 auto;
+            color: #fff;
+            width: 140px;
+            height: 30px;
+            background-color: dodgerblue;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color .3s;
+
+            &:hover {
+              background-color: darken(dodgerblue, 20%);
+            }
+          }
+        }
+      }
+
+      & .front {
+        background-color: #f6f6f6;
+        color: black;
+
+        & .changePasswordLink, & .logoutLink {
+          cursor: pointer;
+          color: orange;
+          transition: color .3s;
+        }
+
+        & .changePasswordLink {
+
+          &:hover {
+            color: dodgerblue;
+          }
+        }
+
+        & .logoutLink {
+          margin-top: 350px;
+          font-size: 24px;
+
+          &:hover {
+            color: red;
+          }
+        }
+
+        & .inputBlock {
+          margin: 20px 0;
+
+          & .editIcon {
+            display: flex;
+            justify-content: space-between;
+            width: 300px;
+            line-height: 43px;
+            font-size: 26px;
+
+            & .fieldButtons {
+              display: flex;
+
+              & button {
+                margin-top: 6px;
+                width: 50px;
+                font-size: 10px;
+              }
+
+              & .cancel {
+                height: 30px;
+                border-radius: 5px;
+                border: 1px solid #666666;
+                background-color: #ececec;
+                cursor: pointer;
+                transition: background-color .3s;
+
+                &:hover {
+                  background-color: darken(#ececec, 20%);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      & .back {
+        background-color: #ACDDDE;
+        color: white;
+        transform: rotateY(180deg);
+      }
+    }
+  }
+}

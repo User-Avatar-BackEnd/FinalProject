@@ -1,0 +1,29 @@
+.UserRank {
+  width: 40%;
+  min-width: 400px;
+  text-align: center;
+
+  & .userIcon {
+    width: 250px;
+    margin: 0 auto;
+  }
+
+  & h3 {
+    font-size: 36px;
+  }
+
+  & .progressBar {
+    position: relative;
+    width: 300px;
+    margin: 0 auto;
+
+    & .progressLabel {
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+}

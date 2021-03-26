@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import AuthInput from '../AuthInput/AuthInput';
-import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import ErrorMessage from '../../ErrorMessage/ErrorMessage';
 import API from '../../../config/API';
 import errorsDescription from '../../../config/APIErrorsDescription';
 
@@ -55,11 +55,11 @@ const Registration = ({ onLogin }) => {
 
           API.post('/auth/register', data)
             .then(response => {
-              onLogin(response.data.access_token)
+              onLogin(response.data)
             })
             .catch(error => {
               setServerError(
-                errorsDescription[error.response.data] ?? errorsDescription.default
+                errorsDescription.auth[error.response.data] ?? errorsDescription.default
               )
             })
         }}
