@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import {connect, useDispatch} from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
-import {useParams} from 'react-router-dom';
 import style from './Board.module.scss';
 import Column from '../Column/Column';
 import Add from '../Add/Add';

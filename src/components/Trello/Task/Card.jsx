@@ -1,17 +1,16 @@
-import {connect, useDispatch, useSelector} from 'react-redux';
+import {connect, useDispatch} from 'react-redux';
 import {useState} from "react";
 import style from './Card.module.scss';
 import priority from './PriorityMap';
 import {draggedCard} from '../../../store/ducks/duckTrello';
 import CardDetailComponent from "./Modal/CardDetailModal/CardDetailModal";
 import {CommentsModal} from "../Comments/CommentsModal/CommentsModal";
-import selector from "../../../selectors/commentsSelector";
-import {clearComments, getComments} from "../../../ducks/duckComments";
+import {clearComments} from "../../../store/ducks/duckComments";
 
 const Card = ({card, boardId, index, columnIndex, columnId, draggedCard}) =>{
     const [isShow, setIsShow] = useState(false)
     const [showComments, setShowComments] = useState(false)
-    const {comments, isLoading} = useSelector(selector)
+    const dispatch = useDispatch()
 
     const drag = (e) =>{
         e.stopPropagation();

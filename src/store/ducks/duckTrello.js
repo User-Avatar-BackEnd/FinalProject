@@ -1,4 +1,3 @@
-import {apiComment} from "../API/apiComment";
 import API from '../../config/API'
 
 const initialState = {

@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from "react";
 import style from './Comments.module.scss'
 import {useDispatch, useSelector} from "react-redux";
-import {dropComment, getComments, updateComment} from "../../../ducks/duckComments";
+import {dropComment, getComments, updateComment} from "../../../store/ducks/duckComments";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUser} from "@fortawesome/free-solid-svg-icons";
 import commentsSelector from "../../../selectors/commentsSelector";
 import moment from 'moment'
 import Comment from "./Comment";
 import {membersSelector} from "../../../selectors/membersSelector";
+import UserIcon from "../../UserIcon/UserIcon";
 
 export const Comments = ({boardId, cardId}) => {
     const dispatch = useDispatch()
@@ -47,7 +48,7 @@ export const Comments = ({boardId, cardId}) => {
             {comments.map(comment => <div key={comment.id}>
                 <div className={style.user}>
                     <div className={style.icon}>
-                        <FontAwesomeIcon icon={faUser}/>
+                        <UserIcon rank={members.get(comment.userId).rank} type={'header'}/>
                     </div>
                     <span>{members.get(comment.userId).login}</span>
                     <span className={style.date}>{getDate(comment.createdAt)}</span>

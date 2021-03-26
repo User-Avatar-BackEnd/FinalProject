@@ -1,4 +1,4 @@
-import {apiComment, deleteComment, editComment, loadComments} from "../API/apiComment";
+import {apiComment, deleteComment, editComment, loadComments} from "../../API/apiComment";
 
 const REQUESTED = 'requested'
 const DELETE = 'delete-comment'
@@ -40,7 +40,6 @@ export const getComments = (boardId, cardId) => (dispatch) => {
 
     loadComments(boardId, cardId)
         .then((comments) => {
-            console.log({comments})
             dispatch(commentLoaded(comments))
         })
 }

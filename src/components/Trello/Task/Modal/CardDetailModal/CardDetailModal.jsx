@@ -121,7 +121,7 @@ const CardDetailComponent = ({boardId, onClose, commentFocused, card, index, col
                         </div>
                     </div>
                 }
-                <CardMembersSelector changeResponsible ={changeResponsible} responsible ={responsible}/>
+                <CardMembersSelector changeResponsible ={changeResponsible} responsible ={responsibleId}/>
                 <div className={style.dispatch}>
                     <button onClick={submit} className ={style.save}>save</button>
                     <button onClick={del} className ={style.del}>delete</button>

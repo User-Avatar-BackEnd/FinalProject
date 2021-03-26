@@ -1,7 +1,7 @@
 import React, {useRef, useState} from "react";
 import style from './AddComments.module.scss'
 import {useDispatch} from "react-redux";
-import {addComment} from "../../../../ducks/duckComments";
+import {addComment} from "../../../../store/ducks/duckComments";
 
 export const AddComment = ({focus, boardId, cardId}) => {
 
