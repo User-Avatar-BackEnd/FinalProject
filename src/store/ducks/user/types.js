@@ -1,7 +1,11 @@
 const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
+const CHANGE_USERNAME = 'CHANGE_USERNAME';
+const CLEAR_USER = 'CLEAR_USER';
 
 const types = {
   GET_USER_SUCCESS,
+  CHANGE_USERNAME,
+  CLEAR_USER
 }
 
 export default types;

@@ -1,9 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { useHistory } from 'react-router-dom';
 
 import UserProfile from './UserProfile';
 
-describe('UserRank component', () => {
+jest.mock('react-router-dom', () => ({
+  useHistory: jest.fn()
+}));
+
+describe('UserProfile component', () => {
 
   let wrapper;
 
@@ -16,6 +21,10 @@ describe('UserRank component', () => {
   });
 
   it('should match snapshot', () => {
+    const history = {
+      location: {}
+    }
+    useHistory.mockReturnValue(history)
 
     expect(wrapper).toMatchSnapshot();
   });

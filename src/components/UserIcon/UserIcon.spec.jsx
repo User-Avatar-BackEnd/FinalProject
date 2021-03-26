@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import UserIcon from './UserIcon';
 
-describe('UserRank component', () => {
+describe('UserIcon component', () => {
 
   let wrapper;
 

@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import UserProfileNav from './UserProfileNav/UserProfileNav';
 import UserRank from './UserRank/UserRank';
 import UserInfo from './UserInfo/UserInfo';
 import selector from './UserProfile.selector';
+import { useHistory } from 'react-router-dom';
 import { faUserTie, faBell, faTrophy } from '@fortawesome/free-solid-svg-icons';
 
 import styles from './UserProfile.module.scss';
+import UserNotifications from './UserNotifications/UserNotifications';
 
 
 const pages = [
@@ -16,8 +18,26 @@ const pages = [
 ]
 
 const UserProfile = () => {
-  const [activePage, setActivePage] = useState(1)
+  const history = useHistory()
+  const [activePage, setActivePage] = useState(history.location.state?.page ?? 1)
   const { user } = useSelector(selector)
+
+  useEffect(() => {
+    if (history.location.state?.page && history.location.state?.page !== activePage) {
+      setActivePage(history.location.state?.page)
+    }
+  }, [history.location.state])
+
+  useEffect(() => {
+    if (activePage !== history.location.state?.page) {
+      history.replace({
+        ...history.location,
+        state: {
+          page: activePage
+        }
+      });
+    }
+  }, [activePage])
 
   const info = {
     email: user.email,
@@ -40,6 +60,11 @@ const UserProfile = () => {
             <UserRank data={rank} />
             <UserInfo data={info} />
           </div>
+        : ''
+      }
+
+      {activePage === 2
+        ? <UserNotifications />
         : ''
       }
     </div>

@@ -1,44 +1,50 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserShield } from '@fortawesome/free-solid-svg-icons';
 import selector from './Header.selector';
+import UserIcon from '../UserIcon/UserIcon';
+import UserProgressBar from '../UserProgressBar/UserProgressBar';
 
 import styles from './Header.module.scss';
+import HeaderNotifications from './HeaderNotifications/HeaderNotifications';
 
-const profilePictureUrl = {
-  'NPC': "img/ranks/npc.jpg",
-  'Crewman': "img/ranks/crewman.jpg",
-  'Cossack': "img/ranks/cossack.jpg",
-  'Centurion': "img/ranks/centurion.jpg",
-  'Cossack captain': "img/ranks/cossack_captain.jpg",
-  'Ataman': "img/ranks/ataman.jpg",
-  'Hetman': "img/ranks/Hetman.jpg",
-}
 
 const Header = () => {
   const { user } = useSelector(selector)
 
-  let percentage;
-  let profilePic = profilePictureUrl[user.rank];
-
-  if (user.currentScoreAmount >= 1000) {
-    percentage = 100;
-  } else {
-    percentage = Math.floor((user.currentScoreAmount / user.nextLevelScore) * 100);
-  }
-
-  const percentageStyle = {
-    width: `${percentage}%`,
-  }
-
   return (
     <header className={styles.Header}>
-      <img src="img/Trello_logo.png" alt="Logo" className={styles.logo} />
-      <div className={styles.avatar}><img src={profilePic} alt="avatar" /></div>
-      <div className={styles.position}>{user.rank}</div>
-      <div className={styles.progressBar}>
-        <div className={styles.progressBarFilled} style={percentageStyle}/>
+      <img src="../../images/mainLogo.png" alt="Logo" className={styles.logo} />
+      {user.role && <div className={styles.profile}>
+        <Link to={'/profile'}>
+          <div className={styles.username}>{user.login}</div>
+        </Link>
+        <Link to={'/profile'}>
+          <UserProgressBar
+            template={'header'}
+            previousLevelScore={user.previousLevelScore}
+            currentScoreAmount={user.currentScoreAmount}
+            nextLevelScore={user.nextLevelScore}
+          />
+        </Link>
+        <HeaderNotifications />
+        {user.role === 'admin'
+          ? <Link to={'/admin'}>
+            <div className={styles.adminIcon}>
+              <FontAwesomeIcon icon={faUserShield}/>
+            </div>
+          </Link>
+          : ''
+        }
+        <Link to={'/profile'}>
+          <div className={styles.userIcon}>
+            <UserIcon type={'header'} rank={user.rank}/>
+          </div>
+        </Link>
       </div>
-      <div className={styles.userName}>{user.login}</div>
+      }
     </header>)
 }
 

@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import UserInfo from './UserInfo';
 
-describe('UserRank component', () => {
+describe('UserInfo component', () => {
 
   let wrapper;
 

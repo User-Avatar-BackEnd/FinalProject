@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import UserProfileNav from './UserProfileNav';
 
-describe('UserRank component', () => {
+describe('UserProfileNav component', () => {
 
   let wrapper;
 

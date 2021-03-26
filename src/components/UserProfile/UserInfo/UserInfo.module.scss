@@ -1,7 +1,7 @@
 .UserInfo {
   position: relative;
 
-  & .controlIcon {
+  & .closeIcon {
     font-size: 26px;
     position: absolute;
     top: 20px;
@@ -86,8 +86,61 @@
         background-color: #f6f6f6;
         color: black;
 
+        & .changePasswordLink, & .logoutLink {
+          cursor: pointer;
+          color: orange;
+          transition: color .3s;
+        }
+
+        & .changePasswordLink {
+
+          &:hover {
+            color: dodgerblue;
+          }
+        }
+
+        & .logoutLink {
+          margin-top: 350px;
+          font-size: 24px;
+
+          &:hover {
+            color: red;
+          }
+        }
+
         & .inputBlock {
           margin: 20px 0;
+
+          & .editIcon {
+            display: flex;
+            justify-content: space-between;
+            width: 300px;
+            line-height: 43px;
+            font-size: 26px;
+
+            & .fieldButtons {
+              display: flex;
+
+              & button {
+                margin-top: 6px;
+                width: 50px;
+                font-size: 10px;
+              }
+
+              & .cancel {
+                height: 30px;
+                border-radius: 5px;
+                border: 1px solid #666666;
+                background-color: #ececec;
+                cursor: pointer;
+                transition: background-color .3s;
+
+                &:hover {
+                  background-color: darken(#ececec, 20%);
+                }
+              }
+            }
+          }
         }
       }
 

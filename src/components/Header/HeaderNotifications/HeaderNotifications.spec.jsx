@@ -1,14 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Auth from './Auth';
+import HeaderNotifications from './HeaderNotifications';
 
-describe('UserNotifications component', () => {
+describe('HeaderNotifications component', () => {
 
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<Auth />);
+    wrapper = shallow(<HeaderNotifications />);
   });
 
   afterEach(() => {

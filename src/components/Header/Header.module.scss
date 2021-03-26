@@ -1,48 +1,46 @@
 .Header {
   display: flex;
-  flex-direction: row-reverse;
+  justify-content: space-between;
   font-family: Roboto, sans-serif;
   height: 50px;
   width: 100%;
   background: #000;
   color: #fff;
-}
 
-.logo {
-  position: absolute;
-  top: 0;
-  left: 10px;
-}
+  & a {
+    text-decoration: none;
+    color: #fff;
+  }
 
-.avatar, .position, .progressBar, .userName {
-  margin-right: 20px;
-}
+  & .profile {
+    display: flex;
+    justify-content: space-evenly;
+    flex-basis: 20%;
+  }
 
-.userName, .position {
-  cursor: default;
-  color: #fff;
-  padding-top: 10px;
-  font-size: 25px;
-}
+  & .username {
+    font-size: 18px;
+    line-height: 50px;
+    cursor: pointer;
+    transition: color .3s;
 
-.progressBar {
-  margin-top: 22px;
-  width: 100px;
-  height: 5px;
-  background: #fff;
-  border-radius: 10px;
-}
+    &:hover {
+      color: orange;
+    }
+  }
 
-.progressBarFilled {
-  background: green;
-  height: 100%;
-  border-radius: 10px;
-  width: 0;
-}
+  & .adminIcon {
+    font-size: 26px;
+    line-height: 50px;
+    cursor: pointer;
+    transition: color .3s;
 
-.avatar img {
-  margin: 5px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+    &:hover {
+      color: orange;
+    }
+  }
+
+  & .userIcon {
+    padding-top: 3px;
+  }
 }

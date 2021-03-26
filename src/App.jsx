@@ -3,7 +3,7 @@ import { Route, Switch, Redirect, useHistory, useLocation } from 'react-router-d
 import { useDispatch } from 'react-redux';
 import Auth from './components/Auth/Auth';
 import UserProfile from './components/UserProfile/UserProfile';
-import { getUser } from './store/ducks/user/user';
+import {clearUser, getUser} from './store/ducks/user/user';
 
 import styles from './App.module.scss';
 import Header from './components/Header/Header';
@@ -36,6 +36,7 @@ function App() {
       if (location.pathname !== '/login' && location.pathname !== '/registration') {
         history.replace('/login')
       }
+      dispatch(clearUser())
     }
   }, [location])
 

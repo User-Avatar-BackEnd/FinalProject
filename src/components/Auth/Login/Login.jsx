@@ -41,11 +41,11 @@ const Login = ({ onLogin }) => {
 
           API.post('/auth/login', data)
             .then(response => {
-              onLogin(response.data.access_token)
+              onLogin(response.data)
             })
             .catch(error => {
               setServerError(
-                errorsDescription[error.response.data] ?? errorsDescription.default
+                errorsDescription.auth[error.response.data] ?? errorsDescription.default
               )
             })
         }}

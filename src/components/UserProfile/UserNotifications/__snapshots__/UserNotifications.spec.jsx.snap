@@ -3,9 +3,5 @@
 exports[`UserNotifications component should match snapshot 1`] = `
 <div
   className="UserNotifications"
->
-  <Registration
-    onLogin={[Function]}
-  />
-</div>
+/>
 `;
