@@ -1,0 +1,13 @@
+.CardMemberSelector {
+  display: flex;
+  margin-left: 40px;
+  select {
+    padding: 7px 10px 7px 12px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 150ms ease;
+    outline: none;
+  }
+}
