@@ -1,4 +1,8 @@
-* {
-  padding: 0;
-  margin: 0;
+.Rating {
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  font-weight: bold;
+  box-shadow: 5px 10px #888888;
 }
