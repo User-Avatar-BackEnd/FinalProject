@@ -1,11 +1,13 @@
-import {Header} from "./Header/Header";
-import'./App.css'
-import PROFILE from "./config";
+import './App.css';
+import {Rating} from './components/Rating/rating'
+import RATING from "./components/Rating/config";
 
-const App = () =>{
-  return(
-      <Header profile={PROFILE}/>
-  )
+function App() {
+  return (
+    <div className="App">
+      <Rating rating={RATING}/>
+    </div>
+  );
 }
 
 export default App;
