@@ -48,7 +48,9 @@ function App() {
   return (
     <div className={styles.App}>
       <Header />
-      {routes}
+      <div className={styles.main}>
+        {routes}
+      </div>
     </div>
   );
 }

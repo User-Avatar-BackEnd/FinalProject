@@ -7,6 +7,7 @@ const errors = {
   },
   profile: {
     12: 'Password is incorrect.',
+    13: 'Username already exists.',
     33: 'New password should not match the old one.',
     34: 'New username should not match the old one.'
   },
