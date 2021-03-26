@@ -4,6 +4,7 @@ import Card from '../Task/Card';
 import {connect, useDispatch} from 'react-redux';
 import {addTask, setdeleteCard, dropCard, changeColumnOrder, deleteColumn, changeTitleColumn} from '../../../ducks/duckTrello';
 import Add from '../Add/Add';
+import DelModal from './DeleteModal/DeleteModal';
 
  const Column = ({index, boardId, columns, dropedTask, setdeleteCard}) => {
     const dispatch = useDispatch();
@@ -20,6 +21,17 @@ import Add from '../Add/Add';
     useEffect(()=>textInput.current.focus(),[visible])
 
     const textInput = useRef(null);
+
+    const [isShow, setIsShow] = useState(false);
+
+    const showDeleteModal = () => {
+      setIsShow(true);
+      setFocus(focus= true);
+    }
+    const closeDeleteModal = () => {
+        setIsShow(false)
+        textInput.current.focus()
+    }
    
     const adding = (title) =>{
       if(title.trim().length){
@@ -88,15 +100,15 @@ import Add from '../Add/Add';
       onDrop ={drop} onDragStart ={drag}>
 
         <div style ={{display: visible ? "none" : "block"}} className ={style.columnHead}>
-
           <input ref = {textInput} onChange ={getValue} onKeyDown ={edit} onBlur ={stopEdit}
            className ={style.edit} type ="text" value ={text} />
 
-          <div onMouseOver ={over} onMouseOut ={out} onClick ={del} className ={style.del}>
-            <img height ='32px' src ='../../images/del.svg' alt ='del'></img>
+          <div onMouseOver ={over} onMouseOut ={out} onClick ={showDeleteModal} className ={style.del}>
+            <img height ='32px' src ='../../images/del.svg' alt ='del' />
           </div>
-
         </div>
+
+        {isShow ? <DelModal del ={del} close={closeDeleteModal} /> : null}
 
         <div style={{display: visible ? "block" : "none"}} className ={style.columnHead}>
           <div className ={style.title}>{title}</div> 

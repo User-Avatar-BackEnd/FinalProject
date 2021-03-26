@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import classNames from 'classnames';
 import style from './Add.module.scss';
-import Input from './InputTitle';
+import Input from './InputTitle/InputTitle';
 
 
 const Add = ({add, column}) =>{

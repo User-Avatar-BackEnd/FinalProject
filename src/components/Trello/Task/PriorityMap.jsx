@@ -1,4 +1,4 @@
-import style from './Task.module.scss'
+import style from './Card.module.scss'
 
 const priority =[
     <div className ={style.minimal}>Minimal Prioryty</div>,

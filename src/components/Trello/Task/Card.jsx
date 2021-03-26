@@ -1,12 +1,11 @@
-import {connect, useDispatch} from 'react-redux';
+import {connect} from 'react-redux';
 import {useState} from "react";
-import style from './Task.module.scss';
+import style from './Card.module.scss';
 import priority from './PriorityMap';
 import {draggedCard} from '../../../ducks/duckTrello';
 import CardDetailComponent from "./Modal/CardDetailModal/CardDetailModal";
 
-const Task = ({card, boardId, index, columnIndex, columnId, draggedCard}) =>{
-    const dispatch = useDispatch();
+const Card = ({card, boardId, index, columnIndex, columnId, draggedCard}) =>{
     const [isShow, setIsShow] = useState(false)
 
     const drag = (e) =>{
@@ -48,4 +47,4 @@ const mapDispatchToProps = (dispatch) =>({
     draggedCard: (card) => dispatch(draggedCard(card))
 })
   
-  export default connect(null,mapDispatchToProps)(Task);
+export default connect(null,mapDispatchToProps)(Card);

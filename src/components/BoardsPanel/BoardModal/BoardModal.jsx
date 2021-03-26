@@ -18,14 +18,20 @@ export const BoardModal = ({close, flag, id, index}) => {
         e.preventDefault();
     }
 
-    const Save = () =>{
-        if(text.trim().length){
-            if(flag){
-                dispatch(editBoard(text, id, index));
-            }else{
-                dispatch(addBoard(text));
+    const Save = (e) =>{
+        if (e.keyCode === 13) {
+            if(text.trim().length){
+                if(flag){
+                    dispatch(editBoard(text, id, index));
+                }else{
+                    dispatch(addBoard(text));
+                }
             }
+            close();
         }
+    }
+
+    const Close = () =>{
         close();
     }
 
@@ -35,8 +41,7 @@ export const BoardModal = ({close, flag, id, index}) => {
                 <span className={style.close} onClick={close}/>
                 {flag ? <h3>Edit board title</h3> : <h3>Add new board</h3>}
                 <div className={style.title}>
-                    <textarea ref ={textInput} className ={style.area} defaultValue ={flag} onChange ={changeText} />
-                    <button onClick ={Save} className={style.save}>save</button>
+                    <textarea onKeyDown ={Save} ref ={textInput} className ={style.area} defaultValue ={flag} onChange ={changeText} onBlur ={Close} />
                 </div>
 
             </div>

@@ -1,15 +1,27 @@
 import React,{useState} from "react";
 import style from './PrioritySelector.module.scss'
-import {priorityType} from "../../../../../store/config";
 
-export const PrioritySelector = ({task, changePriority}) => {
+export const PrioritySelector = ({card, changePriority}) => {
+    const priorityType = {
+        minimal: {
+            priority: 0,
+            name: 'Minimal'
+        },
+        normal: {
+            priority: 1,
+            name: 'Normal'
+        },
+        high: {
+            priority: 2,
+            name: 'High'
+        },
+        critical: {
+            priority: 3,
+            name: 'Critical'
+        }
+    }
 
-    // const onPrioritySelected = (event) => {
-    //     onPriorityChanged(event.target.value)
-    //     console.log(event.target.value)
-    // }
-
-    let [color, setColor] = useState(task.priority)
+    let [color, setColor] = useState(card.priority)
 
     const colors = {
         minimal: {
@@ -48,7 +60,7 @@ export const PrioritySelector = ({task, changePriority}) => {
     return (
         <div className={style.PrioritySelector}>
             <h3>Priority:</h3>
-            <select defaultValue ={task.priority} onChange ={handleChange} name="priority" style={colorPriority(+color)}>
+            <select defaultValue ={card.priority} onChange ={handleChange} name="priority" style={colorPriority(+color)}>
                 {
                     Object.values(priorityType).map(({priority, name}) =>
                         <option key ={priority} value={priority}>{name}</option>

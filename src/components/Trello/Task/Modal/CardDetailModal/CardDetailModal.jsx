@@ -5,7 +5,7 @@ import style from './CardDetailModal.module.scss'
 import {Comments} from "../../../Comments/Comments";
 import {AddComments} from "../../../AddComments/AddComments";
 import {PrioritySelector} from "../PrioritySelector/PrioritySelector";
-import {CardMembersSelector} from "../CardMembersSelector/CardMembersSelector";
+import CardMembersSelector from "../CardMembersSelector/CardMembersSelector";
 
 const CardDetailComponent = ({boardId, onClose, commentFocused, card, index, columnIndex, columnId}) => {
     const dispatch = useDispatch();
@@ -47,9 +47,9 @@ const CardDetailComponent = ({boardId, onClose, commentFocused, card, index, col
         setIsWritable(false);
     }
 
-    let [responsible, setResponsible] = useState(card.responsible);
-    const changeResponsible = (responsible) =>{
-        setResponsible(responsible)
+    let [responsibleId, setResponsible] = useState(card.responsibleId);
+    const changeResponsible = (responsibleId) =>{
+        setResponsible(responsibleId)
     }
 
     let [hidden, setHidden] = useState(card.isHidden);
@@ -70,10 +70,10 @@ const CardDetailComponent = ({boardId, onClose, commentFocused, card, index, col
         textInput.current.focus()
     }
    
-    const drag = (e) =>{
+    const preventDrag = (e) =>{
         e.stopPropagation();
         e.preventDefault();
-      }
+    }
 
     const del = () =>{
         dispatch(deleteCard(boardId, card.id, columnIndex, index));
@@ -89,7 +89,7 @@ const CardDetailComponent = ({boardId, onClose, commentFocused, card, index, col
             title: title,
             description: description,
             priority: +priority,
-            responsibleId: null,
+            responsibleId: responsibleId,
             isHidden: hidden,
             commentsCount: card.commentsCount,
             columnId: columnId
@@ -99,7 +99,7 @@ const CardDetailComponent = ({boardId, onClose, commentFocused, card, index, col
     }
 
     return (
-        <div draggable = "true" className={style.window} onDragStart ={drag}>
+        <div draggable = "true" className={style.window} onDragStart ={preventDrag}>
             <div className={style.CardDetailModal}>
                 <div className={style.title}>
                     <img src="../../images/edit.png" alt="" className={style.icon}/>
@@ -107,7 +107,7 @@ const CardDetailComponent = ({boardId, onClose, commentFocused, card, index, col
                     <span className={style.close} onClick={close}/>
                 </div>
                 <div><input checked ={hidden}  onChange ={changeHidden} type="checkbox"/><span>Hide</span></div>
-                <PrioritySelector changePriority ={changePriority} task={card}/>
+                <PrioritySelector changePriority ={changePriority} card={card}/>
                 <div className={style.description}>
                     <img src="../../images/description.png" alt="" className={style.icon}/>
                     <h3>Description</h3>
@@ -123,7 +123,7 @@ const CardDetailComponent = ({boardId, onClose, commentFocused, card, index, col
                         </div>
                     </div>
                 }
-                <CardMembersSelector changeResponsible ={changeResponsible} responsible ={responsible}/>
+                <CardMembersSelector changeResponsible ={changeResponsible} responsibleId ={responsibleId}/>
                 <div className={style.detailComments}>
                     <div className={style.description}>
                         <img src="../../images/comments.png" alt="" className={style.icon}/>
