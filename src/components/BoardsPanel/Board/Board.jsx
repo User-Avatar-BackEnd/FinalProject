@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import style from './Board.module.scss';
 import {useDispatch} from 'react-redux';
-import {deleteBoard} from '../../../ducks/duckBoardsPanel';
+import {deleteBoard} from '../../../store/ducks/duckBoardsPanel';
 import {BoardModal} from '../BoardModal/BoardModal'
 import DelModal from './DeleteModal/DeleteModal';
 

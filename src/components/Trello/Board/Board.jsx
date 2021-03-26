@@ -4,7 +4,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import style from './Board.module.scss';
 import Column from '../Column/Column';
 import Add from '../Add/Add';
-import {addColumn, getBoard} from '../../../ducks/duckTrello';
+import {addColumn, getBoard} from '../../../store/ducks/duckTrello';
 
 const Board = ({title, columns}) =>{
   const dispatch = useDispatch();

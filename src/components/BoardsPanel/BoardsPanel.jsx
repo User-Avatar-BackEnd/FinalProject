@@ -4,7 +4,7 @@ import {connect, useDispatch} from 'react-redux';
 import style from './BoardsPanel.module.scss'
 import {AddBoard} from "./AddBoard/AddBoard";
 import {Board} from "./Board/Board";
-import {getBoards} from '../../ducks/duckBoardsPanel';
+import {getBoards} from '../../store/ducks/duckBoardsPanel';
 
 const BoardsPanel = ({boards}) => {
     const dispatch = useDispatch();

@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import {useState} from "react";
 import style from './Card.module.scss';
 import priority from './PriorityMap';
-import {draggedCard} from '../../../ducks/duckTrello';
+import {draggedCard} from '../../../store/ducks/duckTrello';
 import CardDetailComponent from "./Modal/CardDetailModal/CardDetailModal";
 
 const Card = ({card, boardId, index, columnIndex, columnId, draggedCard}) =>{
