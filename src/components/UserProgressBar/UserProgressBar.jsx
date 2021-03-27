@@ -1,5 +1,5 @@
 import React from 'react';
-import ProgressBar from '@ramonak/react-progress-bar';
+import ProgressBar from '@ramonak/react-progress-bar'
 import classNames from 'classnames';
 
 import styles from './UserProgressBar.module.scss';

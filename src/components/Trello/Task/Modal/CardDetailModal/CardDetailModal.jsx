@@ -2,8 +2,6 @@ import React, {useEffect, useRef, useState} from "react";
 import {useDispatch} from 'react-redux';
 import {deleteCard, changeCard} from '../../../../../store/ducks/duckTrello';
 import style from './CardDetailModal.module.scss'
-import {Comments} from "../../../Comments/Comments";
-import {AddComments} from "../../../AddComments/AddComments";
 import {PrioritySelector} from "../PrioritySelector/PrioritySelector";
 import CardMembersSelector from "../CardMembersSelector/CardMembersSelector";
 
@@ -123,15 +121,7 @@ const CardDetailComponent = ({boardId, onClose, commentFocused, card, index, col
                         </div>
                     </div>
                 }
-                <CardMembersSelector changeResponsible ={changeResponsible} responsibleId ={responsibleId}/>
-                <div className={style.detailComments}>
-                    <div className={style.description}>
-                        <img src="../../images/comments.png" alt="" className={style.icon}/>
-                        <h3>Comments</h3>
-                    </div>
-                    <AddComments focus={commentFocused}/>
-                    <Comments/>
-                </div>
+                <CardMembersSelector changeResponsible ={changeResponsible} responsible ={responsibleId}/>
                 <div className={style.dispatch}>
                     <button onClick={submit} className ={style.save}>save</button>
                     <button onClick={del} className ={style.del}>delete</button>
