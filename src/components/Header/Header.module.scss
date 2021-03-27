@@ -1,0 +1,48 @@
+.Header {
+  display: flex;
+  justify-content: space-between;
+  font-family: Roboto, sans-serif;
+  height: 50px;
+  width: 100%;
+  background: #000;
+  color: #fff;
+  position: fixed;
+  z-index: 3;
+
+  & a {
+    text-decoration: none;
+    color: #fff;
+  }
+
+  & .profile {
+    display: flex;
+    justify-content: space-evenly;
+    flex-basis: 20%;
+  }
+
+  & .username {
+    font-size: 18px;
+    line-height: 50px;
+    cursor: pointer;
+    transition: color .3s;
+
+    &:hover {
+      color: orange;
+    }
+  }
+
+  & .adminIcon {
+    font-size: 26px;
+    line-height: 50px;
+    cursor: pointer;
+    transition: color .3s;
+
+    &:hover {
+      color: orange;
+    }
+  }
+
+  & .userIcon {
+    padding-top: 3px;
+  }
+}

@@ -1,0 +1,27 @@
+.UserProfileNavLink {
+  position: relative;
+  width: 100%;
+  min-height: 80px;
+  line-height: 80px;
+  text-align: left;
+  padding-left: 60px;
+  font-size: 24px;
+  font-weight: bold;
+  transition: background-color .2s;
+  cursor: pointer;
+  box-sizing: border-box;
+
+  &:hover {
+    background-color: darken(#fff, 10%);
+  }
+
+  &.active {
+    border-right: 4px solid orange;
+  }
+
+  & .icon {
+    position: absolute;
+    top: 0;
+    left: 20px;
+  }
+}

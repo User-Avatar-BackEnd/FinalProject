@@ -6,6 +6,7 @@ const DeleteModal = ({close, del}) => {
     
     const Del = () =>{
         del();
+        close();
     }
 
     const Close = () =>{

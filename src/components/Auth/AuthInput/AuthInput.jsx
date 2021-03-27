@@ -1,6 +1,6 @@
 import React from 'react';
 import { useField } from 'formik';
-import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import ErrorMessage from '../../ErrorMessage/ErrorMessage';
 
 import styles from './AuthInput.module.scss';
 

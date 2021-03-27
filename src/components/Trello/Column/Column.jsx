@@ -2,11 +2,11 @@ import {useState, useRef, useEffect} from 'react';
 import style from './Column.module.scss';
 import Card from '../Task/Card';
 import {connect, useDispatch} from 'react-redux';
-import {addTask, setdeleteCard, dropCard, changeColumnOrder, deleteColumn, changeTitleColumn} from '../../../ducks/duckTrello';
+import {addTask, setdeleteCard, dropCard, changeColumnOrder, deleteColumn, changeTitleColumn} from '../../../store/ducks/duckTrello';
 import Add from '../Add/Add';
 import DelModal from './DeleteModal/DeleteModal';
 
- const Column = ({index, boardId, columns, dropedTask, setdeleteCard}) => {
+ const Column = ({index, boardId, columns, dropedTask, setdeleteCard, showHidden}) => {
     const dispatch = useDispatch();
 
     const title = columns[index].title;
@@ -118,24 +118,26 @@ import DelModal from './DeleteModal/DeleteModal';
         <Add column ={true} add ={adding}/>
         <div className ={style.cards} >
           {cards ? cards.sort((a, b) => a.priority - b.priority).map((item,i)=>{
-            return <Card
+            {if(!item.isHidden || showHidden){
+              return <Card
               key ={item.id}
               boardId ={boardId}
               index ={i}
               columnId ={id}
               columnIndex ={index}
               card ={item} />
+            }}
           }): true}
         </div>
 
       </div>
     )
-    
 }
 
 const mapStateToProps = (state) => ({
   columns: state.trello.columns,
-  dropedTask: state.trello.dropedTask
+  dropedTask: state.trello.dropedTask,
+  showHidden: state.trello.showHidden
 });
 
 const mapDispatchToProps = (dispatch) =>({

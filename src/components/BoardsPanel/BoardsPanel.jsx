@@ -4,19 +4,33 @@ import {connect, useDispatch} from 'react-redux';
 import style from './BoardsPanel.module.scss'
 import {AddBoard} from "./AddBoard/AddBoard";
 import {Board} from "./Board/Board";
-import {getBoards} from '../../ducks/duckBoardsPanel';
+import {getBoards} from '../../store/ducks/duckBoardsPanel';
 
 const BoardsPanel = ({boards}) => {
     const dispatch = useDispatch();
     useEffect(() =>dispatch(getBoards()),[])
     return (
         <div className={style.BoardsPanel}>
-            <h1>My Boards</h1>
+            <h2>My Boards</h2>
             <div className={style.wrapper}>
-                {boards.map((item, i) => <Link key ={item.id} to ={`/board/${item.id}`}>
-                    <Board index ={i} id ={item.id} title ={item.title} />
-                    </Link>)}
+                {boards.map((item, i) => {
+                    if( item.isOwner){
+                        return <Link key ={item.id} to ={`/board/${item.id}`}>
+                        <Board editable ={item.isOwner} index ={i} id ={item.id} title ={item.title} />
+                        </Link>
+                    }
+                })}
                 <AddBoard/>
+            </div>
+            <h2>Boards from Invites</h2>
+            <div className={style.wrapper}>
+                {boards.map((item, i) => {
+                    if( !item.isOwner){
+                        return <Link key ={item.id} to ={`/board/${item.id}`}>
+                        <Board editable ={item.isOwner} index ={i} id ={item.id} title ={item.title} />
+                        </Link>
+                    }
+                })}
             </div>
         </div>
     )

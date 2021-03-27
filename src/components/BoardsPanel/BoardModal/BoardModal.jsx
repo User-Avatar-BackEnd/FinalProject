@@ -1,7 +1,7 @@
 import React,{useState, useEffect, useRef} from "react";
 import {useDispatch} from 'react-redux';
 import style from './BoardModal.module.scss';
-import {addBoard, editBoard} from '../../../ducks/duckBoardsPanel';
+import {addBoard, editBoard} from '../../../store/ducks/duckBoardsPanel';
 
 export const BoardModal = ({close, flag, id, index}) => {
     const dispatch = useDispatch();

@@ -2,11 +2,28 @@ body{
     overflow-x: auto;
 }
 
+.fixed{
+    width: 90vw;
+    position: sticky;
+    left: 60px;
+    display: flex;
+    justify-content: space-between;
+}
+
 .boardTitle{
     font-size: 40px;
-    margin-top: 40px;
-    margin-left: 60px;
+    margin-top: 20px;
     font-family: DejaVu Sans Mono, monospace;
+}
+
+.back{
+    font-size: 19px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.show{
+    margin-top: 20px;
 }
 
 .board{
@@ -17,7 +34,7 @@ body{
 }
 
 ::-webkit-scrollbar {
-    width: 13px;
+    width: 0;
     height: 13px; 
     background-color: #a5bcd8;
 }
@@ -37,11 +54,4 @@ body{
     font-weight: bold;
     font-family: Courier, monospace;
     padding: 12px;
-}
-
-.back{
-    margin-left: 60px;
-    font-size: 19px;
-    font-weight: bold;
-    cursor: pointer;
 }
