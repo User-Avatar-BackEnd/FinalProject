@@ -13,7 +13,7 @@ export const AddComment = ({focus, boardId, cardId}) => {
     const handleChange = (e) => setText(e.target.value)
 
     const sendComment = () => {
-        if (text.trim() !== '')
+        if (text.trim() !== '' && text.length <= 256)
         dispatch(addComment(cardId, boardId, text))
         setText('')
     }
@@ -22,7 +22,7 @@ export const AddComment = ({focus, boardId, cardId}) => {
         <div className={style.AddComments}>
             <img src="" alt=""/>
                 <div className={style.newComment}>
-                    <textarea placeholder='add comment...' value={text} ref={textarea} onChange={handleChange}/>
+                    <textarea maxLength={256} placeholder='add comment...' value={text} ref={textarea} onChange={handleChange}/>
                     <button onClick={sendComment} className={text.trim() === '' ? style.save : null}>Save</button>
                 </div>
         </div>
