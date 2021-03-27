@@ -1,0 +1,57 @@
+.UserRating {
+  width: 1000px;
+  padding-top: 10px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.rating div:nth-child(2) {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.rating div:last-child {
+  border-bottom: none;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.ratingItem {
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  background: #f6f6f6;
+  border-bottom: 1px solid black;
+}
+
+.ratingItemColumn {
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 35%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  & > div {
+    width: 30%;
+  }
+
+  & > div:first-child {
+    width: 10%;
+  }
+}
+
+.ratingItemColumn:first-child, .ratingItemColumn:last-child {
+  flex-basis: 15%;
+}
+
+.divider {
+  background: transparent;
+  border-top: 3px solid tomato;
+  border-bottom: 3px solid tomato;
+  font-size: 36px;
+}

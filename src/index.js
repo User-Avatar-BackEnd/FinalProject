@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import thunk from 'redux-thunk';
+import { ToastProvider } from 'react-toast-notifications';
 import rootReducer from './store/rootReducer';
 import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
@@ -24,7 +25,9 @@ const store = createStore(
 const app = (
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <ToastProvider autoDismiss={true} placement={'bottom-right'}>
+        <App />
+      </ToastProvider>
     </BrowserRouter>
   </Provider>
 )

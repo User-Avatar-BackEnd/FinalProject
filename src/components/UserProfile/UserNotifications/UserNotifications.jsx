@@ -1,75 +1,55 @@
 import React, { useState, useEffect } from 'react';
-import UserIcon from '../../UserIcon/UserIcon';
-import API from '../../../config/API';
+import { useDispatch, useSelector } from 'react-redux';
+import { LoopCircleLoading } from 'react-loadingg';
+import { useToasts } from 'react-toast-notifications';
+import {getNotifications, notificationResponse} from '../../../store/ducks/user/user';
+import selector from './UserNotifications.selector';
 
 import styles from './UserNotifications.module.scss';
 
 const UserNotifications = () => {
-  const [notifications, setNotifications] = useState([])
+  const { notifications, loading } = useSelector(selector)
+  const dispatch = useDispatch();
+  const { addToast } = useToasts();
 
   const token = localStorage.getItem('AUTH_TOKEN')
 
-  useEffect(() => {
-    API({
-      method: 'get',
-      url: '/account/invites',
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
-      .then(response => {
-        setNotifications(response.data)
-      })
-      .catch(() => {
-        setNotifications([])
-      })
+  useEffect( () => {
+    dispatch(getNotifications(token))
   }, [])
 
   const acceptInvite = (e) => {
-    inviteResponse(1, e.target.getAttribute('data-id'))
+    dispatch(notificationResponse(1, e.target.getAttribute('data-id'), token, addToast))
   }
 
   const declineInvite = (e) => {
-    inviteResponse(-1, e.target.getAttribute('data-id'))
-  }
-
-  const inviteResponse = (status, id) => {
-    API({
-      method: 'patch',
-      url: `/account/invites/${id}/?status=${status}`,
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
-      .then(() => {
-        setNotifications(notifications.filter(item => {
-          return item.id !== Number(id)
-        }))
-      })
-      .catch(error => {
-        console.log(error)
-      })
+    dispatch(notificationResponse(-1, e.target.getAttribute('data-id'), token, addToast))
   }
 
   return (
     <div className={styles.UserNotifications}>
-      {notifications.length === 0
-        ? <h3>You have no notifications yet...</h3>
-        : ''
+      {loading
+        ? <LoopCircleLoading color={'orange'} style={{position: 'relative', margin: '200px auto'}}/>
+        : <>
+          {notifications.length === 0
+            ? <h3>You have no notifications yet...</h3>
+            : ''
+          }
+          {notifications.map(item => {
+            return <div className={styles.notification} key={item.id}>
+              <span><b>{item.inviter?.login}</b> invited you to the board <b>{item.board.title}</b></span>
+              <div className={styles.controlButtons}>
+                <div className={styles.accept} data-id={item.id} onClick={acceptInvite}>
+                  Accept
+                </div>
+                <div className={styles.decline} data-id={item.id} onClick={declineInvite}>
+                  Decline
+                </div>
+              </div>
+            </div>
+          })}
+          </>
       }
-      {notifications.map(item => {
-        return <div className={styles.notification} key={item.id}>
-          <span><b>{item.inviter?.login}</b> invited you to the board <b>{item.board.title}</b></span>
-          <div className={styles.controlButtons}>
-            <div className={styles.accept} data-id={item.id} onClick={acceptInvite}>
-              Accept
-            </div>
-            <div className={styles.decline} data-id={item.id} onClick={declineInvite}>
-              Decline
-            </div>
-          </div>
-        </div>
-      })}
     </div>
   );
 

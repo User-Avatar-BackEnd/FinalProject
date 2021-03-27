@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { faUserTie, faBell, faTrophy } from '@fortawesome/free-solid-svg-icons';
 import UserProfileNav from './UserProfileNav/UserProfileNav';
 import UserRank from './UserRank/UserRank';
 import UserInfo from './UserInfo/UserInfo';
 import selector from './UserProfile.selector';
-import { useHistory } from 'react-router-dom';
-import { faUserTie, faBell, faTrophy } from '@fortawesome/free-solid-svg-icons';
+import UserNotifications from './UserNotifications/UserNotifications';
+import UserRating from './UserRating/UserRating';
 
 import styles from './UserProfile.module.scss';
-import UserNotifications from './UserNotifications/UserNotifications';
-
 
 const pages = [
   {id: 1, title: 'User info', icon: faUserTie},
@@ -65,6 +65,11 @@ const UserProfile = () => {
 
       {activePage === 2
         ? <UserNotifications />
+        : ''
+      }
+
+      {activePage === 3
+        ? <UserRating />
         : ''
       }
     </div>
