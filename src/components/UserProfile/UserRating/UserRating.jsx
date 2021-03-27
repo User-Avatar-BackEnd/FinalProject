@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
-import styles from './UserRating.module.scss';
+import { LoopCircleLoading } from 'react-loadingg';
 import API from '../../../config/API';
 import UserIcon from '../../UserIcon/UserIcon';
+
+import styles from './UserRating.module.scss';
 
 const RatingItem = ({user}) => {
 
@@ -26,10 +28,13 @@ const RatingItem = ({user}) => {
 
 const UserRating = () => {
   const [users, setUsers] = useState({})
+  const [loading, setLoading] = useState(false)
 
   const token = localStorage.getItem('AUTH_TOKEN')
 
   useEffect(() => {
+    setLoading(true)
+
     API({
       method: 'get',
       url: `/account/rate`,
@@ -43,6 +48,9 @@ const UserRating = () => {
       .catch(error => {
         console.log(error)
       })
+      .finally(() => {
+        setLoading(false)
+      })
   },[])
 
   const topBoard = users.topUsers;
@@ -50,20 +58,25 @@ const UserRating = () => {
 
   return (
     <div className={styles.UserRating}>
-      <h2>Rating</h2>
+      <h2>Leaderboard</h2>
       <div className={styles.ratingItem}>
         <div className={styles.ratingItemColumn}><b>PLACE</b></div>
         <div className={styles.ratingItemColumn}><b>RANK</b></div>
         <div className={styles.ratingItemColumn}><b>USERNAME</b></div>
         <div className={styles.ratingItemColumn}><b>POINTS</b></div>
       </div>
-      {topBoard?.map((currUser) => <RatingItem key={currUser.id} user={currUser}/>)}
-      {underTopUsers?.length !== 0 && (
-        <div className={classNames(styles.ratingItem, styles.divider)}>. . .</div>
-      )}
-      {underTopUsers?.length !== 0 && (
-        underTopUsers?.map((currUser) => <RatingItem key={currUser.id} user={currUser}/>)
-      )}
+      {loading
+        ? <LoopCircleLoading color={'orange'} style={{position: 'relative', margin: '20px auto'}}/>
+        : <>
+          {topBoard?.map((currUser) => <RatingItem key={currUser.id} user={currUser}/>)}
+          {underTopUsers?.length !== 0 && (
+            <div className={classNames(styles.ratingItem, styles.divider)}>. . .</div>
+          )}
+          {underTopUsers?.length !== 0 && (
+            underTopUsers?.map((currUser) => <RatingItem key={currUser.id} user={currUser}/>)
+          )}
+        </>
+      }
     </div>
   )
 }
