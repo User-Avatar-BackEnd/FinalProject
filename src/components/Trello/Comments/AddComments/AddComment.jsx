@@ -27,6 +27,5 @@ export const AddComment = ({focus, boardId, cardId}) => {
                 </div>
         </div>
     )
-
-
 }
+
