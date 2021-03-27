@@ -42,7 +42,7 @@ const Header = () => {
         }
         <Link to={'/profile'}>
           <div className={styles.userIcon}>
-            <UserIcon type={'header'} rank={user.rank}/>
+            <UserIcon type={'small'} rank={user.rank}/>
           </div>
         </Link>
       </div>
