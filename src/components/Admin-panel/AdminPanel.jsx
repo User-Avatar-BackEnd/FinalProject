@@ -33,19 +33,20 @@ export const AdminPanel = () => {
                     <UserSearch onSearch={onSearch}/>
                     <UserList filter={filter}
                               users={_.filter(users.users, (v) => _.includes(v.login, filter))}/>
-                    <div className={style.Pagination}>
-                        <Pagination
-                            activePage={page}
-                            itemsCountPerPage={10}
-                            totalItemsCount={users.totalPages}
-                            pageRangeDisplayed={5}
-                            onChange={setPage}/>
-                    </div>
+                    {
+                        users.totalPages &&
+                        <div className={style.Pagination}>
+                            <Pagination
+                                activePage={page}
+                                itemsCountPerPage={10}
+                                totalItemsCount={users.totalPages}
+                                pageRangeDisplayed={5}
+                                onChange={setPage}/>
+                        </div>
+                    }
                 </div>
                 : null
             }
         </div>
     )
 }
-//filter === '' ? users :
-//
