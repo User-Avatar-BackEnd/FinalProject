@@ -8,6 +8,7 @@ import {useParams} from "react-router-dom";
 import useLoadedHistory from "../../../hooks/useLoadedHistory";
 import useLoadUsers from "../../../hooks/useLoadUsers";
 import _ from "lodash";
+import UserIcon from "../../UserIcon/UserIcon";
 
 export const UserPageInfo = () => {
     const {login} = useParams()
@@ -21,7 +22,7 @@ export const UserPageInfo = () => {
                 .map(el =>
                     <div className={style.UserPageInfo}>
                     <div className={style.container}>
-                        <UserRank rank={el.rank}/>
+                        <UserIcon rank={el.rank} type={'main'}/>
                         <UserBalance balance={el.score} login={login}/>
                     </div>
                     <UserInformation role={el.role} login={login}/>)

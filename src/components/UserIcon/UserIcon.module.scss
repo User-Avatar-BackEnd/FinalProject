@@ -26,6 +26,14 @@ $shadowColor: #ffffff;
 
   }
 
+  &.smallest{
+    width: 15px;
+    height: 15px;
+    border: .5px solid $borderColor;
+    box-shadow: inset 0 0 0 1px $shadowColor;
+    transition: box-shadow .1s;
+  }
+
   &.user {
     width: 15px;
     height: 15px;

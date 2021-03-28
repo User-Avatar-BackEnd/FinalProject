@@ -6,7 +6,7 @@ import {addTask, setdeleteCard, dropCard, changeColumnOrder, deleteColumn, chang
 import Add from '../Add/Add';
 import DelModal from './DeleteModal/DeleteModal';
 
- const Column = ({index, boardId, columns, dropedTask, setdeleteCard, showHidden}) => {
+ const Column = ({index, boardId, columns, dropedTask, setdeleteCard, showHidden, members}) => {
     const dispatch = useDispatch();
 
     const title = columns[index].title;
@@ -125,6 +125,7 @@ import DelModal from './DeleteModal/DeleteModal';
               index ={i}
               columnId ={id}
               columnIndex ={index}
+              members ={members}
               card ={item} />
             }}
           }): true}
@@ -137,7 +138,8 @@ import DelModal from './DeleteModal/DeleteModal';
 const mapStateToProps = (state) => ({
   columns: state.trello.board.columns,
   dropedTask: state.trello.board.dropedTask,
-  showHidden: state.trello.board.showHidden
+  showHidden: state.trello.board.showHidden,
+  members: state.trello.board.members
 });
 
 const mapDispatchToProps = (dispatch) =>({

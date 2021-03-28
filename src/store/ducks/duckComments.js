@@ -1,4 +1,5 @@
 import {apiComment, deleteComment, editComment, loadComments} from "../../API/apiComment";
+import {getBoard} from "./duckTrello";
 
 const REQUESTED = 'requested'
 const DELETE = 'delete-comment'
@@ -48,6 +49,7 @@ export const addComment = (cardId, boardId, text) => (dispatch) => {
     dispatch(requested())
 
     apiComment(cardId, boardId, text).then(resp => dispatch(commentAdded(resp)))
+        .then((_) => dispatch(getBoard(boardId)))
 }
 
 export const clearComments = () => (dispatch) => {

@@ -3,7 +3,7 @@ import style from './AddComments.module.scss'
 import {useDispatch} from "react-redux";
 import {addComment} from "../../../../store/ducks/duckComments";
 
-export const AddComment = ({focus, boardId, cardId}) => {
+export const AddComment = ({boardId, cardId}) => {
 
     const textarea = useRef(null)
 
@@ -16,6 +16,7 @@ export const AddComment = ({focus, boardId, cardId}) => {
         if (text.trim() !== '' && text.length <= 256)
         dispatch(addComment(cardId, boardId, text))
         setText('')
+
     }
 
     return (

@@ -159,7 +159,7 @@ export const changeCard = (boardId, cardId, column, index, card) => (dispatch) =
         data: card
     })
 }
-const setchangeCard = (card, column, index) =>({
+export const setchangeCard = (card, column, index) =>({
     type: CHANGE_CARD,
     column: column,
     index: index,
@@ -206,7 +206,7 @@ export const reducerTrello = (state =initialState, action) => {
             state.board.columns=[...state.board.columns]
             return{...state}
         case SHOW_HIDDEN:
-            state.showHidden = action.payload;
+            state.board.showHidden = action.payload;
             return{...state}
         case GET_USERS:
             state.users = action.payload;

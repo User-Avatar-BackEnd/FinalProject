@@ -21,8 +21,8 @@ export const User = ({user}) => {
                 <UserIcon rank={user.rank} type={'user'}/>
             </div>
             <Link to={`/user-info/${user.login}`}>
-                <a href="#"
-                   title={user.login}>{user.login.length < 12 ? user.login : user.login.slice(0, 12) + '...'}</a>
+                <span
+                   title={user.login}>{user.login.length < 12 ? user.login : user.login.slice(0, 12) + '...'}</span>
             </Link>
             <span>{user.score}</span>
             <button className={role === 'admin' ? style.admin : null}
