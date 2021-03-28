@@ -68,12 +68,7 @@ const HeaderNotifications = () => {
               {notifications.length > 3
                 ? <div className={styles.seeAllLink}>
                   <Link
-                    to={{
-                      pathname: '/profile',
-                      state: {
-                        page: 2
-                      }
-                    }}
+                    to={'/profile/notifications'}
                     onClick={toggleList}
                   >
                     See all invites

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import { faUserTie, faBell, faTrophy } from '@fortawesome/free-solid-svg-icons';
 import UserProfileNav from './UserProfileNav/UserProfileNav';
 import UserRank from './UserRank/UserRank';
@@ -12,32 +12,14 @@ import UserRating from './UserRating/UserRating';
 import styles from './UserProfile.module.scss';
 
 const pages = [
-  {id: 1, title: 'User info', icon: faUserTie},
-  {id: 2, title: 'Notifications', icon: faBell},
-  {id: 3, title: 'Rankings', icon: faTrophy}
+  {id: 1, title: 'User info', url: '/', icon: faUserTie},
+  {id: 2, title: 'Notifications', url: '/notifications', icon: faBell},
+  {id: 3, title: 'Rankings', url: '/rankings', icon: faTrophy}
 ]
 
 const UserProfile = () => {
-  const history = useHistory()
-  const [activePage, setActivePage] = useState(history.location.state?.page ?? 1)
+  let { path } = useRouteMatch();
   const { user } = useSelector(selector)
-
-  useEffect(() => {
-    if (history.location.state?.page && history.location.state?.page !== activePage) {
-      setActivePage(history.location.state?.page)
-    }
-  }, [history.location.state])
-
-  useEffect(() => {
-    if (activePage !== history.location.state?.page) {
-      history.replace({
-        ...history.location,
-        state: {
-          page: activePage
-        }
-      });
-    }
-  }, [activePage])
 
   const info = {
     email: user.email,
@@ -54,24 +36,21 @@ const UserProfile = () => {
 
   return (
     <div className={styles.UserProfile}>
-      <UserProfileNav pages={pages} activePage={activePage} changePage={setActivePage} />
-      {activePage === 1
-        ? <div className={styles.container}>
+      <UserProfileNav path={path} pages={pages} />
+      <Switch>
+        <Route path={path} exact>
+          <div className={styles.container}>
             <UserRank data={rank} />
             <UserInfo data={info} />
           </div>
-        : ''
-      }
-
-      {activePage === 2
-        ? <UserNotifications />
-        : ''
-      }
-
-      {activePage === 3
-        ? <UserRating />
-        : ''
-      }
+        </Route>
+        <Route path={`${path}/notifications`}>
+          <UserNotifications />
+        </Route>
+        <Route path={`${path}/rankings`}>
+          <UserRating />
+        </Route>
+      </Switch>
     </div>
   );
 
