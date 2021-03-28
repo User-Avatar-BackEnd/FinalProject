@@ -73,6 +73,26 @@
   flex-wrap: wrap;
 }
 
+.member{
+  > button {
+    margin-top: -42px;
+    display: none;
+    position: absolute;
+    outline: none;
+    border: none;
+    background-color: #e21c1c;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .del{
+    height: 40px;
+    width: 30px;
+  }
+  &:hover button {
+    display: block;
+  }
+}
+
 .user{
   display: flex;
   flex-direction: column;

@@ -1,4 +1,4 @@
-import API from '../../config/API'
+import API from '../../config/API';
 
 const GET_BOARD = 'get_board';
 const DROP_CARD = 'drop_card';
@@ -46,14 +46,6 @@ const setUsers = (users) =>({
     payload: users,
 })
 
-export const InviteUser = (boardId, payload) =>{
-    API({
-        method: 'post',
-        url:`/boards/${boardId}/invites?payload=${payload}`,
-        headers: {'Authorization':`Bearer ${localStorage.getItem('AUTH_TOKEN')}`}
-    })
-}
-
 export const addColumn = (title, id) => (dispatch) =>{
     API({
         method: 'post',
@@ -87,7 +79,7 @@ export const addTask = (boardId, id, title, index) => (dispatch) =>{
         url:`/boards/${boardId}/columns/${id}/cards`,
         headers: {'Authorization':`Bearer ${localStorage.getItem('AUTH_TOKEN')}`},
         data:{"title": title}
-    }).then(response => dispatch(setAddTask(response.data, index))) //dispatch(setAddTask(response, index))
+    }).then(response => dispatch(setAddTask(response.data, index)))
 }
 const setAddTask = (card, index) =>({
     type: ADD_CARD,

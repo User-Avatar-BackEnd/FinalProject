@@ -7,8 +7,6 @@ import Modal from './Modal/Modal';
 const AddMembers = ({members}) =>{
     const [isShow, setIsShow] = useState(false);
 
-    useEffect(() => console.log(members),[members])
-
     const showModal = () => {
         setIsShow(true);
     }
