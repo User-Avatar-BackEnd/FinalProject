@@ -1,0 +1,146 @@
+.window {
+  background-color: rgba(0, 0, 0, .50);
+  display: flex;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  align-items: flex-start;
+  z-index: 10;
+}
+
+.BoardModal {
+  z-index: 10;
+  margin: 100px auto;
+  padding: 15px;
+  position: relative;
+  min-width: 500px;
+  max-width: 600px;
+  min-height: 200px;
+
+  background-color: #f4f5f7;
+  border-radius: 10px;
+  overflow: hidden;
+
+  h3 {
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 20px;
+    font-size: 24px;
+  }
+}
+
+
+.close {
+  position: absolute;
+  right: 12px;
+  top: 20px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.3;
+
+
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+
+  &:before, &:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 20px;
+    width: 2px;
+    background-color: #333;
+  }
+
+  &:before {
+    transform: rotate(45deg);
+  }
+
+  &:after {
+    transform: rotate(-45deg);
+  }
+}
+
+.members {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.user{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 120px;
+  margin: 20px 0;
+}
+
+.dis{
+  opacity: 0.6;
+}
+
+.findLogin{
+  margin-top: 20px;
+  width: 80%;
+  font-size: 16px;
+  float: left;
+}
+
+.findMail{
+  input{
+    font-size: 16px;
+    height: 33px;
+    background-color: #ffffff;
+    width: 79%;
+  }
+}
+
+.toogle{
+  display: flex;
+  justify-content: center;
+  button{
+    margin: 5px;
+    width: auto;
+    height: 32px;
+    font-weight: bold;
+    font-size: 18px;
+    outline: none;
+    color: #000000;
+    border: none;
+    padding: 10px;
+    background-color: #61d3db;
+  }
+  .right{
+    border-radius: 5% 40% 5% 5%;
+    cursor: pointer;
+  }
+  .left{
+    border-radius: 40% 5% 5% 5%;
+    cursor: pointer;
+  }
+}
+
+.invite{
+  margin-left: 20px;
+  margin-top: 23px;
+  width: 70px;
+  height: 30px;
+  font-weight: bold;
+  font-size: 18px;
+  outline: none;
+  color: #ffffff;
+  border: 2px solid #075e91;
+  background-color: #11addd;
+
+  &:hover {
+    background-color: #67c8ee;
+    cursor: pointer;
+  }
+}

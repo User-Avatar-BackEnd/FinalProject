@@ -5,6 +5,7 @@ import style from './Board.module.scss';
 import Column from '../Column/Column';
 import Add from '../Add/Add';
 import {addColumn, getBoard, setShowHidden} from '../../../store/ducks/duckTrello';
+import AddMembers from './AddMembers/AddMembers';
 
 const Board = ({title, columns, showHidden}) =>{
   const dispatch = useDispatch();
@@ -31,14 +32,16 @@ const Board = ({title, columns, showHidden}) =>{
   if(columns){
     const orderedColumns = columns.sort((a, b) => a.order - b.order);
     return (
-      <React.Fragment>
+      <div>
         <div className ={style.fixed}>
-          <div>
-            <h1 className ={style.boardTitle}>{title}</h1>
-            <span onClick ={back} className ={style.back}>&#60; Back</span>
-            <div className ={style.show}>Show hidden? <input onChange ={changeHidden} type="checkbox"/></div>
+          <div className ={style.wrap}>
+            <div>
+              <h1 className ={style.boardTitle}>{title}</h1>
+              <span onClick ={back} className ={style.back}>&#60; Back</span>
+              <div className ={style.show}>Show hidden? <input onChange ={changeHidden} type="checkbox"/></div>
+            </div>
+            <AddMembers />
           </div>
-          <div>Add members</div>
         </div>
         
         <div className ={style.board}>
@@ -46,7 +49,7 @@ const Board = ({title, columns, showHidden}) =>{
           <Add add ={addNewColumn}/>
           <div style={{minWidth:"40px",visibility: "hidden"}} >.</div>
         </div>
-      </React.Fragment>
+      </div>
     );
   } else{
     return <div>Load...</div>

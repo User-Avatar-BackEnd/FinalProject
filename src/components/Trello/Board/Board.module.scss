@@ -3,9 +3,13 @@ body{
 }
 
 .fixed{
-    width: 90vw;
+    width: 1vw;
     position: sticky;
     left: 60px;
+}
+
+.wrap{
+    min-width: 1500px;
     display: flex;
     justify-content: space-between;
 }
@@ -17,6 +21,7 @@ body{
 }
 
 .back{
+    min-width: 100px;
     font-size: 19px;
     font-weight: bold;
     cursor: pointer;

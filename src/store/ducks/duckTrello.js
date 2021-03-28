@@ -11,10 +11,12 @@ const ADD_CARD = 'add_card';
 const DELETE_CARD = 'delete_card';
 const CHANGE_CARD = 'change_card';
 const SHOW_HIDDEN = 'show_hidden';
+const GET_USERS = 'get_users';
 
 const initialState = {
     title: '',
     columns: [],
+    users: null,
     showHidden: false
 };
 
@@ -29,11 +31,29 @@ export const getBoard = (id) => (dispatch) =>{
         url:`/boards/${id}`,
         headers: {'Authorization':`Bearer ${localStorage.getItem('AUTH_TOKEN')}`}
     }).then(response => dispatch(setBoard(response.data)))
+
+    API({
+        method: 'get',
+        url:`/boards/${id}/invites/find_person?query=`,
+        headers: {'Authorization':`Bearer ${localStorage.getItem('AUTH_TOKEN')}`}
+    }).then(response => dispatch(setUsers(response.data)))
 }
 const setBoard = (board) =>({
     type: GET_BOARD,
     payload: board,
 })
+const setUsers = (users) =>({
+    type: GET_USERS,
+    payload: users,
+})
+
+export const InviteUser = (boardId, payload) =>{
+    API({
+        method: 'post',
+        url:`/boards/${boardId}/invites?payload=${payload}`,
+        headers: {'Authorization':`Bearer ${localStorage.getItem('AUTH_TOKEN')}`}
+    })
+}
 
 export const addColumn = (title, id) => (dispatch) =>{
     API({
@@ -197,6 +217,10 @@ export const reducerTrello = (state =initialState, action) => {
         case SHOW_HIDDEN:
             state.showHidden = action.payload;
             return{...state}
+        case GET_USERS:
+            state.users = action.payload;
+            state.users = [...state.users];
+            return {...state}
         default: return state
     }
 }
