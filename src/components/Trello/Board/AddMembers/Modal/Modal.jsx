@@ -54,7 +54,7 @@ const Modal = ({close, members, users}) => {
                 <button className ={style.invite} onClick ={InviteByMail}>Invite</button></div>}
                 <h3>Members</h3>
                 <div className={style.members}>
-                        {members.map((item) =><div className ={style.user} key ={item.id}><UserIcon type ={"header"} rank ={item.rank} />
+                        {members.map((item) =><div className ={style.user} key ={item.id}><UserIcon type ={"small"} rank ={item.rank} />
                         <span>{item.login.length >= 12 ? item.login.substr(0,12) + '...' : item.login}</span>
                     </div>)}
                 </div>

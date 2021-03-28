@@ -22,7 +22,7 @@ const AddMembers = ({members}) =>{
                 if(i<5){
                     return(
                         <div key ={item.id} className ={style.ico}>
-                        <UserIcon type ={"header"} rank ={item.rank} />
+                        <UserIcon type ={"small"} rank ={item.rank} />
                     </div>)
                 }})}
             <div className ={style.add}><img width ="40px" src="../../images/add.svg" alt="add"/></div>
