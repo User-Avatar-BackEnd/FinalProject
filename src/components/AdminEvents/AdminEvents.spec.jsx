@@ -1,14 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import UserNotifications from './UserNotifications';
+import AdminEvents from './AdminEvents';
 
 describe('AdminEvents component', () => {
 
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<UserNotifications />);
+    wrapper = shallow(<AdminEvents />);
   });
 
   afterEach(() => {
