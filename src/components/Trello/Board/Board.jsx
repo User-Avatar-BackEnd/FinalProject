@@ -6,6 +6,7 @@ import Column from '../Column/Column';
 import Add from '../Add/Add';
 import {addColumn, getBoard, setShowHidden} from '../../../store/ducks/duckTrello';
 import AddMembers from './AddMembers/AddMembers';
+import API from '../../../config/API';
 
 const Board = ({title, columns, showHidden}) =>{
   const dispatch = useDispatch();
@@ -14,6 +15,45 @@ const Board = ({title, columns, showHidden}) =>{
     const history = useHistory()
 
     useEffect(() => dispatch(getBoard(id)), []);
+
+  useEffect(() => {
+    let isCancelled = false
+
+    async function subscribe(ticks) {
+      console.log('tick')
+      API({
+        method: 'get',
+        url:`/boards/${id}/changes/?ticks=${ticks}`,
+        headers: {'Authorization':`Bearer ${localStorage.getItem('AUTH_TOKEN')}`}
+      })
+        .then(async response => {
+          if (!isCancelled) {
+            if (response.status === 502) {
+
+              await subscribe();
+            } else if (response.status !== 200) {
+              console.log('error')
+
+              await new Promise(resolve => setTimeout(resolve, 10000));
+              await subscribe(null);
+            } else {
+              console.log(response);
+
+              if(response.data.changed) {
+                dispatch(getBoard(id))
+              }
+
+              await new Promise(resolve => setTimeout(resolve, 10000));
+              await subscribe(response.data.ticks);
+            }
+          }
+        })
+    }
+
+    subscribe(null);
+
+    return () => isCancelled = true;
+  }, [])
 
     const addNewColumn = (title) => {
         if (title.trim().length) {
