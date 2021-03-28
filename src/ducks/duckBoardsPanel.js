@@ -1,4 +1,4 @@
-import API from '../../config/API';
+import API from '../config/API';
 
 const initialState = {
     boards:[]

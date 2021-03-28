@@ -1,27 +1,9 @@
-import API from '../../config/API';
-
-const GET_BOARD = 'get_board';
-const DROP_CARD = 'drop_card';
-const DRAG_CARD = 'drag_card';
-const ADD_COLUMN = 'add_column';
-const DELETE_COLUMN = 'delete_column';
-const CHANGE_TITLE = 'change_title_column';
-const CHANGE_ORDER = 'change_order_column';
-const ADD_CARD = 'add_card';
-const DELETE_CARD = 'delete_card';
-const CHANGE_CARD = 'change_card';
-const SHOW_HIDDEN = 'show_hidden';
-const GET_USERS = 'get_users';
+import API from '../config/API'
 
 const initialState = {
-    board: {},
-    users: null,
+    title: '',
+    columns: []
 };
-
-export const setShowHidden = (bool) =>({
-    type: SHOW_HIDDEN,
-    payload: bool,
-})
 
 export const getBoard = (id) => (dispatch) =>{
     API({
@@ -29,21 +11,10 @@ export const getBoard = (id) => (dispatch) =>{
         url:`/boards/${id}`,
         headers: {'Authorization':`Bearer ${localStorage.getItem('AUTH_TOKEN')}`}
     }).then(response => dispatch(setBoard(response.data)))
-
-    API({
-        method: 'get',
-        url:`/boards/${id}/invites/find_person?query=`,
-        headers: {'Authorization':`Bearer ${localStorage.getItem('AUTH_TOKEN')}`}
-    }).then(response => dispatch(setUsers(response.data)))
-    
 }
 const setBoard = (board) =>({
-    type: GET_BOARD,
+    type: 'get_board',
     payload: board,
-})
-const setUsers = (users) =>({
-    type: GET_USERS,
-    payload: users,
 })
 
 export const addColumn = (title, id) => (dispatch) =>{
@@ -55,7 +26,7 @@ export const addColumn = (title, id) => (dispatch) =>{
     }).then(response =>dispatch(setColumn(response.data)) )
 }
 const setColumn = (col) =>({
-    type: ADD_COLUMN,
+    type: 'add_column',
     payload: col
 })
 
@@ -68,7 +39,7 @@ export const changeColumnOrder = (boardId, id,  index, order) => (dispatch) =>{
     })
 }
 const setChangeColumnOrder = (index, order) =>({
-    type: CHANGE_ORDER,
+    type: 'change_order_column',
     index: index,
     order: order
 })
@@ -79,11 +50,11 @@ export const addTask = (boardId, id, title, index) => (dispatch) =>{
         url:`/boards/${boardId}/columns/${id}/cards`,
         headers: {'Authorization':`Bearer ${localStorage.getItem('AUTH_TOKEN')}`},
         data:{"title": title}
-    }).then(response => dispatch(setAddTask(response.data, index)))
+    }).then(response => dispatch(setAddTask(response.data, index))) //dispatch(setAddTask(response, index))
 }
-const setAddTask = (card, index) =>({
-    type: ADD_CARD,
-    payload: card,
+const setAddTask = (task, index) =>({
+    type: 'add_task',
+    payload: task,
     index: index
 })
 
@@ -96,7 +67,7 @@ export const deleteColumn = (boardId, index, id) => (dispatch) =>{
     })
 }
 const setDeleteColumn = (index) =>({
-    type: DELETE_COLUMN,
+    type: 'delete_column',
     payload: index
 })
 
@@ -110,7 +81,7 @@ export const changeTitleColumn = (boardId, index, id,title) => (dispatch) =>{
     })
 }
 const setChangeTitleColumn =(title,index) =>({
-    type: CHANGE_TITLE,
+    type: 'change_title_column',
     payload: title,
     index: index
 })
@@ -124,13 +95,13 @@ export const deleteCard = (boardId, cardId, columnId, index) => (dispatch) =>{
     })
 }
 export const setdeleteCard = (column,index) =>({
-    type: DELETE_CARD,
+    type: 'delete_task',
     column: column,
     payload: index
 })
 
 export const draggedCard =(card) =>({
-    type: DRAG_CARD,
+    type: 'drag_task',
     payload: card
 })
 
@@ -144,14 +115,15 @@ export const  dropCard  = (boardId, cardId, columnId, index, card) => (dispatch)
         data: card
     })
 }
-export const setdropCard = (card,index) =>({
-    type: DROP_CARD,
-    payload: card,
+const setdropCard = (task,index) =>({
+    type: 'drop_task',
+    payload: task,
     index: index
 })
 
 export const changeCard = (boardId, cardId, column, index, card) => (dispatch) =>{
     dispatch(setchangeCard(card, column, index))
+    console.log(card)
     API({
         method: 'put',
         url:`/boards/${boardId}/cards/${cardId}`,
@@ -160,7 +132,7 @@ export const changeCard = (boardId, cardId, column, index, card) => (dispatch) =
     })
 }
 const setchangeCard = (card, column, index) =>({
-    type: CHANGE_CARD,
+    type: 'change_task',
     column: column,
     index: index,
     payload: card
@@ -168,50 +140,43 @@ const setchangeCard = (card, column, index) =>({
 
 export const reducerTrello = (state =initialState, action) => {
     switch(action.type){
-        case GET_BOARD:
-            state.board = action.payload;
+        case 'get_board':
+            state = action.payload;
             return {...state}
-        case DROP_CARD:
-            state.board.columns[action.index].cards.push(action.payload)
-            state.board.columns=[...state.board.columns]
+        case 'drop_task':
+            state.columns[action.index].cards.push(action.payload)
+            state.columns=[...state.columns]
             return {...state}
-        case DRAG_CARD:
-            state.board.dropedTask = action.payload
+        case 'drag_task':
+            state.dropedTask = action.payload
             return{...state}
-        case ADD_COLUMN: 
-            state.board.columns=[...state.board.columns, action.payload]
+        case 'add_column': 
+            state.columns=[...state.columns, action.payload]
             return {...state}
-        case CHANGE_TITLE:
-            state.board.columns[action.index].title = action.payload
-            state.board.columns=[...state.board.columns]
+        case 'change_title_column':
+            state.columns[action.index].title = action.payload
+            state.columns=[...state.columns]
             return {...state}
-        case CHANGE_ORDER:
-            state.board.columns[action.index].order = action.order
-            state.board.columns=[...state.board.columns]
+        case 'change_order_column':
+            state.columns[action.index].order = action.order
+            state.columns=[...state.columns]
             return {...state}
-        case ADD_CARD: 
-            state.board.columns[action.index].cards.push(action.payload)
-            state.board.columns=[...state.board.columns]
+        case 'add_task': 
+            state.columns[action.index].cards.push(action.payload)
+            state.columns=[...state.columns]
             return {...state}
-        case DELETE_CARD:
-            state.board.columns[action.column].cards.splice(action.payload,1);
-            state.board.columns=[...state.board.columns]
+        case 'delete_task':
+            state.columns[action.column].cards.splice(action.payload,1);
+            state.columns=[...state.columns]
             return{...state}
-        case CHANGE_CARD:
-            state.board.columns[action.column].cards[action.index] = action.payload;
-            state.board.columns=[...state.board.columns]
+        case 'change_task':
+            state.columns[action.column].cards[action.index] = action.payload;
+            state.columns=[...state.columns]
             return{...state}
-        case DELETE_COLUMN:
-            state.board.columns.splice(action.payload,1);
-            state.board.columns=[...state.board.columns]
+        case 'delete_column':
+            state.columns.splice(action.payload,1);
+            state.columns=[...state.columns]
             return{...state}
-        case SHOW_HIDDEN:
-            state.showHidden = action.payload;
-            return{...state}
-        case GET_USERS:
-            state.users = action.payload;
-            state.users = [...state.users];
-            return {...state}
         default: return state
     }
 }

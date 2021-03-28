@@ -1,11 +1,10 @@
-import React,{useState, useEffect, useRef} from "react";
-import {useDispatch} from 'react-redux';
+import React from "react";
 import style from './DeleteModal.module.scss';
 
-const DeleteModal = ({close, del}) => {
+const DeleteModal = ({close, del, id, login}) => {
     
     const Del = () =>{
-        del();
+        del(id);
         close();
     }
 
@@ -13,16 +12,11 @@ const DeleteModal = ({close, del}) => {
         close();
     }
 
-    const preventDef = (e) =>{
-        e.stopPropagation();
-        e.preventDefault();
-    }
-
     return (
-        <div onClick ={preventDef} className={style.window}>
+        <div className={style.window}>
             <div className={style.BoardModal}>
                 <span className={style.close} onClick={Close}/>
-                {<h3>Delete board?</h3>}
+                {<h3>Delete {login} from members?</h3>}
                 <div className={style.title}>
                     <button className={style.yes} onClick ={Del}>Yes</button>
                     <button className={style.no} onClick ={Close}>No</button>

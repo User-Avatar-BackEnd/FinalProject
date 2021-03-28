@@ -1,0 +1,102 @@
+.window {
+  display: flex;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  align-items: flex-start;
+  z-index: 10;
+}
+
+.BoardModal {
+  margin: 100px auto;
+  padding: 15px;
+  position: relative;
+
+  min-width: 700px;
+  min-height: 200px;
+
+  background-color: #c6d5f3;
+  border-radius: 10px;
+  overflow: hidden;
+
+  h3 {
+    margin-top: 4px;
+    margin-left: 20px;
+    font-size: 24px;
+  }
+}
+
+
+.close {
+  position: absolute;
+  right: 12px;
+  top: 20px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.3;
+
+
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+
+  &:before, &:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 20px;
+    width: 2px;
+    background-color: #333;
+  }
+
+  &:before {
+    transform: rotate(45deg);
+  }
+
+  &:after {
+    transform: rotate(-45deg);
+  }
+}
+
+.title {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 80px;
+
+  button{
+    width: 70px;
+    height: 30px;
+    font-weight: bold;
+    font-size: 20px;
+    outline: none;
+    color: #ffffff;
+  }
+
+  .yes{
+    border: 2px solid #129107;
+    background-color: #11dd1b;
+
+    &:hover {
+      background-color: #67ee6e;
+      cursor: pointer;
+    }
+  }
+
+  .no{
+    border: 2px solid #910707;
+    background-color: #dd1111;
+
+    &:hover {
+      background-color: #ee6767;
+      cursor: pointer;
+    }
+  }
+
+}
