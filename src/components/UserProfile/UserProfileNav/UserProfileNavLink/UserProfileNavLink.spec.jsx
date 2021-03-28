@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import UserProfileNavLink from './UserProfileNavLink';
 
-describe('UserNotifications component', () => {
+describe('AdminEvents component', () => {
 
   let wrapper;
 
