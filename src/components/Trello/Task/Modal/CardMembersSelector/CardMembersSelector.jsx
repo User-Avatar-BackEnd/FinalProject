@@ -10,7 +10,7 @@ const CardMembersSelector = ({changeResponsible, responsibleId, members}) => {
 
     return (
         <div className={style.CardMemberSelector}>
-            <h3>Members:</h3>
+            <h3>Responsible:</h3>
             <select defaultValue ={responsibleId} onChange ={handleChange} name="members">
                 <option value={null} style={{display:"none"}}>None</option>
                 {members.map((member) => <option key ={member.id} value={member.id}>{member.login}</option>)}

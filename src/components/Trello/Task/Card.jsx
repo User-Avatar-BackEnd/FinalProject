@@ -6,8 +6,9 @@ import {draggedCard} from '../../../store/ducks/duckTrello';
 import CardDetailComponent from "./Modal/CardDetailModal/CardDetailModal";
 import {CommentsModal} from "../Comments/CommentsModal/CommentsModal";
 import {clearComments} from "../../../store/ducks/duckComments";
+import UserIcon from '../../UserIcon/UserIcon';
 
-const Card = ({card, boardId, index, columnIndex, columnId, draggedCard}) =>{
+const Card = ({card, boardId, index, columnIndex, columnId, draggedCard, members}) =>{
     const [isShow, setIsShow] = useState(false)
     const [showComments, setShowComments] = useState(false)
     const dispatch = useDispatch()
@@ -39,7 +40,7 @@ const Card = ({card, boardId, index, columnIndex, columnId, draggedCard}) =>{
     }
 
     const responsible = card.responsibleId ? 
-                        <img width ="32px"  src="../../images/avatar.svg" alt="avatar"/> :
+                        <UserIcon type ={"smallest"} rank ={members.find((item)=> card.responsibleId == item.id).rank} /> :
                         <img width ="26px" src="../../images/add.svg" alt="add"/>;
 
     return (
@@ -48,7 +49,8 @@ const Card = ({card, boardId, index, columnIndex, columnId, draggedCard}) =>{
             <div className ={style.card}>{card.title}</div>
             <span className={style.priority} onClick={showDetailModal}>{priority[card.priority]}</span>
             <div className ={style.items}>
-            {isShow ? <CardDetailComponent columnId ={columnId} boardId ={boardId} card={card} index ={index} columnIndex ={columnIndex} onClose={onCloseDetailModal} /> : null}
+            {isShow ? <CardDetailComponent columnId ={columnId} boardId ={boardId} card={card} 
+            index ={index} columnIndex ={columnIndex} onClose={onCloseDetailModal} /> : null}
                 {showComments ? <CommentsModal onClose={closeComments} boardId={boardId} card={card}/> : null}
                 <span className={style.show} onClick={showDetailModal}>...</span>
                 <span className={style.comments} onClick={showCommentsModal}> {card.commentsCount} <img src="../../images/comment.svg" alt="comment"/></span>
