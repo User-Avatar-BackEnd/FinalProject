@@ -1,4 +1,22 @@
+.wrapper {
+
+}
+
+.history {
+  width: 1400px;
+  margin: 50px auto;
+  text-align: center;
+
+  hr {
+    border: none;
+    border-bottom: 1px solid #ffa500;
+  }
+}
+
 .UserPageInfo {
   display: flex;
   margin-top: 20px;
+}
+.container {
+  margin: 0 auto;
 }

@@ -4,6 +4,7 @@ import {Field, Form, Formik} from "formik";
 import styles from './UserBalance.module.scss'
 
 export const UserBalance = ({balance}) => {
+
     return (
         <div className={style.UserBalance}>
             <Formik

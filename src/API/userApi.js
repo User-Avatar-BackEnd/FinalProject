@@ -26,5 +26,6 @@ export const getHistory = (login) => {
 
 export default {
     getUsers,
-    updateRole
+    updateRole,
+    getHistory
 }
