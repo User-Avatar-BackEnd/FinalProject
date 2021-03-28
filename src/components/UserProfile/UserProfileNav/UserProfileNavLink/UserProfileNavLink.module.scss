@@ -11,12 +11,12 @@
   cursor: pointer;
   box-sizing: border-box;
 
-  &:hover {
-    background-color: darken(#fff, 10%);
+  & a {
+    display: block;
   }
 
-  &.active {
-    border-right: 4px solid orange;
+  &:hover {
+    background-color: darken(#fff, 10%);
   }
 
   & .icon {
@@ -24,4 +24,16 @@
     top: 0;
     left: 20px;
   }
+}
+
+.active {
+
+  & > div {
+    border-right: 4px solid orange;
+  }
+}
+
+a {
+  color: #000;
+  text-decoration: none;
 }

@@ -3,7 +3,7 @@ import UserProfileNavLink from './UserProfileNavLink/UserProfileNavLink';
 
 import styles from './UserProfileNav.module.scss';
 
-const UserProfileNav = ({ pages, activePage, changePage }) => {
+const UserProfileNav = ({ path, pages }) => {
 
   return (
     <div className={styles.UserProfileNav}>
@@ -12,10 +12,9 @@ const UserProfileNav = ({ pages, activePage, changePage }) => {
         return <UserProfileNavLink
           id={page.id}
           title={page.title}
+          url={`${path}${page.url}`}
           icon={page.icon}
-          active={page.id === activePage}
           key={page.id}
-          onClick={changePage}
         />
       })}
     </div>

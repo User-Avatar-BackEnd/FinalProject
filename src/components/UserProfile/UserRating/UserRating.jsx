@@ -34,6 +34,7 @@ const UserRating = () => {
 
   useEffect(() => {
     setLoading(true)
+    let isCancelled = false
 
     API({
       method: 'get',
@@ -43,14 +44,20 @@ const UserRating = () => {
       }
     })
       .then(response => {
-        setUsers(response.data)
+        if (!isCancelled) {
+          setUsers(response.data)
+        }
       })
       .catch(error => {
         console.log(error)
       })
       .finally(() => {
-        setLoading(false)
+        if (!isCancelled) {
+          setLoading(false)
+        }
       })
+
+    return () => isCancelled = true;
   },[])
 
   const topBoard = users.topUsers;
