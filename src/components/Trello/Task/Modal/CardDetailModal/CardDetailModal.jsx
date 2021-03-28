@@ -56,7 +56,7 @@ const CardDetailComponent = ({boardId, onClose, commentFocused, card, index, col
         setHidden(e.target.checked)
     }
 
-    const [column, setColumn] = useState(card.columnId)
+    const [column, setColumn] = useState(columnId)
     const changeColumn = (e) =>{
         setColumn(+e.target.value)
     }
@@ -100,6 +100,7 @@ const CardDetailComponent = ({boardId, onClose, commentFocused, card, index, col
         })
         dispatch(changeCard(boardId, changedCard.id, columnIndex, index, changedCard));
         if(column !== columnId){
+            console.log(column, columnId);
             removeCard(columnIndex, index);
             moveCard(changedCard, columns.findIndex((item) => column == item.id ));
         }
