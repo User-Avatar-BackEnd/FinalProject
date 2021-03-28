@@ -2,7 +2,7 @@ import React from 'react'
 import Select from 'react-select'
 
 const DropDown = ({users, invite}) => {
-    const options = users.map((item) =>({value: item.id, label: item.login}))
+    const options = users ? users.map((item) =>({value: item.id, label: item.login})) : [];
 
     const select = (e) =>{
         invite(e.value)
