@@ -100,7 +100,6 @@ const CardDetailComponent = ({boardId, onClose, commentFocused, card, index, col
         })
         dispatch(changeCard(boardId, changedCard.id, columnIndex, index, changedCard));
         if(column !== columnId){
-            console.log(column, columnId);
             removeCard(columnIndex, index);
             moveCard(changedCard, columns.findIndex((item) => column == item.id ));
         }
