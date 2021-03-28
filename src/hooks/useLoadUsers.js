@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {getUsers} from "../API/userApi";
 
-export default (pageSize = 5, startPage = 1) => {
+export default (pageSize = 10, startPage = 1) => {
 
     const [page, setPage] = useState(startPage)
     const [isLoading, setLoading] = useState(false)

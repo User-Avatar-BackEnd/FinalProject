@@ -26,6 +26,12 @@ $shadowColor: #ffffff;
 
   }
 
+  &.user {
+    width: 15px;
+    height: 15px;
+    transition: box-shadow .2s;
+  }
+
 
   &.NPC {
     background: url('../../images/rankIcons/npc-icon.jpg') 50% 50%/cover;

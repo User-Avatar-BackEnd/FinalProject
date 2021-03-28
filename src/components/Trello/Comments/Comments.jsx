@@ -45,7 +45,7 @@ export const Comments = ({boardId, cardId}) => {
 
     return (
         <div className={style.Comments}>
-            {comments.map(comment => <div key={comment.id}>
+            {comments.sort((a, b) => b.createdAt - a.createdAt).map(comment => <div key={comment.id}>
                 <div className={style.user}>
                     <div className={style.icon}>
                         <UserIcon rank={members.get(comment.userId).rank} type={'header'}/>

@@ -1,10 +1,23 @@
-import React from "react";
+import React, {useState} from "react";
 import styles from './UserInformation.module.scss'
 import {Field, Form, Formik} from "formik";
+import {useParams} from 'react-router-dom'
+import useLoadedHistory from "../../../../hooks/useLoadedHistory";
+import useLoadUsers from "../../../../hooks/useLoadUsers";
+import _ from "lodash";
 
 export const UserInformation = ({data}) => {
-    const {email, login, role, invitesAmount} = data
+    const {email, role, invitesAmount} = data
+    // const [user, setUser] = useState([])
 
+    const {login} = useParams()
+
+    const {history} = useLoadedHistory(login)
+    const {users} = useLoadUsers()
+    console.log(JSON.stringify(history) + 'history')
+
+    // setUser(_.filter(users.users, (v) => _.includes(v.login, login)))
+    // console.log(user)
     return (
         <div className={styles.UserInformation}>
             <div className={styles.flip}>

@@ -6,6 +6,8 @@ import {UserList} from "./UserList/UserList";
 import NavBar from "../NavBar/NavBar";
 import useLoadUsers from "../../hooks/useLoadUsers";
 import {UserSearch} from "./UserList/UserSerach/UserSearch";
+import _ from "lodash";
+import Pagination from "react-js-pagination";
 
 const pages = [
     {id: 1, title: 'Users', icon: faUserTie},
@@ -15,9 +17,9 @@ const pages = [
 export const AdminPanel = () => {
     const [activePage, setActivePage] = useState(1)
 
-    const [filter, setFilter] = useState('')
-
     const {isLoading, users, page, setPage, error} = useLoadUsers()
+
+    const [filter, setFilter] = useState('')
 
     const onSearch = (user) => {
         setFilter(user)
@@ -29,11 +31,21 @@ export const AdminPanel = () => {
             {activePage === 1
                 ? <div className={style.container}>
                     <UserSearch onSearch={onSearch}/>
-                    <UserList filter={filter} users={users.filter(user => user.name.includes(filter))} page={page}
-                              onPageChanged={setPage}/>
+                    <UserList filter={filter}
+                              users={_.filter(users.users, (v) => _.includes(v.login, filter))}/>
+                    <div className={style.Pagination}>
+                        <Pagination
+                            activePage={page}
+                            itemsCountPerPage={10}
+                            totalItemsCount={users.totalPages}
+                            pageRangeDisplayed={5}
+                            onChange={setPage}/>
+                    </div>
                 </div>
                 : null
             }
         </div>
     )
 }
+//filter === '' ? users :
+//
