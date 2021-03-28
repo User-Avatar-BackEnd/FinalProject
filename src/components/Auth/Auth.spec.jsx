@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import Auth from './Auth';
 
-describe('UserNotifications component', () => {
+describe('AdminEvents component', () => {
 
   let wrapper;
 
