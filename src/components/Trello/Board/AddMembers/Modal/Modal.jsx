@@ -11,7 +11,7 @@ import DelModal from './DeleteModal/DeleteModal';
 import {getBoard} from '../../../../../ducks/duckTrello';
 
 const Modal = ({close, members, users}) => {
-    const [userName, setuserName] = useState(null);
+    const [userName, setUserName] = useState(null);
     const [mail, setMail] = useState(null);
     const [show, setShow] = useState(true);
 
@@ -83,12 +83,12 @@ const Modal = ({close, members, users}) => {
         <div  className={style.window}>
             <div className={style.BoardModal}>
                 <span className={style.close} onClick={Close}/>
-                <div className ={style.toogle}>
-                    <button onClick ={showLogin} className ={classNames(style.left,{[style.dis]: !show})}>Finnd by Login</button>
-                    <button onClick ={showMail} className ={classNames(style.right,{[style.dis]: show})}>Finnd by Mail</button>
+                <div className ={style.toggle}>
+                    <button onClick ={showLogin} className ={classNames(style.left,{[style.dis]: !show})}>Find by Login</button>
+                    <button onClick ={showMail} className ={classNames(style.right,{[style.dis]: show})}>Find by Mail</button>
                 </div>
                 {show && <div>
-                    <div className ={style.findLogin}><Dropdown invite ={setuserName} users ={users} /> </div>
+                    <div className ={style.findLogin}><Dropdown invite ={setUserName} users ={users} /> </div>
                     <button className ={style.invite} onClick ={InviteByUserName}>Invite</button>
                 </div>} 
                 {!show && <div className ={style.findMail}><input ref ={mailInput} placeholder ="Invite by mail" onChange ={changeMail} type="text"/> 

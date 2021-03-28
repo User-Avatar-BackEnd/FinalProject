@@ -33,7 +33,6 @@ const UserProfile = () => {
     currentScoreAmount: user.currentScoreAmount,
     nextLevelScore: user.nextLevelScore
   }
-
   return (
     <div className={styles.UserProfile}>
       <UserProfileNav path={path} pages={pages} />
