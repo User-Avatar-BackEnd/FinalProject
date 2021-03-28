@@ -135,9 +135,9 @@ import DelModal from './DeleteModal/DeleteModal';
 }
 
 const mapStateToProps = (state) => ({
-  columns: state.trello.columns,
-  dropedTask: state.trello.dropedTask,
-  showHidden: state.trello.showHidden
+  columns: state.trello.board.columns,
+  dropedTask: state.trello.board.dropedTask,
+  showHidden: state.trello.board.showHidden
 });
 
 const mapDispatchToProps = (dispatch) =>({

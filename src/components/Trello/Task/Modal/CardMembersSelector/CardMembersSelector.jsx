@@ -20,7 +20,7 @@ const CardMembersSelector = ({changeResponsible, responsibleId, members}) => {
 }
 
 const mapStateToProps = (state) =>({
-    members: state.trello.members
+    members: state.board.trello.members
 })
   
 export default connect(mapStateToProps)(CardMembersSelector);

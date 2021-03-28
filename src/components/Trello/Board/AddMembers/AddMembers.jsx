@@ -1,11 +1,13 @@
 import {connect} from 'react-redux';
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import style from './AddMembers.module.scss';
 import UserIcon from '../../../UserIcon/UserIcon';
 import Modal from './Modal/Modal';
 
 const AddMembers = ({members}) =>{
     const [isShow, setIsShow] = useState(false);
+
+    useEffect(() => console.log(members),[members])
 
     const showModal = () => {
         setIsShow(true);
@@ -31,7 +33,7 @@ const AddMembers = ({members}) =>{
 }
 
 const mapStateToProps = (state) => ({
-    members: state.trello.members
+    members: state.trello.board.members
 });
 
 export default connect(mapStateToProps)(AddMembers);

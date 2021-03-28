@@ -14,10 +14,8 @@ const SHOW_HIDDEN = 'show_hidden';
 const GET_USERS = 'get_users';
 
 const initialState = {
-    title: '',
-    columns: [],
+    board: {},
     users: null,
-    showHidden: false
 };
 
 export const setShowHidden = (bool) =>({
@@ -37,6 +35,7 @@ export const getBoard = (id) => (dispatch) =>{
         url:`/boards/${id}/invites/find_person?query=`,
         headers: {'Authorization':`Bearer ${localStorage.getItem('AUTH_TOKEN')}`}
     }).then(response => dispatch(setUsers(response.data)))
+    
 }
 const setBoard = (board) =>({
     type: GET_BOARD,
@@ -178,41 +177,41 @@ const setchangeCard = (card, column, index) =>({
 export const reducerTrello = (state =initialState, action) => {
     switch(action.type){
         case GET_BOARD:
-            state = action.payload;
+            state.board = action.payload;
             return {...state}
         case DROP_CARD:
-            state.columns[action.index].cards.push(action.payload)
-            state.columns=[...state.columns]
+            state.board.columns[action.index].cards.push(action.payload)
+            state.board.columns=[...state.board.columns]
             return {...state}
         case DRAG_CARD:
-            state.dropedTask = action.payload
+            state.board.dropedTask = action.payload
             return{...state}
         case ADD_COLUMN: 
-            state.columns=[...state.columns, action.payload]
+            state.board.columns=[...state.board.columns, action.payload]
             return {...state}
         case CHANGE_TITLE:
-            state.columns[action.index].title = action.payload
-            state.columns=[...state.columns]
+            state.board.columns[action.index].title = action.payload
+            state.board.columns=[...state.board.columns]
             return {...state}
         case CHANGE_ORDER:
-            state.columns[action.index].order = action.order
-            state.columns=[...state.columns]
+            state.board.columns[action.index].order = action.order
+            state.board.columns=[...state.board.columns]
             return {...state}
         case ADD_CARD: 
-            state.columns[action.index].cards.push(action.payload)
-            state.columns=[...state.columns]
+            state.board.columns[action.index].cards.push(action.payload)
+            state.board.columns=[...state.board.columns]
             return {...state}
         case DELETE_CARD:
-            state.columns[action.column].cards.splice(action.payload,1);
-            state.columns=[...state.columns]
+            state.board.columns[action.column].cards.splice(action.payload,1);
+            state.board.columns=[...state.board.columns]
             return{...state}
         case CHANGE_CARD:
-            state.columns[action.column].cards[action.index] = action.payload;
-            state.columns=[...state.columns]
+            state.board.columns[action.column].cards[action.index] = action.payload;
+            state.board.columns=[...state.board.columns]
             return{...state}
         case DELETE_COLUMN:
-            state.columns.splice(action.payload,1);
-            state.columns=[...state.columns]
+            state.board.columns.splice(action.payload,1);
+            state.board.columns=[...state.board.columns]
             return{...state}
         case SHOW_HIDDEN:
             state.showHidden = action.payload;

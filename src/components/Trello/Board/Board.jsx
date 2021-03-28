@@ -58,8 +58,8 @@ const Board = ({title, columns, showHidden}) =>{
 }
 
 const mapStateToProps = (state) => ({
-    title: state.trello.title,
-    columns: state.trello.columns
+    title: state.trello.board.title,
+    columns: state.trello.board.columns
 });
 
 const mapDispatchToProps = (dispatch) =>({

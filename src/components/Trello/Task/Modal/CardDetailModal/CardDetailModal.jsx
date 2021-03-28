@@ -125,7 +125,7 @@ const CardDetailComponent = ({boardId, onClose, commentFocused, card, index, col
                     : <div className={style.textareaChange}>
                         <textarea onChange ={changePre} placeholder='add description...' defaultValue ={description} ref={textInput} />
                         <div className={style.editControls}>
-                            <button onClick={changeDescription}>Save</button>
+                            <button className ={style.save} onClick={changeDescription}>Save</button>
                             <a className={style.close} title='close' onClick={closeDescription}/>
                         </div>
                     </div>
@@ -147,7 +147,7 @@ const CardDetailComponent = ({boardId, onClose, commentFocused, card, index, col
 }
 
 const mapStateToProps = (state) => ({
-    columns: state.trello.columns
+    columns: state.trello.board.columns
 });
 
 const mapDispatchToProps = (dispatch) =>({
