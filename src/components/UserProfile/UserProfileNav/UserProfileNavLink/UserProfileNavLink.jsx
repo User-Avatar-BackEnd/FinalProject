@@ -1,23 +1,21 @@
 import React from 'react';
-import classNames from 'classnames';
+import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import styles from './UserProfileNavLink.module.scss';
 
-const UserProfileNavLink = ({ id, title, icon, active, onClick }) => {
-  const classes = classNames(styles.UserProfileNavLink, active ? styles.active : '')
-
-  const selectPage = () => {
-    onClick(id)
-  }
+const UserProfileNavLink = ({ id, title, url, icon }) => {
 
   return (
-    <div className={classes} onClick={selectPage}>
-      <div className={styles.icon}>
-        <FontAwesomeIcon icon={icon} />
+    <NavLink to={url} activeClassName={styles.active} exact={true} key={id}>
+      <div className={styles.UserProfileNavLink}>
+        <div className={styles.icon}>
+          <FontAwesomeIcon icon={icon} />
+        </div>
+        <span>{title}</span>
       </div>
-      <span>{title}</span>
-    </div>
+    </NavLink>
+
   );
 
 }

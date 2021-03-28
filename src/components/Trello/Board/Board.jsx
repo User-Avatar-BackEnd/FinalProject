@@ -10,18 +10,18 @@ import AddMembers from './AddMembers/AddMembers';
 const Board = ({title, columns, showHidden}) =>{
   const dispatch = useDispatch();
 
-  const {id} = useParams();
-  const history = useHistory()
+    const {id} = useParams();
+    const history = useHistory()
 
-  useEffect(()=>dispatch(getBoard(id)),[]);
+    useEffect(() => dispatch(getBoard(id)), []);
 
-  const addNewColumn = (title) =>{
-    if(title.trim().length){
-      dispatch(addColumn(title, id))
+    const addNewColumn = (title) => {
+        if (title.trim().length) {
+            dispatch(addColumn(title, id))
+        }
     }
-  }
 
-  const back = () =>{
+    const back = () => {
     history.goBack();
   }
 
@@ -58,8 +58,8 @@ const Board = ({title, columns, showHidden}) =>{
 }
 
 const mapStateToProps = (state) => ({
-  title: state.trello.title,
-  columns: state.trello.columns
+    title: state.trello.title,
+    columns: state.trello.columns
 });
 
 const mapDispatchToProps = (dispatch) =>({

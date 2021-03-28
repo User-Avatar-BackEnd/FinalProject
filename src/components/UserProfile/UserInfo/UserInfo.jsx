@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import classNames from 'classnames';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import { useToasts } from 'react-toast-notifications';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import ErrorMessage from '../../ErrorMessage/ErrorMessage';
@@ -55,6 +56,7 @@ const UserInfo = ({ data }) => {
   })
   const [frontServerError, setFrontServerError] = useState('')
   const [backServerError, setBackServerError] = useState('')
+  const { addToast } = useToasts();
 
   const token = localStorage.getItem('AUTH_TOKEN')
 
@@ -119,6 +121,7 @@ const UserInfo = ({ data }) => {
                     .then(() => {
                       dispatch(changeUsername(data.login))
                       toggleEditUsername()
+                      addToast('Username changed successfully!', {appearance: 'success'});
                     })
                     .catch(error => {
                       setFrontServerError(
@@ -194,6 +197,7 @@ const UserInfo = ({ data }) => {
                   .then((response) => {
                     console.log(response)
                     toggleRotate()
+                    addToast('Password changed successfully!', {appearance: 'success'});
                   })
                   .catch(error => {
                     setBackServerError(
@@ -202,7 +206,7 @@ const UserInfo = ({ data }) => {
                   })
               }}
             >
-              {({ isSubmitting, errors, touched }) => (
+              {({ errors, touched }) => (
                 <Form onChange={clearBackError}>
                   <div className={styles.inputBlock}>
                     <label htmlFor='newPassword'>New password</label>
@@ -237,7 +241,7 @@ const UserInfo = ({ data }) => {
                       type={'input'}
                     />
                   </div>
-                  <button type='submit' disabled={isSubmitting}>
+                  <button type='submit'>
                     Confirm
                   </button>
                 </Form>

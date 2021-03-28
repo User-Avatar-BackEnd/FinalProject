@@ -2,7 +2,6 @@ import React, {useEffect, useRef, useState} from "react";
 import {connect, useDispatch} from 'react-redux';
 import {deleteCard, setdeleteCard, changeCard, setdropCard} from '../../../../../store/ducks/duckTrello';
 import style from './CardDetailModal.module.scss'
-import {AddComments} from "../../../AddComments/AddComments";
 import {PrioritySelector} from "../PrioritySelector/PrioritySelector";
 import CardMembersSelector from "../CardMembersSelector/CardMembersSelector";
 

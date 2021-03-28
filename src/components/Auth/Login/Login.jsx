@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
+import { useToasts } from 'react-toast-notifications';
 import AuthInput from '../AuthInput/AuthInput';
 import ErrorMessage from '../../ErrorMessage/ErrorMessage';
 import API from '../../../config/API';
@@ -22,6 +23,7 @@ const LoginSchema = Yup.object().shape({
 
 const Login = ({ onLogin }) => {
   const [serverError, setServerError] = useState('')
+  const { addToast } = useToasts();
 
   const clearError = () => {
     setServerError('')
@@ -41,6 +43,7 @@ const Login = ({ onLogin }) => {
 
           API.post('/auth/login', data)
             .then(response => {
+              addToast('Login successful!', {appearance: 'success'});
               onLogin(response.data)
             })
             .catch(error => {
@@ -54,7 +57,7 @@ const Login = ({ onLogin }) => {
           <Form onChange={clearError}>
             <AuthInput type='email' id='email' name='email' label='Email' placeholder='Email' required={true} autoComplete='off' />
             <AuthInput type='password' id='password' name='password' label='Password' placeholder='Password' required={true} />
-            <button type='submit' disabled={isSubmitting}>
+            <button type='submit'>
               Submit
             </button>
           </Form>
