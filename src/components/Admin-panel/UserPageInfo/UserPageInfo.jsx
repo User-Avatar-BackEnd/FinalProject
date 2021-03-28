@@ -22,7 +22,7 @@ export const UserPageInfo = () => {
                     <div className={style.UserPageInfo}>
                     <div className={style.container}>
                         <UserRank rank={el.rank}/>
-                        <UserBalance balance={el.score}/>
+                        <UserBalance balance={el.score} login={login}/>
                     </div>
                     <UserInformation role={el.role} login={login}/>)
                 </div>

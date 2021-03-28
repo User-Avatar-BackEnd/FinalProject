@@ -33,7 +33,7 @@ const Header = () => {
         </Link>
         <HeaderNotifications />
         {user.role === 'admin'
-          ? <Link to={'/admin'}>
+          ? <Link to={'/admin-panel'}>
             <div className={styles.adminIcon}>
               <FontAwesomeIcon icon={faUserShield}/>
             </div>

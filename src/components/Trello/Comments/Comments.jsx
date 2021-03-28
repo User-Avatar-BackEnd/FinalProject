@@ -17,6 +17,9 @@ export const Comments = ({boardId, cardId}) => {
 
     const members = useSelector(membersSelector)
 
+    console.log({members})
+    console.log({comments})
+
     useEffect(() => {
         dispatch(getComments(boardId, cardId))
     })

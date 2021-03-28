@@ -24,8 +24,18 @@ export const getHistory = (login) => {
     }).then(resp => resp.data)
 }
 
+export const changeBalance = (login, change) => {
+    console.log({change, login})
+    return  authorizedRequest.patch(`admin/balance/${login}`, undefined,{
+        params: {change},
+        'Content-Type': 'application/json',
+        headers: {"Authorization": `Bearer ${localStorage.getItem("AUTH_TOKEN")}`}
+    })
+}
+
 export default {
     getUsers,
     updateRole,
-    getHistory
+    getHistory,
+    changeBalance
 }

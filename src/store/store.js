@@ -3,10 +3,11 @@ import thunkMiddleware from "redux-thunk";
 import {reducerBoardsPanel} from './ducks/duckBoardsPanel';
 import {reducerTrello} from './ducks/duckTrello';
 
-const reducer = combineReducers({
-    panel: reducerBoardsPanel,
-    trello: reducerTrello
-})
+// const reducer = combineReducers({
+//     panel: reducerBoardsPanel,
+//     trello: reducerTrello,
+//
+// })
 
 const composeEnhancers =
     typeof window === 'object' &&
