@@ -2,6 +2,7 @@
   position: relative;
 
   & .notificationsIcon {
+    position: relative;
     font-size: 26px;
     line-height: 50px;
     cursor: pointer;
@@ -9,6 +10,26 @@
 
     &:hover {
       color: orange;
+
+      .notificationCounter {
+        background-color: #fff;
+        color: orange;
+      }
+    }
+
+    & .notificationCounter {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 10px;
+      left: 12px;
+      background-color: orange;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      font-size: 7px;
+      color: #fff;
     }
   }
 
@@ -37,6 +58,10 @@
       color: #000;
     }
 
+    & .placeholder {
+      text-align: center;
+    }
+
     & .notification {
       display: flex;
       flex-direction: column;
@@ -46,7 +71,7 @@
       background-color: #f3f3f3;
       margin: 10px auto;
       border-radius: 10px;
-      font-size: 12px;
+      font-size: 11px;
       padding: 3px;
       box-sizing: border-box;
       color: #000;
@@ -71,10 +96,10 @@
         }
 
         & .accept {
-          background-color: seagreen;
+          background-color: orange;
 
           &:hover {
-            background-color: darken(green, 5%);
+            background-color: darken(orange, 5%);
           }
         }
 

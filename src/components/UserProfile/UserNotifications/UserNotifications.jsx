@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { LoopCircleLoading } from 'react-loadingg';
 import { useToasts } from 'react-toast-notifications';
@@ -6,6 +6,7 @@ import {getNotifications, notificationResponse} from '../../../store/ducks/user/
 import selector from './UserNotifications.selector';
 
 import styles from './UserNotifications.module.scss';
+import UserIcon from '../../UserIcon/UserIcon';
 
 const UserNotifications = () => {
   const { notifications, loading } = useSelector(selector)
@@ -32,11 +33,12 @@ const UserNotifications = () => {
         ? <LoopCircleLoading color={'orange'} style={{position: 'relative', margin: '200px auto'}}/>
         : <>
           {notifications.length === 0
-            ? <h3>You have no notifications yet...</h3>
+            ? <div className={styles.placeholder}><h3>You have no notifications yet...</h3></div>
             : ''
           }
           {notifications.map(item => {
             return <div className={styles.notification} key={item.id}>
+              <UserIcon type={'small'} rank={item.inviter?.rank}/>
               <span><b>{item.inviter?.login}</b> invited you to the board <b>{item.board.title}</b></span>
               <div className={styles.controlButtons}>
                 <div className={styles.accept} data-id={item.id} onClick={acceptInvite}>
