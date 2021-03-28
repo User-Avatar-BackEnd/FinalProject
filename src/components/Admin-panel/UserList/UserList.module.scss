@@ -1,0 +1,31 @@
+.Users {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+
+  width: 750px;
+  height: 550px;
+  border-radius: 10px;
+  background-color: #f6f6f6;
+  box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+
+  .header {
+    display: flex;
+
+    height: 40px;
+    padding: 10px;
+    justify-content: flex-start;
+    border-bottom: 2px solid #d3d3d3;
+
+    span {
+      font-size: 14px;
+      font-weight: 600;
+
+      text-transform: uppercase;
+      width: 25%;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+  }
+}
+

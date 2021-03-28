@@ -17,6 +17,9 @@ export const Comments = ({boardId, cardId}) => {
 
     const members = useSelector(membersSelector)
 
+    console.log({members})
+    console.log({comments})
+
     useEffect(() => {
         dispatch(getComments(boardId, cardId))
     })
@@ -45,10 +48,10 @@ export const Comments = ({boardId, cardId}) => {
 
     return (
         <div className={style.Comments}>
-            {comments.map(comment => <div key={comment.id}>
+            {comments.sort((a, b) => b.createdAt - a.createdAt).map(comment => <div key={comment.id}>
                 <div className={style.user}>
                     <div className={style.icon}>
-                        <UserIcon rank={members.get(comment.userId).rank} type={'header'}/>
+                        <UserIcon rank={members.get(comment.userId).rank} type={'user'}/>
                     </div>
                     <span>{members.get(comment.userId).login}</span>
                     <span className={style.date}>{getDate(comment.createdAt)}</span>

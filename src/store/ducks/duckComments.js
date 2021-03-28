@@ -81,7 +81,7 @@ const reducerTaskComments = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                comments: [...state.comments, action.payload]
+                comments: [action.payload, ...state.comments]
             }
         case LOAD_COMMENTS:
             return {
