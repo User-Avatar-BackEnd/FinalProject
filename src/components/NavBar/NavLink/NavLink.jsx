@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './NavLink.module.scss';
 
 const NavLink = ({ id, title, icon, active, onClick }) => {
+
   const classes = classNames(styles.NavLink, active ? styles.active : '')
 
   const selectPage = () => {
