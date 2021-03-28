@@ -11,7 +11,7 @@ import selector from './HeaderNotifications.selector';
 
 import styles from './HeaderNotifications.module.scss';
 
-const HeaderNotifications = () => {
+const HeaderNotifications = ({ count }) => {
   const { notifications, loading } = useSelector(selector)
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
   const dispatch = useDispatch();
@@ -42,6 +42,9 @@ const HeaderNotifications = () => {
     <div className={styles.HeaderNotifications} ref={ref}>
       <div className={styles.notificationsIcon} onClick={toggleList}>
         <FontAwesomeIcon icon={faBell}/>
+        {count > 0 &&
+          <div className={styles.notificationCounter}><span>{count}</span></div>
+        }
       </div>
       {isComponentVisible &&
         <div className={styles.notificationsList}>
@@ -49,12 +52,12 @@ const HeaderNotifications = () => {
             ? <LoopCircleLoading color={'orange'} style={{position: 'relative', margin: '70px auto'}}/>
             : <>
               {notifications.length === 0
-                ? <h3>You have no notifications yet...</h3>
+                ? <div className={styles.placeholder}><h3>You have no notifications yet...</h3></div>
                 : ''
               }
               {notifications.slice(0, 3).map(item => {
                 return <div className={styles.notification} key={item.id}>
-                  <span>{item.inviter?.login} invited you to the board {item.board.title}</span>
+                  <span><b>{item.inviter?.login}</b> invited you to the board <b>{item.board.title}</b></span>
                   <div className={styles.controlButtons}>
                     <div className={styles.accept} data-id={item.id} onClick={acceptInvite}>
                       Accept

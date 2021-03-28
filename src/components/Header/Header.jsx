@@ -17,7 +17,7 @@ const Header = () => {
   return (
     <header className={styles.Header}>
       <Link to={'/'}>
-        <img src="../../images/mainLogo.png" alt="Logo" className={styles.logo} />
+        <div className={styles.logo} />
       </Link>
       {user.role && <div className={styles.profile}>
         <Link to={'/profile'}>
@@ -31,7 +31,7 @@ const Header = () => {
             nextLevelScore={user.nextLevelScore}
           />
         </Link>
-        <HeaderNotifications />
+        <HeaderNotifications count={user.invitesAmount} />
         {user.role === 'admin'
           ? <Link to={'/admin-panel'}>
             <div className={styles.adminIcon}>

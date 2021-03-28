@@ -9,6 +9,13 @@
   position: fixed;
   z-index: 3;
 
+  & .logo {
+    width: 200px;
+    height: 50px;
+    margin-left: 20px;
+    background: url('../../images/mainLogo.png') 50% 50%/cover;
+  }
+
   & a {
     text-decoration: none;
     color: #fff;
