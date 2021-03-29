@@ -4,7 +4,6 @@ export const apiComment = (cardId, boardId, text) => {
     return authorizedRequest.post(`boards/${boardId}/cards/${cardId}/comments`, {text},{
         headers: {"Authorization": `Bearer ${localStorage.getItem("AUTH_TOKEN")}`}
     }).then(resp => resp.data).then(data => {
-        console.log({data})
         return data
     })
 }
@@ -22,7 +21,6 @@ export const loadComments = (boardId, cardId) => {
 }
 
 export const editComment = (boardId, cardId, commentsId, text) => {
-    console.log({text})
     return authorizedRequest.patch(`boards/${boardId}/cards/${cardId}/comments/${commentsId}`, {text}, {
         headers: {"Authorization": `Bearer ${localStorage.getItem("AUTH_TOKEN")}`}
     })

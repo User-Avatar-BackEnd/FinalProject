@@ -107,7 +107,6 @@ const UserInfo = ({ data }) => {
                 const data = {
                   login: values.username,
                 }
-                console.log('adsad')
 
                 if (values.username !== login) {
                   API({
@@ -195,7 +194,6 @@ const UserInfo = ({ data }) => {
                   }
                 })
                   .then((response) => {
-                    console.log(response)
                     toggleRotate()
                     addToast('Password changed successfully!', {appearance: 'success'});
                   })

@@ -16,9 +16,6 @@ export const Comments = ({boardId, cardId}) => {
 
     const members = useSelector(membersSelector)
 
-    console.log({members})
-    console.log({comments})
-
     useEffect(() => {
         dispatch(getComments(boardId, cardId))
     })
@@ -40,7 +37,6 @@ export const Comments = ({boardId, cardId}) => {
     }
 
     const saveChange = (id, text) => {
-        console.log("saveChange")
         dispatch(updateComment(boardId, cardId, id, text))
         setEditableCommentId(null)
     }

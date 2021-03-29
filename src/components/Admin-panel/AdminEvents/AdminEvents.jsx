@@ -26,7 +26,6 @@ const AdminEvents = () => {
       .then(response => {
         if (!isCancelled) {
           setEvents(response.data)
-          console.log(events)
         }
       })
       .catch(error => {

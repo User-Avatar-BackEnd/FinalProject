@@ -61,7 +61,6 @@ const setColumn = (col) =>({
 
 export const changeColumnOrder = (boardId, index, dropedIndex, dropedId,) => (dispatch) =>{
     dispatch(setChangeColumnOrder(index,dropedIndex))
-    console.log(dropedId,index)
     API({
         method: 'patch',
         url:`/boards/${boardId}/columns/${dropedId}/position?to=${index}`,

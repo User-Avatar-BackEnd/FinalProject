@@ -95,7 +95,6 @@ export function notificationResponse(status, id, token, message) {
           : message('Invite declined!', {appearance: 'warning'})
       })
       .catch(error => {
-        console.log(error)
         message('Something went wrong...Please try again later', {appearance: 'error'})
       })
   }

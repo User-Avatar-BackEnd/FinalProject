@@ -9,7 +9,6 @@ export const getUsers = (pageNumber, pageSize) => {
 
 export const updateRole = (login, role) => {
 
-    console.log({role, login})
     return  authorizedRequest.put(`admin/role/${login}`, undefined,{
         params: {role},
         'Content-Type': 'application/json',
@@ -25,7 +24,6 @@ export const getHistory = (login) => {
 }
 
 export const changeBalance = (login, change) => {
-    console.log({change, login})
     return  authorizedRequest.patch(`admin/balance/${login}`, undefined,{
         params: {change},
         'Content-Type': 'application/json',

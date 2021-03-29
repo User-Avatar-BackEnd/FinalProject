@@ -35,7 +35,6 @@ const Board = ({title, columns, showHidden}) => {
 
               await subscribe();
             } else if (response.status !== 200) {
-              console.log('error')
 
               await new Promise(resolve => setTimeout(resolve, 10000));
               await subscribe(null);

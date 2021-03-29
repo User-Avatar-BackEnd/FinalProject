@@ -11,9 +11,8 @@ export const User = ({user}) => {
     const onAdmin = (login) => {
         setIsAdmin(!isAdmin)
         isAdmin ? setIsRole('user') : setIsRole('admin')
-        updateRole(login, role === 'user' ? 'admin' : 'user').then(r => console.log(r))
+        updateRole(login, role === 'user' ? 'admin' : 'user')
     }
-    console.log()
     return (
         <div className={style.User}>
             <span>{user.position}</span>
