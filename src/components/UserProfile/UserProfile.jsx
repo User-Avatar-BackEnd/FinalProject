@@ -8,6 +8,7 @@ import UserInfo from './UserInfo/UserInfo';
 import selector from './UserProfile.selector';
 import UserNotifications from './UserNotifications/UserNotifications';
 import UserRating from './UserRating/UserRating';
+import DailyQuest from './DailyQuest/DailyQuest';
 
 import styles from './UserProfile.module.scss';
 
@@ -39,7 +40,12 @@ const UserProfile = () => {
       <Switch>
         <Route path={path} exact>
           <div className={styles.container}>
-            <UserRank data={rank} />
+            <div>
+              <UserRank data={rank} />
+              {user.dailyEvent &&
+                <DailyQuest title={user.dailyEvent.eventName} isCompleted={user.dailyEvent.isCompleted} />
+              }
+            </div>
             <UserInfo data={info} />
           </div>
         </Route>
