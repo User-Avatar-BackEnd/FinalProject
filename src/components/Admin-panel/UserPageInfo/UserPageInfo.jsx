@@ -20,7 +20,7 @@ export const UserPageInfo = () => {
         <div className={style.wrapper}>
             {_.filter(users.users, (v) => _.includes(v.login, login))
                 .map(el =>
-                    <div className={style.UserPageInfo}>
+                    <div className={style.UserPageInfo} key={login}>
                     <div className={style.container}>
                         <UserIcon rank={el.rank} type={'main'}/>
                         <UserBalance balance={el.score} login={login}/>
