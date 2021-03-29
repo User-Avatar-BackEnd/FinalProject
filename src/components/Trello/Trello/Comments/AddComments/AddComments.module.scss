@@ -1,0 +1,46 @@
+.AddComments {
+  margin: -50px 0 0 40px;
+}
+
+.newComment {
+  position: relative;
+  padding-bottom: 30px;
+  background-color: #ffffff;
+  width: 420px;
+  border-radius: 5px;
+
+  textarea {
+    width: 80%;
+    padding: 10px 10px 0;
+    margin-bottom: 10px;
+
+    overflow: hidden;
+    overflow-wrap: break-word;
+    resize: none;
+    font-family: Arial, serif;
+  }
+
+  button {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 80px;
+    padding: 7px;
+    cursor: pointer;
+    background-color: #ffa500;
+    color: #ffffff;
+    font-weight: 600;
+
+    &:hover {
+      background-color: #e58e00;
+    }
+  }
+
+  .save {
+    background-color: #c6c6c6;
+    cursor: not-allowed;
+  }
+}
