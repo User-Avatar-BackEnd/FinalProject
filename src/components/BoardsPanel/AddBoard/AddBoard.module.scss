@@ -9,13 +9,13 @@
   cursor: pointer;
 
   &:hover .add {
-    border-color: green;
+    border-color: orange;
   }
 
   .add {
     display: block;
     border: 3px dashed #c6c6c6;
-    color: #333333;
+    color: orange;
     background: none;
     border-radius: 50%;
     font-size:  64px;
