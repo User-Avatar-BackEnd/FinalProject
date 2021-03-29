@@ -53,7 +53,7 @@ const Login = ({ onLogin }) => {
             })
         }}
       >
-        {({ isSubmitting }) => (
+        {() => (
           <Form onChange={clearError}>
             <AuthInput type='email' id='email' name='email' label='Email' placeholder='Email' required={true} autoComplete='off' />
             <AuthInput type='password' id='password' name='password' label='Password' placeholder='Password' required={true} />

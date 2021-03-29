@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import style from './PrioritySelector.module.scss'
+import style from './PrioritySelector.module.scss';
 
 export const PrioritySelector = ({card, changePriority}) => {
     const priorityType = {

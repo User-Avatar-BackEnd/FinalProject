@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import style from './AddBoard.module.scss';
 import {BoardModal} from "../BoardModal/BoardModal";
+import style from './AddBoard.module.scss';
 
 export const AddBoard = () => {
     const [isShow, setIsShow] = useState(false)

@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-import style from "./Comments.module.scss";
+import style from "../Comments.module.scss";
 
 const Comment = ({editable, comment, onSave, onClose}) => {
 

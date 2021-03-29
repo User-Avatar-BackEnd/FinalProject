@@ -1,7 +1,7 @@
 import React from "react";
-import style from './CommentsModal.module.scss'
 import {AddComment} from "../AddComments/AddComment";
 import {Comments} from "../Comments";
+import style from './CommentsModal.module.scss';
 
 export const CommentsModal = ({boardId, card, onClose}) => {
     const {id} = card

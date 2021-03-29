@@ -1,10 +1,10 @@
 import React,{useEffect} from "react";
 import { Link } from 'react-router-dom';
 import {connect, useDispatch} from 'react-redux';
-import style from './BoardsPanel.module.scss'
 import {AddBoard} from "./AddBoard/AddBoard";
 import {Board} from "./Board/Board";
 import {getBoards} from '../../store/ducks/duckBoardsPanel';
+import style from './BoardsPanel.module.scss';
 
 const BoardsPanel = ({boards}) => {
     const dispatch = useDispatch();

@@ -1,5 +1,4 @@
-import React,{useState, useEffect, useRef} from "react";
-import {useDispatch} from 'react-redux';
+import React from "react";
 import style from './DeleteModal.module.scss';
 
 const DeleteModal = ({close, del}) => {

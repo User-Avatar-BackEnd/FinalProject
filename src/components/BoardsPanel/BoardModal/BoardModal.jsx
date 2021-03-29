@@ -1,7 +1,7 @@
 import React,{useState, useEffect, useRef} from "react";
 import {useDispatch} from 'react-redux';
-import style from './BoardModal.module.scss';
 import {addBoard, editBoard} from '../../../store/ducks/duckBoardsPanel';
+import style from './BoardModal.module.scss';
 
 export const BoardModal = ({close, flag, id, index}) => {
     const dispatch = useDispatch();
@@ -43,7 +43,6 @@ export const BoardModal = ({close, flag, id, index}) => {
                 <div className={style.title}>
                     <textarea onKeyDown ={Save} ref ={textInput} className ={style.area} defaultValue ={flag} onChange ={changeText} onBlur ={Close} />
                 </div>
-
             </div>
         </div>
     )

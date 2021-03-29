@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { LoopCircleLoading } from 'react-loadingg';
 import { useToasts } from 'react-toast-notifications';
 import {getNotifications, notificationResponse} from '../../../store/ducks/user/user';
+import UserIcon from '../../UserIcon/UserIcon';
 import selector from './UserNotifications.selector';
 
 import styles from './UserNotifications.module.scss';
-import UserIcon from '../../UserIcon/UserIcon';
 
 const UserNotifications = () => {
   const { notifications, loading } = useSelector(selector)

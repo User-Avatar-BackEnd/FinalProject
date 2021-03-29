@@ -1,10 +1,10 @@
 import {useState, useRef, useEffect} from 'react';
-import style from './Column.module.scss';
-import Card from '../Task/Card';
 import {connect, useDispatch} from 'react-redux';
+import Card from '../Card/Card';
 import {addTask, setdeleteCard, dropCard, changeColumnOrder, deleteColumn, changeTitleColumn} from '../../../store/ducks/duckTrello';
 import Add from '../Add/Add';
 import DelModal from './DeleteModal/DeleteModal';
+import style from './Column.module.scss';
 
  const Column = ({index, boardId, columns, dropedTask, setdeleteCard, showHidden, members}) => {
     const dispatch = useDispatch();
@@ -76,7 +76,6 @@ import DelModal from './DeleteModal/DeleteModal';
     const drop = (e) =>{
       if(e.dataTransfer.getData('flag') === 'column'){
         const dropedIndex = +e.dataTransfer.getData('indexDraged');
-        const dropedOrder = +e.dataTransfer.getData('orderDraged');
         dispatch(changeColumnOrder(boardId, index, dropedIndex, columns[dropedIndex].id));
       } else {
         const columnIndex = e.dataTransfer.getData('columnIndex');
@@ -141,8 +140,4 @@ const mapStateToProps = (state) => ({
   members: state.trello.board.members
 });
 
-const mapDispatchToProps = (dispatch) =>({
-  setdeleteCard: (column,index) => dispatch(setdeleteCard(column,index))
-})
-
-export default connect(mapStateToProps,mapDispatchToProps)(Column);
+export default connect(mapStateToProps)(Column);

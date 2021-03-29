@@ -1,8 +1,8 @@
+import React, {useState} from 'react';
 import {connect} from 'react-redux';
-import React,{useState, useEffect} from 'react';
-import style from './AddMembers.module.scss';
 import UserIcon from '../../../UserIcon/UserIcon';
 import Modal from './Modal/Modal';
+import style from './AddMembers.module.scss';
 
 const AddMembers = ({members}) =>{
     const [isShow, setIsShow] = useState(false);

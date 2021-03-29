@@ -1,9 +1,9 @@
 import React, {useState} from "react";
-import style from './Board.module.scss';
 import {useDispatch} from 'react-redux';
 import {deleteBoard} from '../../../store/ducks/duckBoardsPanel';
 import {BoardModal} from '../BoardModal/BoardModal'
 import DelModal from './DeleteModal/DeleteModal';
+import style from './Board.module.scss';
 
 export const Board = ({title, id, index, editable}) => {
     const dispatch = useDispatch();

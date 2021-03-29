@@ -1,11 +1,11 @@
 import React, {useEffect, useRef, useState} from "react";
 import {connect, useDispatch} from 'react-redux';
 import {deleteCard, setdeleteCard, changeCard, setdropCard} from '../../../../../store/ducks/duckTrello';
-import style from './CardDetailModal.module.scss'
 import {PrioritySelector} from "../PrioritySelector/PrioritySelector";
 import CardMembersSelector from "../CardMembersSelector/CardMembersSelector";
+import style from './CardDetailModal.module.scss';
 
-const CardDetailComponent = ({boardId, onClose, commentFocused, card, index, columnIndex, columnId, columns, moveCard, removeCard}) => {
+const CardDetailComponent = ({boardId, onClose, card, index, columnIndex, columnId, columns, moveCard, removeCard}) => {
     const dispatch = useDispatch();
  
     const [isWritable, setIsWritable] = useState(false)
@@ -100,7 +100,7 @@ const CardDetailComponent = ({boardId, onClose, commentFocused, card, index, col
         dispatch(changeCard(boardId, changedCard.id, columnIndex, index, changedCard));
         if(column !== columnId){
             removeCard(columnIndex, index);
-            moveCard(changedCard, columns.findIndex((item) => column == item.id ));
+            moveCard(changedCard, columns.findIndex((item) => column === item.id ));
         }
         onClose();
     }
@@ -149,10 +149,5 @@ const CardDetailComponent = ({boardId, onClose, commentFocused, card, index, col
 const mapStateToProps = (state) => ({
     columns: state.trello.board.columns
 });
-
-const mapDispatchToProps = (dispatch) =>({
-    removeCard: (columnIndex, index) => dispatch(setdeleteCard(columnIndex, index)),
-    moveCard: (changedCard,index) => dispatch(setdropCard(changedCard,index))
-})
   
-export default connect(mapStateToProps, mapDispatchToProps)(CardDetailComponent);
+export default connect(mapStateToProps)(CardDetailComponent);

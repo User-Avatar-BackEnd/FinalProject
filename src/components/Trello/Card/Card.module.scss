@@ -1,0 +1,114 @@
+.area {
+	resize: none;
+    align-self: center;
+    outline: none;
+    color: #000000 !important;
+}
+
+.buttons{
+    position: absolute;
+    right: 20px;
+    bottom: 35px;
+}
+
+.accept,.cancel{
+    margin-right: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.accept{
+    background-color: #8df129;
+    border-color: #366803;
+    color: #366803;
+}
+
+.cancel{
+    background-color: #f75a4e;
+    border-color: #70110a;
+    color: #70110a;
+}
+
+.form{
+    position: relative;
+    width: 90%;
+}
+
+.priority{
+    position: absolute;
+    right: 20px;
+    top: 35px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.items{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    position: absolute;
+    bottom: 25px;
+    width: 95%;
+    margin: 0 10px;
+}
+
+.show{
+    font-weight: bold;
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+
+.comments{
+    display: flex;
+    font-size: 18px;
+    cursor: pointer;
+    width: 40px;
+    justify-content: space-between;
+}
+.responsible{
+    position: relative;
+    cursor: pointer;
+}
+
+.responsible img{
+    position: absolute;
+    top: -18px;
+    right: -3px;
+}
+
+.card{
+    font-size: 18px;
+    width: 92%;
+    border-radius: 7px;
+    height: auto;
+    min-height: 70px;
+    margin: 10px 0;
+    padding: 45px 15px 35px 15px;
+    overflow-wrap: break-word;
+    border-color: #151724;
+    background-color: #d7dbe9;
+    box-shadow: 10px 15px 5px #0e0a0a5e;
+}
+
+.minimal,.normal,.high,.critical{
+    padding: 2.5px;
+    border-radius: 5px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.minimal{
+    background-color: #24a0d1;
+}
+
+.normal{
+    background-color: #47d124;
+}
+
+.high{
+    background-color: #dde93d;
+}
+
+.critical{
+    background-color: #d33418;
+}

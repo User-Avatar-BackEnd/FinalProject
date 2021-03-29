@@ -1,15 +1,15 @@
 import React, {useEffect, useState} from "react";
-import style from './AdminPanel.module.scss'
 import {faSlidersH, faUserTie} from "@fortawesome/free-solid-svg-icons";
 import {Route, Switch, useHistory, useRouteMatch} from 'react-router-dom';
+import _ from "lodash";
+import Pagination from "react-js-pagination";
+import {useSelector} from "react-redux";
 import {UserList} from "./UserList/UserList";
 import NavBar from "../NavBar/NavBar";
 import useLoadUsers from "../../hooks/useLoadUsers";
 import {UserSearch} from "./UserList/UserSerach/UserSearch";
-import _ from "lodash";
-import Pagination from "react-js-pagination";
-import {useSelector} from "react-redux";
 import AdminEvents from './AdminEvents/AdminEvents';
+import style from './AdminPanel.module.scss';
 
 const pages = [
     {id: 1, title: 'Users', url: '/', icon: faUserTie},
@@ -18,7 +18,7 @@ const pages = [
 
 export const AdminPanel = () => {
 
-    const {isLoading, users, page, setPage, error} = useLoadUsers()
+    const {users, page, setPage} = useLoadUsers()
 
     const [filter, setFilter] = useState('')
     let { path } = useRouteMatch();

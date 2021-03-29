@@ -1,14 +1,14 @@
-import React,{useState, useEffect, useRef} from "react";
+import React,{useState, useRef} from "react";
 import {connect, useDispatch} from 'react-redux';
 import classNames from 'classnames';
 import { useToasts } from 'react-toast-notifications';
-import style from './Modal.module.scss';
-import UserIcon from '../../../../UserIcon/UserIcon';
-import Dropdown from './Dropdown';
 import { useParams } from 'react-router-dom';
+import UserIcon from '../../../../UserIcon/UserIcon';
+import Dropdown from './Dropdown/Dropdown';
 import API from '../../../../../config/API';
 import DelModal from './DeleteModal/DeleteModal';
-import {getBoard} from '../../../../../ducks/duckTrello';
+import {getBoard} from '../../../../../store/ducks/duckTrello';
+import style from './Modal.module.scss';
 
 const Modal = ({close, members, users}) => {
     const [userName, setUserName] = useState(null);

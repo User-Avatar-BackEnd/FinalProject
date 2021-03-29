@@ -6,10 +6,9 @@ import {faUserShield} from '@fortawesome/free-solid-svg-icons';
 import selector from './Header.selector';
 import UserIcon from '../UserIcon/UserIcon';
 import UserProgressBar from '../UserProgressBar/UserProgressBar';
-
-import styles from './Header.module.scss';
 import HeaderNotifications from './HeaderNotifications/HeaderNotifications';
 
+import styles from './Header.module.scss';
 
 const Header = () => {
   const { user } = useSelector(selector)
