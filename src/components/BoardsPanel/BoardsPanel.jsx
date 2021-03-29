@@ -20,7 +20,7 @@ const BoardsPanel = ({boards}) => {
                         </Link>
                     }
                 })}
-                <AddBoard/>
+                { boards.filter((item)=>item.isOwner).length < 10 && <AddBoard/>}
             </div>
             <h2>Boards from Invites</h2>
             <div className={style.wrapper}>

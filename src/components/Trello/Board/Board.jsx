@@ -16,6 +16,7 @@ const Board = ({title, columns, showHidden}) =>{
   const history = useHistory()
 
   const [show, setShow] = useState(true);
+  const [margin, setMargin] = useState(0);
 
   useEffect(() => dispatch(getBoard(id)), []);
 
@@ -68,13 +69,16 @@ const Board = ({title, columns, showHidden}) =>{
   const changeHidden = () =>{
     setShow(!show)
     showHidden(show)
-}
+  }
+  window.addEventListener('scroll', () => {
+    setMargin(window.scrollX);
+  });
   
   if(columns){
-    const orderedColumns = columns.sort((a, b) => a.order - b.order);
+   
     return (
       <div>
-        <div className ={style.fixed}>
+        <div style ={{marginLeft: `${margin}px`}} className ={style.fixed}>
           <div className ={style.wrap}>
             <div>
               <div className={style.item}>
@@ -88,8 +92,8 @@ const Board = ({title, columns, showHidden}) =>{
         </div>
         
         <div className ={style.board}>
-          {orderedColumns.map((item,i)=><Column key ={item.id} boardId ={id} index ={i} />)}
-          <Add add ={addNewColumn}/>
+          {columns.map((item,i)=><Column key ={item.id} boardId ={id} index ={i} />)}
+          { columns.length < 20 && <Add add ={addNewColumn}/>}
           <div style={{minWidth:"40px",visibility: "hidden"}} >.</div>
         </div>
       </div>

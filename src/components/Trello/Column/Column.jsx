@@ -77,8 +77,7 @@ import DelModal from './DeleteModal/DeleteModal';
       if(e.dataTransfer.getData('flag') === 'column'){
         const dropedIndex = +e.dataTransfer.getData('indexDraged');
         const dropedOrder = +e.dataTransfer.getData('orderDraged');
-        dispatch(changeColumnOrder(boardId, id, index,  dropedOrder));
-        dispatch(changeColumnOrder(boardId, columns[dropedIndex].id, dropedIndex,  order));
+        dispatch(changeColumnOrder(boardId, index, dropedIndex, columns[dropedIndex].id));
       } else {
         const columnIndex = e.dataTransfer.getData('columnIndex');
         const taskIndex = e.dataTransfer.getData('taskIndex');
@@ -115,7 +114,7 @@ import DelModal from './DeleteModal/DeleteModal';
           <div onClick ={startEdit} className ={style.more}>...</div>
         </div>
 
-        <Add column ={true} add ={adding}/>
+        { cards.length < 100 && <Add column ={true} add ={adding}/>}
         <div className ={style.cards} >
           {cards ? cards.sort((a, b) => a.priority - b.priority).map((item,i)=>{
             {if(!item.isHidden || showHidden){

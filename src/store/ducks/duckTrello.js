@@ -59,19 +59,30 @@ const setColumn = (col) =>({
     payload: col
 })
 
-export const changeColumnOrder = (boardId, id,  index, order) => (dispatch) =>{
-    dispatch(setChangeColumnOrder(index,order))
+export const changeColumnOrder = (boardId, index, dropedIndex, dropedId,) => (dispatch) =>{
+    dispatch(setChangeColumnOrder(index,dropedIndex))
+    console.log(dropedId,index)
     API({
         method: 'patch',
-        url:`/boards/${boardId}/columns/${id}/position?to=${order}`,
+        url:`/boards/${boardId}/columns/${dropedId}/position?to=${index}`,
         headers: {'Authorization':`Bearer ${localStorage.getItem('AUTH_TOKEN')}`},
     })
 }
-const setChangeColumnOrder = (index, order) =>({
+const setChangeColumnOrder = (index, dropedIndex) =>({
     type: CHANGE_ORDER,
     index: index,
-    order: order
+    dropedIndex: dropedIndex
 })
+const swap = (arr, new_index, old_index) => {
+    if (new_index >= arr.length) {
+        var k = new_index - arr.length + 1;
+        while (k--) {
+            arr.push(undefined);
+        }
+    }
+    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+    return arr;
+}
 
 export const addTask = (boardId, id, title, index) => (dispatch) =>{
     API({
@@ -186,8 +197,7 @@ export const reducerTrello = (state =initialState, action) => {
             state.board.columns=[...state.board.columns]
             return {...state}
         case CHANGE_ORDER:
-            state.board.columns[action.index].order = action.order
-            state.board.columns=[...state.board.columns]
+            state.board.columns = [...swap([...state.board.columns], action.index, action.dropedIndex)]
             return {...state}
         case ADD_CARD: 
             state.board.columns[action.index].cards.push(action.payload)

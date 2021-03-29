@@ -3,13 +3,13 @@ body{
 }
 
 .fixed{
-    width: 1vw;
+    width: 0;
     position: sticky;
-    left: 60px;
     z-index: 1;
 }
 
 .wrap{
+    padding-left: 60px;
     min-width: 90vw;
     display: flex;
     justify-content: space-between;
