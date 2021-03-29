@@ -1,6 +1,6 @@
 import React from "react";
-import style from './HistoryInfo.module.scss'
 import moment from "moment";
+import style from './HistoryInfo.module.scss';
 
 export const HistoryInfo = ({history}) => {
 

@@ -1,15 +1,8 @@
-import React, {useState} from "react";
-import styles from './UserInformation.module.scss'
+import React from "react";
 import {Field, Form, Formik} from "formik";
-import {useParams} from 'react-router-dom'
-import useLoadedHistory from "../../../../hooks/useLoadedHistory";
-import useLoadUsers from "../../../../hooks/useLoadUsers";
-import _ from "lodash";
+import styles from './UserInformation.module.scss'
 
 export const UserInformation = ({role, login}) => {
-    // const {email, invitesAmount} = data
-    // const [user, setUser] = useState([])
-    const {users} = useLoadUsers()
 
     return (
         <div className={styles.UserInformation}>

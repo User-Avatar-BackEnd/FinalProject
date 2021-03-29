@@ -103,7 +103,7 @@ const UserInfo = ({ data }) => {
               initialValues={{ username: login ?? '', email: email ?? '' }}
               enableReinitialize
               validationSchema={ProfileInfoSchema}
-              onSubmit={(values, { setSubmitting }) => {
+              onSubmit={(values) => {
                 const data = {
                   login: values.username,
                 }

@@ -6,9 +6,7 @@ import styles from './UserIcon.module.scss';
 const UserIcon = ({ type, rank }) => {
 
   return (
-    <div className={classNames(styles.UserIcon, styles[type], styles[rank])}>
-
-    </div>
+    <div className={classNames(styles.UserIcon, styles[type], styles[rank])} />
   );
 
 }

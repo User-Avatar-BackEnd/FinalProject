@@ -64,7 +64,7 @@ const AdminEvents = () => {
       .then(() => {
         addToast('Changes successfully applied!', {appearance: 'success'});
       })
-      .catch(error => {
+      .catch(() => {
         addToast('Something went wrong...Please try again later', {appearance: 'error'});
       })
   }

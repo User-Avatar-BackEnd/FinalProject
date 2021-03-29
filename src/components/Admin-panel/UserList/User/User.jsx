@@ -1,8 +1,8 @@
 import React, {useState} from "react";
-import style from './User.module.scss'
 import {Link} from "react-router-dom";
 import UserIcon from "../../../UserIcon/UserIcon";
 import {updateRole} from "../../../../API/userApi";
+import style from './User.module.scss';
 
 export const User = ({user}) => {
     const [isAdmin, setIsAdmin] = useState(false)

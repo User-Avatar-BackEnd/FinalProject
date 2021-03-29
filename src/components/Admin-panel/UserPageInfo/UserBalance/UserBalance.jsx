@@ -1,9 +1,8 @@
 import React from "react";
-import style from './UserBalance.module.scss'
-import styles from './UserBalance.module.scss'
 import {Field, Form, Formik} from "formik";
-import {changeBalance} from '../../../../API/userApi'
 import {useToasts} from 'react-toast-notifications';
+import {changeBalance} from '../../../../API/userApi';
+import styles from './UserBalance.module.scss';
 
 export const UserBalance = ({login, balance}) => {
 
@@ -17,7 +16,7 @@ export const UserBalance = ({login, balance}) => {
             })
     }
 
-    return <div className={style.UserBalance}>
+    return <div className={styles.UserBalance}>
         <Formik
             initialValues={{balance: balance}}
             onSubmit={(values, {setSubmitting}) => {

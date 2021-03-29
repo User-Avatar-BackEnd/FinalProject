@@ -1,7 +1,8 @@
-import React, {useState} from "react";
-import style from './UserList.module.scss'
-import {User} from "./User/User";
+import React from "react";
 import _ from "lodash";
+import {User} from "./User/User";
+import style from './UserList.module.scss';
+
 export const UserList = ({users}) => {
 
     return (

@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from "react";
-import style from './Comments.module.scss'
 import {useDispatch, useSelector} from "react-redux";
+import _ from "lodash";
+import moment from 'moment';
 import {dropComment, getComments, updateComment} from "../../../store/ducks/duckComments";
 import commentsSelector from "../../../selectors/commentsSelector";
-import moment from 'moment'
-import Comment from "./Comment";
+import Comment from "./Comment/Comment";
 import {membersSelector} from "../../../selectors/membersSelector";
 import UserIcon from "../../UserIcon/UserIcon";
-import _ from "lodash";
+import style from './Comments.module.scss';
 
 export const Comments = ({boardId, cardId}) => {
     const dispatch = useDispatch()

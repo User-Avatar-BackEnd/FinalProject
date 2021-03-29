@@ -1,14 +1,13 @@
 import React from "react";
-import style from './UserPageInfo.module.scss'
-import UserRank from "../../UserProfile/UserRank/UserRank";
+import {useParams} from "react-router-dom";
+import _ from "lodash";
 import {UserInformation} from "./UserInformation/UserInformation";
 import {UserBalance} from "./UserBalance/UserBalance";
-import {HistoryList} from "./UserHistory/HistoryList/HistoryList";
-import {useParams} from "react-router-dom";
+import {HistoryList} from "./UserBalance/HistoryList/HistoryList";
 import useLoadedHistory from "../../../hooks/useLoadedHistory";
 import useLoadUsers from "../../../hooks/useLoadUsers";
-import _ from "lodash";
 import UserIcon from "../../UserIcon/UserIcon";
+import style from './UserPageInfo.module.scss';
 
 export const UserPageInfo = () => {
     const {login} = useParams()

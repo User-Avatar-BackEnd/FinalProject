@@ -1,8 +1,8 @@
 import React from "react";
-import style from './UserSearch.module.scss'
 import {faSearch} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import debounce from 'lodash.debounce';
+import style from './UserSearch.module.scss';
 
 export const UserSearch = ({onSearch}) => {
 

@@ -1,7 +1,7 @@
-import React, {useState} from "react";
-import style from './HistoryList.module.scss'
+import React from "react";
 import _ from "lodash";
 import {HistoryInfo} from "../HistoryInfo/HistoryInfo";
+import style from './HistoryList.module.scss';
 
 export const HistoryList = ({history}) => {
 

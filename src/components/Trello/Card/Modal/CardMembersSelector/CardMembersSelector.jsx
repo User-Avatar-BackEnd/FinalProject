@@ -1,6 +1,5 @@
-import {connect} from 'react-redux';
-import API from "../../../../../store/config";
 import React from "react";
+import {connect} from 'react-redux';
 import style from './CardMembersSelector.module.scss';
 
 const CardMembersSelector = ({changeResponsible, responsibleId, members}) => {

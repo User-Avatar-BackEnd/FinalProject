@@ -46,7 +46,7 @@ const Registration = ({ onLogin }) => {
       <Formik
         initialValues={{ email: '', password: '', repeatPassword: '', username: '' }}
         validationSchema={RegistrationSchema}
-        onSubmit={(values, { setSubmitting }) => {
+        onSubmit={(values) => {
           const data = {
             email: values.email,
             password: values.password.trim()
@@ -67,7 +67,7 @@ const Registration = ({ onLogin }) => {
             })
         }}
       >
-        {({ isSubmitting, errors, touched }) => (
+        {() => (
           <Form onChange={clearError}>
             <AuthInput type='email' id='email' name='email' label='Email' placeholder='Email' required={true} autoComplete='off' />
             <AuthInput type='password' id='password' name='password' label='Password' placeholder='Password' required={true} />

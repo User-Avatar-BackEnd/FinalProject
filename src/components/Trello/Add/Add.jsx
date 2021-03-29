@@ -1,8 +1,7 @@
 import {useState} from 'react';
 import classNames from 'classnames';
-import style from './Add.module.scss';
 import Input from './InputTitle/InputTitle';
-
+import style from './Add.module.scss';
 
 const Add = ({add, column}) =>{
     let [inputing, setInputing] = useState(false);
@@ -17,7 +16,7 @@ const Add = ({add, column}) =>{
         setInputing(inputing = false);
     }
     if(inputing){
-        return <Input column ={column} accept ={accept} cancel ={cancel} />
+        return <Input column={column} accept={accept} cancel={cancel} />
     } else{
         return(
             <button className={classNames({
