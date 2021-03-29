@@ -45,7 +45,7 @@ const ProfilePasswordSchema = Yup.object().shape({
 });
 
 const UserInfo = ({ data }) => {
-  const { email, login, invitesAmount } = data
+  const { email, login } = data
   const dispatch = useDispatch()
   const history = useHistory()
   const [isRotated, setIsRotated] = useState(false)
