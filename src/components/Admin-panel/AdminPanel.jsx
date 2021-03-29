@@ -18,7 +18,10 @@ const pages = [
 
 export const AdminPanel = () => {
 
-    const {users, page, setPage} = useLoadUsers()
+    const {users, page, setPage, isLoading} = useLoadUsers()
+
+    console.log("useLoadUsers", users)
+    console.log({isLoading})
 
     const [filter, setFilter] = useState('')
     let { path } = useRouteMatch();
@@ -26,10 +29,14 @@ export const AdminPanel = () => {
     const role = useSelector(state => state.user.data.role, _.isEqual)
 
     useEffect(() => {
-        if (role !== 'admin') {
+        if (role && role !== 'admin') {
             history.replace('/board')
         }
-    }, [])
+    }, [role])
+
+    useEffect(() => {
+        console.log("totalPages", users.totalPages)
+    })
 
     const onSearch = (user) => {
         setFilter(user)
@@ -50,7 +57,7 @@ export const AdminPanel = () => {
                                 <Pagination
                                   activePage={page}
                                   itemsCountPerPage={10}
-                                  totalItemsCount={users.totalPages}
+                                  totalItemsCount={users.totalElements}
                                   pageRangeDisplayed={5}
                                   onChange={setPage}/>
                             </div>
