@@ -1,14 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import UserRank from './UserRank';
+import DailyQuest from './DailyQuest';
 
 describe('DailyQuest component', () => {
 
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<UserRank />);
+    wrapper = shallow(<DailyQuest />);
   });
 
   afterEach(() => {
