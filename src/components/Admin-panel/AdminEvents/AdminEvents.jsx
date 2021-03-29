@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { LoopCircleLoading } from 'react-loadingg';
 import { useToasts } from 'react-toast-notifications';
-import API from '../../config/API';
+import API from '../../../config/API';
 
 import styles from './AdminEvents.module.scss';
 

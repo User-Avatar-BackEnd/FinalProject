@@ -1,4 +1,4 @@
-.NavLink {
+.AdminNavLink {
   position: relative;
   width: 100%;
   min-height: 80px;
@@ -29,7 +29,7 @@
 .active {
 
   & > div {
-
+    border-right: 4px solid orange;
   }
 }
 

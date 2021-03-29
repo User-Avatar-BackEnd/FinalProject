@@ -1,9 +1,9 @@
 import React from 'react';
-import NavLink from './NavLink/NavLink';
+import NavLink from './NavLink/AdminNavLink';
 
 import styles from './NavBar.module.scss';
 
-const NavBar = ({ title, pages, activePage, changePage }) => {
+const NavBar = ({ title, pages, path }) => {
 
     return (
         <div className={styles.NavBar}>
@@ -12,10 +12,9 @@ const NavBar = ({ title, pages, activePage, changePage }) => {
                 return <NavLink
                     id={page.id}
                     title={page.title}
+                    url={`${path}${page.url}`}
                     icon={page.icon}
-                    active={page.id === activePage}
                     key={page.id}
-                    onClick={changePage}
                 />
             })}
         </div>
