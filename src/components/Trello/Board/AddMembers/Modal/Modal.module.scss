@@ -71,21 +71,22 @@
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  margin-top: -30px;
 }
 
 .member{
   > button {
-    margin-top: -42px;
+    margin: -40px auto;
     display: none;
     position: absolute;
     outline: none;
     border: none;
-    background-color: #e21c1c;
+    background-color: rgba(255, 152, 0, 0.71);
     border-radius: 50%;
     cursor: pointer;
   }
   .del{
-    height: 40px;
+    height: 32px;
     width: 30px;
   }
   &:hover button {
@@ -148,15 +149,16 @@
 
 .invite{
   margin-left: 20px;
-  margin-top: 23px;
-  width: 70px;
-  height: 30px;
+  margin-top: 20px;
+  width: 80px;
+  height: 39px;
   font-weight: bold;
   font-size: 18px;
   outline: none;
   color: #ffffff;
-  border: 2px solid #075e91;
-  background-color: #11addd;
+  border: none;
+  background-color: #ff9800;
+  border-radius: 5px;
 
   &:hover {
     background-color: #67c8ee;

@@ -76,8 +76,10 @@ const Board = ({title, columns, showHidden}) =>{
         <div className ={style.fixed}>
           <div className ={style.wrap}>
             <div>
-              <h1 className ={style.boardTitle}>{title}</h1>
-              <span onClick ={back} className ={style.back}>&#60; Back</span>
+              <div className={style.item}>
+                <span onClick ={back} className ={style.back}>&#60;</span>
+                <h1 className ={style.boardTitle}>{title}</h1>
+              </div>
               <div className ={style.show}>Show hidden? <input onChange ={changeHidden} type="checkbox"/></div>
             </div>
             <AddMembers />
