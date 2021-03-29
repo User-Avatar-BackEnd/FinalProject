@@ -13,14 +13,18 @@ const UserRank = ({ data }) => {
         <UserIcon type={'main'} rank={rank} />
       </div>
       <h3>{rank}</h3>
-      <h4>To next rank:</h4>
+      {currentScoreAmount !== nextLevelScore &&
+        <h4>To next rank:</h4>
+      }
       <UserProgressBar
         template={'profile'}
         previousLevelScore={previousLevelScore}
         currentScoreAmount={currentScoreAmount}
         nextLevelScore={nextLevelScore}
       />
-      <h4>Total points: {currentScoreAmount}</h4>
+      {currentScoreAmount !== nextLevelScore &&
+        <h4>Total points: {currentScoreAmount}</h4>
+      }
     </div>
   );
 
