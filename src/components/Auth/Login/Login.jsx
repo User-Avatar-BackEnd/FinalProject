@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Formik, Form } from 'formik';
+import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
+import {Form, Formik} from 'formik';
 import * as Yup from 'yup';
-import { useToasts } from 'react-toast-notifications';
+import {useToasts} from 'react-toast-notifications';
 import AuthInput from '../AuthInput/AuthInput';
 import ErrorMessage from '../../ErrorMessage/ErrorMessage';
 import API from '../../../config/API';
