@@ -25,6 +25,10 @@
     display: flex;
     justify-content: space-evenly;
     flex-basis: 20%;
+
+    & > a, & > div {
+      margin: 0 5px;
+    }
   }
 
   & .username {

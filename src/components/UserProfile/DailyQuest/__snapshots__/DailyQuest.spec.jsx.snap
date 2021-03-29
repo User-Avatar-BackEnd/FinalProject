@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DailyQuest component should match snapshot 1`] = `
+<div
+  className="DailyQuest"
+>
+  <div
+    className="header"
+  >
+    <h3>
+      DAILY QUEST
+    </h3>
+  </div>
+  <div
+    className="quest"
+  >
+    <div>
+      <h4 />
+      <span>
+        x2 points!
+      </span>
+    </div>
+  </div>
+</div>
+`;
