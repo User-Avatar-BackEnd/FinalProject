@@ -1,0 +1,110 @@
+.Comments {
+
+  span {
+    display: block;
+    font-weight: 600;
+    color: #2b446f;
+  }
+
+  .date {
+    font-size: 12px;
+    padding: 4px;
+    margin: 0 20px;
+    color: #5e6c84;
+    font-weight: 400;
+  }
+}
+
+.wrapper {
+  display: inline-block;
+  background-color: #fff;
+  margin: 5px 0 0;
+  border-radius: 5px;
+
+  border: 1px solid #c6c6c6;
+
+  p {
+    margin: 10px 0;
+    font-size: 14px;
+    padding: 0 10px;
+  }
+}
+
+.action {
+  display: flex;
+  margin-top: -10px;
+
+  p {
+    margin-right: 5px;
+    font-size: 12px;
+    text-decoration: underline;
+    cursor: pointer;
+
+    &:hover {
+      color: #f75a4e;
+    }
+  }
+}
+
+.user {
+  display: flex;
+  margin-top: 10px;
+
+  .icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 35px;
+  }
+
+}
+
+.commentContainer {
+  margin: 0 0 0 50px;
+}
+
+.comment {
+  position: relative;
+  .close {
+    position: absolute;
+    top: 3px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    opacity: 0.3;
+
+
+    &:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+
+    &:before, &:after {
+      position: absolute;
+      left: 15px;
+      content: ' ';
+      height: 12px;
+      width: 2px;
+      background-color: #333;
+    }
+
+    &:before {
+      transform: rotate(45deg);
+    }
+
+    &:after {
+      transform: rotate(-45deg);
+    }
+  }
+
+  .save {
+    background-color: orange;
+    border-radius: 10px;
+    width: 40px;
+    padding: 2px;
+    margin-bottom: 5px;
+
+    &:hover {
+      background-color: #ffbb17;
+    }
+  }
+}

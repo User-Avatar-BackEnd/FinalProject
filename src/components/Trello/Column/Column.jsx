@@ -140,4 +140,8 @@ const mapStateToProps = (state) => ({
   members: state.trello.board.members
 });
 
-export default connect(mapStateToProps)(Column);
+const mapDispatchToProps = (dispatch) =>({
+  setdeleteCard: (column,index) => dispatch(setdeleteCard(column,index))
+})
+
+export default connect(mapStateToProps,  mapDispatchToProps)(Column);
