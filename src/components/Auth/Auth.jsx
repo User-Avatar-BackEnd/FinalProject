@@ -14,7 +14,7 @@ const Auth = ({ type }) => {
     if (token) {
       history.replace('/')
     }
-  })
+  }, [])
 
   const onLogin = (authToken) => {
     localStorage.setItem('AUTH_TOKEN', authToken)
