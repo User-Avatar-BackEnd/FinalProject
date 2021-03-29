@@ -2,13 +2,12 @@ import React, {useEffect, useState} from "react";
 import style from './Comments.module.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {dropComment, getComments, updateComment} from "../../../store/ducks/duckComments";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faUser} from "@fortawesome/free-solid-svg-icons";
 import commentsSelector from "../../../selectors/commentsSelector";
 import moment from 'moment'
 import Comment from "./Comment";
 import {membersSelector} from "../../../selectors/membersSelector";
 import UserIcon from "../../UserIcon/UserIcon";
+import _ from "lodash";
 
 export const Comments = ({boardId, cardId}) => {
     const dispatch = useDispatch()
@@ -45,6 +44,7 @@ export const Comments = ({boardId, cardId}) => {
         dispatch(updateComment(boardId, cardId, id, text))
         setEditableCommentId(null)
     }
+    const user = useSelector(state => state.user.data.login, _.isEqual)
 
     return (
         <div className={style.Comments}>
@@ -61,10 +61,14 @@ export const Comments = ({boardId, cardId}) => {
                              comment={comment}
                              onClose={onClose}
                              onSave={saveChange}/>
-                    <div className={style.action}>
-                        {comment.editable ? <p onClick={() => onChange(comment.id)}>edit</p> : null}
-                        <p onClick={() => onDeleteComment(comment.id)}>delete</p>
-                    </div>
+
+                        {user && comment.editable ?
+                            <div className={style.action}>
+                                <p onClick={() => onChange(comment.id)}>edit</p>
+                                <p onClick={() => onDeleteComment(comment.id)}>delete</p>
+                            </div>
+                            : null}
+
                 </div>
             </div>)}
         </div>

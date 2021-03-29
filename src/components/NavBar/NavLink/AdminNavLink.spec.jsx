@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import NavLink from './NavLink';
+import NavLink from './AdminNavLink';
 
 describe('Nav link component', () => {
 

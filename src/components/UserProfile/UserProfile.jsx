@@ -25,7 +25,6 @@ const UserProfile = () => {
   const info = {
     email: user.email,
     login: user.login,
-    invitesAmount: user.invitesAmount
   }
 
   const rank = {
@@ -34,6 +33,7 @@ const UserProfile = () => {
     currentScoreAmount: user.currentScoreAmount,
     nextLevelScore: user.nextLevelScore
   }
+
   return (
     <div className={styles.UserProfile}>
       <UserProfileNav path={path} pages={pages} />
