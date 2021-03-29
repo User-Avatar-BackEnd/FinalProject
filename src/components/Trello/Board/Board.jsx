@@ -70,9 +70,15 @@ const Board = ({title, columns, showHidden}) =>{
     setShow(!show)
     showHidden(show)
   }
-  window.addEventListener('scroll', () => {
+
+  const listener = () => {
     setMargin(window.scrollX);
-  });
+  }
+
+  useEffect(() => {
+      window.addEventListener('scroll', listener);
+    return window.removeEventListener('scroll', listener)
+  },[]);
   
   if(columns){
    
