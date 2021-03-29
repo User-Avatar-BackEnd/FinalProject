@@ -1,6 +1,7 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {connect, useDispatch} from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
+import classNames from 'classnames';
 import style from './Board.module.scss';
 import Column from '../Column/Column';
 import Add from '../Add/Add';
@@ -11,16 +12,17 @@ import API from '../../../config/API';
 const Board = ({title, columns, showHidden}) =>{
   const dispatch = useDispatch();
 
-    const {id} = useParams();
-    const history = useHistory()
+  const {id} = useParams();
+  const history = useHistory()
 
-    useEffect(() => dispatch(getBoard(id)), []);
+  const [show, setShow] = useState(true);
+
+  useEffect(() => dispatch(getBoard(id)), []);
 
   useEffect(() => {
     let isCancelled = false
 
     async function subscribe(ticks) {
-      console.log('tick')
       API({
         method: 'get',
         url:`/boards/${id}/changes/?ticks=${ticks}`,
@@ -37,8 +39,6 @@ const Board = ({title, columns, showHidden}) =>{
               await new Promise(resolve => setTimeout(resolve, 10000));
               await subscribe(null);
             } else {
-              console.log(response);
-
               if(response.data.changed) {
                 dispatch(getBoard(id))
               }
@@ -65,8 +65,9 @@ const Board = ({title, columns, showHidden}) =>{
     history.goBack();
   }
 
-  const changeHidden = (e) =>{
-    showHidden(e.target.checked)
+  const changeHidden = () =>{
+    setShow(!show)
+    showHidden(show)
 }
   
   if(columns){
@@ -80,7 +81,7 @@ const Board = ({title, columns, showHidden}) =>{
                 <span onClick ={back} className ={style.back}>&#60;</span>
                 <h1 className ={style.boardTitle}>{title}</h1>
               </div>
-              <div className ={style.show}>Show hidden? <input onChange ={changeHidden} type="checkbox"/></div>
+              <div className ={style.show}>Show hidden? <span onClick ={changeHidden} className = {classNames(style.switchBtn,{[style.switchOn]: !show})}></span></div>
             </div>
             <AddMembers />
           </div>
