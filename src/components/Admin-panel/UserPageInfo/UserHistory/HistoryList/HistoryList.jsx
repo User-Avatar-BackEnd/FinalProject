@@ -13,7 +13,7 @@ export const HistoryList = ({history}) => {
                     <span>Action</span>
                     <span>Reward</span>
                 </div>
-                {_.map(history, (data) => <HistoryInfo hey={data.dateTime} history={data}/>)}
+                {_.map(history, (data) => <HistoryInfo key={data.dateTime} history={data}/>)}
             </div>
         </div>
     )
