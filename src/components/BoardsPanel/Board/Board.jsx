@@ -33,7 +33,7 @@ export const Board = ({title, id, index, editable}) => {
 
     return (
             <div className={style.Board}>
-                <h2 title={title}>{title.length >= 10 ? title.substr(0,10) + '...' : title}</h2>
+                <h2 title={title}>{title.length >= 12 ? title.substr(0,12) + '...' : title}</h2>
                 <button onClick ={showDeleteModal} className={style.delete}><img src='../../images/del.svg' alt='delete'/></button>
                 {editable ? <button onClick ={edit} className={style.edit}><img src='../../images/edit.png' alt='edit'/></button> : null}
                 {isShow ? <BoardModal id ={id} index ={index} flag ={title} close={close}/> : null}
