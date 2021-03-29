@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import Login from './Login/Login';
 import Registration from './Registration/Registration';
-
 import styles from './Auth.module.scss';
 
 const Auth = ({ type }) => {
