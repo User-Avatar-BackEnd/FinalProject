@@ -16,8 +16,8 @@ const Auth = ({ type }) => {
     }
   })
 
-  const onLogin = (token) => {
-    localStorage.setItem('AUTH_TOKEN', token)
+  const onLogin = (authToken) => {
+    localStorage.setItem('AUTH_TOKEN', authToken)
     history.push('/')
   }
 
