@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserShield } from '@fortawesome/free-solid-svg-icons';
+import {Link} from 'react-router-dom';
+import {useSelector} from 'react-redux';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faUserShield} from '@fortawesome/free-solid-svg-icons';
 import selector from './Header.selector';
 import UserIcon from '../UserIcon/UserIcon';
 import UserProgressBar from '../UserProgressBar/UserProgressBar';
