@@ -5,13 +5,12 @@ import {useSelector} from "react-redux";
 import _ from "lodash";
 
 export const UserInformation = ({role, login}) => {
-    const user = useSelector(state => state.user.data.login, _.isEqual)
     return (
         <div className={styles.UserInformation}>
             <div className={styles.flip}>
                 <h2>User info</h2>
                 <Formik
-                    initialValues={{username: login, email: user, role: role}}
+                    initialValues={{username: login, email: login, role: role}}
                 >
                     {() => (
                         <Form>

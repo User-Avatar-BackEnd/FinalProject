@@ -21,7 +21,7 @@ export const AdminPanel = () => {
     const {users, page, setPage, isLoading} = useLoadUsers()
 
     const [filter, setFilter] = useState('')
-    let { path } = useRouteMatch();
+    let {path} = useRouteMatch();
     const history = useHistory()
     const role = useSelector(state => state.user.data.role, _.isEqual)
 
@@ -41,7 +41,7 @@ export const AdminPanel = () => {
 
     return (
         <div className={style.AdminPanel}>
-            <NavBar title={'Admin Panel'} pages={pages} path={path} />
+            <NavBar title={'Admin Panel'} pages={pages} path={path}/>
             <Switch>
                 <Route path={path} exact>
                     <div className={style.container}>
@@ -52,17 +52,17 @@ export const AdminPanel = () => {
                             users.totalPages &&
                             <div className={style.Pagination}>
                                 <Pagination
-                                  activePage={page}
-                                  itemsCountPerPage={10}
-                                  totalItemsCount={users.totalElements}
-                                  pageRangeDisplayed={5}
-                                  onChange={setPage}/>
+                                    activePage={page}
+                                    itemsCountPerPage={10}
+                                    totalItemsCount={users.totalElements}
+                                    pageRangeDisplayed={5}
+                                    onChange={setPage}/>
                             </div>
                         }
                     </div>
                 </Route>
                 <Route path={`${path}/settings`}>
-                    <AdminEvents />
+                    <AdminEvents/>
                 </Route>
             </Switch>
         </div>
