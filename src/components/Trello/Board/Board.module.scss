@@ -17,15 +17,15 @@ body{
 
 .boardTitle{
     font-size: 40px;
-    margin-top: 20px;
     font-family: DejaVu Sans Mono, monospace;
 }
 
 .back{
     min-width: 100px;
-    font-size: 19px;
+    font-size: 40px;
     font-weight: bold;
     cursor: pointer;
+    height: 60px;
 }
 
 .show{
@@ -60,4 +60,9 @@ body{
     font-weight: bold;
     font-family: Courier, monospace;
     padding: 12px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
 }
